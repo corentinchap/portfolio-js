@@ -5,14 +5,19 @@
   "main": "index.js",
   "engines": {
     "node": "8.11.3",
-    "npm" : "6.4.1"
+    "npm": "6.4.1"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "corentin chapatte",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "mongoose": "^5.4.15",
+    "nodemon": "^1.18.10",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0"
   }
 }
