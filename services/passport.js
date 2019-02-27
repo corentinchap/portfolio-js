@@ -22,16 +22,17 @@ passport.use(
             proxy: true
         },
         (accessToken, refreshToken, profile, done) => {
-
             User.findOne({googleId: profile.id})
             .then((existingUser) => {
-                if (existingUser && profile.id == keys.googlePersonalID){
-                    done(null, existingUser);
-                } else {
-                /*new User({googleId: profile.id})
-                    .save()
-                    .then(user => done(null, user));*/
-                }
+                // if (existingUser && profile.id == keys.googlePersonalID){
+                //     done(null, existingUser);
+                // } else {
+                //     done('unauthorized_client');
+                // }
+                done(null, existingUser);
+            })
+            .catch((error) => {
+                console.log(error);
             });
         }
     )
