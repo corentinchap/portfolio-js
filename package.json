@@ -1,5 +1,5 @@
 {
-  "name": "portfolio-node",
+  "name": "portfolio-node-server",
   "version": "1.0.0",
   "description": "backend for the protfolio",
   "main": "index.js",
@@ -9,11 +9,14 @@
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "server": "nodemon index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server \" \"npm run client\" "
   },
   "author": "corentin chapatte",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^4.1.0",
     "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.4",
     "mongoose": "^5.4.15",

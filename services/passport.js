@@ -21,19 +21,15 @@ passport.use(
             callbackURL: '/auth/google/callback',
             proxy: true
         },
-        (accessToken, refreshToken, profile, done) => {
-            User.findOne({googleId: profile.id})
-            .then((existingUser) => {
-                // if (existingUser && profile.id == keys.googlePersonalID){
-                //     done(null, existingUser);
-                // } else {
-                //     done('unauthorized_client');
-                // }
+        async (accessToken, refreshToken, profile, done) => {
+            const existingUser = await User.findOne({googleId: profile.id});
+
+            if (existingUser && profile.id == keys.googlePersonalID){
                 done(null, existingUser);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+            } else {
+                done('unauthorized_client');
+            }
+           
         }
     )
 );
