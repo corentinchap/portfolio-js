@@ -25,11 +25,11 @@ passport.use(
             const existingUser = await User.findOne({googleId: profile.id});
 
             if (existingUser && profile.id == keys.googlePersonalID){
-                done(null, existingUser);
-            } else {
-                done('unauthorized_client');
-            }
-           
+                return done(null, existingUser);
+            } 
+                
+            done('unauthorized_client');
+                       
         }
     )
 );
