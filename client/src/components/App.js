@@ -1,22 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+import './App.css'; 
 
-const Landing = () => <h2>Landing</h2>;
-const AboutSection = () => <h2>About</h2>;
-const WorkSection = () => <h2>WorkSection</h2>;
-const WorkList = () => <h2>WorkList</h2>;
-const WorkItem = () => <h2>WorkItem</h2>;
 
-const App = () => {
+import Landing from './Landing';
+import Admin from './Admin';
+
+
+
+
+class App extends Component {
+    componentDidMount() {
+        this.props.fetchUser();
+    }
+
+    render() {
     return (
         <div>
             <BrowserRouter>
                 <div>
-                    <Route path="/" component="{ WorkItem }" />
+                    <Route exact path="/" component={ Landing } />
+                    <Route exact path="/admin" component={ Admin } />
                 </div>
             </BrowserRouter>
         </div>
     );
+    }
 };
 
-export default App;
+export default connect(null, actions)(App);
