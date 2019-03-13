@@ -5,7 +5,7 @@ const projectSchema = new Schema({
     name: String,
     date: Date,
     body: String,
-    tags: ['grav-cms', 'front-end']
+    tags: [String]
 });
 
 mongoose.model('projects', projectSchema);

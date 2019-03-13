@@ -1,11 +1,11 @@
-import { FETCH_USER, CHECK_AUTH } from '../actions/types';
+import { FETCH_PROJECTS } from '../actions/types';
+
+
 
 export default function(state = null, action) {
+    console.log('called reducer project')
     switch (action.type){
-        case FETCH_USER:
-            return action.payload || false;
-        
-        case CHECK_AUTH:
+        case FETCH_PROJECTS:
             return action.payload || false;
 
         default:

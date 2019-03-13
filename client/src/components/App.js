@@ -13,7 +13,10 @@ import Admin from './Admin';
 
 class App extends Component {
     componentDidMount() {
-        this.props.fetchUser();
+        console.log(this.props);
+       /* this.props.fetchUser().then(res => {
+            console.log(res);
+        }); */
     }
 
     render() {
@@ -29,5 +32,7 @@ class App extends Component {
     );
     }
 };
+
+
 
 export default connect(null, actions)(App);

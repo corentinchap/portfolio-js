@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 
-import WorkEditor from './WorkEditor';
+import ProjectList from './ProjectList';
 
 class Admin extends Component {
     componentWillMount(){
-        console.log(this.props.checkAuth());
+        Promise.resolve(this.props.checkAuth).then((res) => {
+            console.log(res);
+        });
     }
     render() {
         return (
@@ -15,15 +17,13 @@ class Admin extends Component {
                 <div className="col s12">Ugly Admin Interface</div>
                 <div className="col s6">
                     <h2>Job Editor</h2>
-                    <div className="editor">
-
-                        <WorkEditor />
-                    </div>
+                    <ProjectList></ProjectList>
                 </div>
                 <div className="col s6">6-columns (one-half)</div>
             </div>
         )
     }
 }
+
 
 export default connect(null, actions)(Admin);
