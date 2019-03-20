@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
 
-const Project = mongoose.model('project');
+const Project = mongoose.model('projects');
 
 module.exports = (app) => {
     
@@ -19,7 +19,7 @@ module.exports = (app) => {
             date,
             body,
             tags
-        })
+        });
     });
 
 };

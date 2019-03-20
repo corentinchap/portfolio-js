@@ -8,18 +8,21 @@ class ProjectList extends Component {
         this.props.fetchProjects();
     }
 
-    renderProjects(){
-
-    }
-
     render() {
 
         return (
            <div>
-               {this.renderProjects()}
+               {console.log(this.props)}
            </div>
         )
     }
+    
 }
 
-export default connect(null, fetchProjects)(ProjectList);
+function mapStateToProps(state) {
+    const { projects } = state
+    return { ProjectList: projects.fetchProjects }
+  }
+
+
+export default connect(mapStateToProps, fetchProjects)(ProjectList);
