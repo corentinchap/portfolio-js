@@ -1,0 +1,5 @@
+.social span > img {
+    margin: 0 10px;
+    width: 30px;
+}
+.social span > img path {fill: #fff;}

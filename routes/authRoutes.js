@@ -4,6 +4,7 @@ const about = require('../models/About');
 const mongoose = require('mongoose');
 const keys = require('../config/keys');
 
+
 module.exports = (app) => {
     
     app.get(
@@ -13,10 +14,6 @@ module.exports = (app) => {
         })
     );
 
-    app.get('/admin', (req, res) => {
-            
-        }
-    )
     
     app.get('/auth/google/callback', passport.authenticate('google', {
         successRedirect: '/admin',

@@ -13,7 +13,6 @@ import Admin from './Admin';
 
 class App extends Component {
     componentDidMount() {
-        console.log(this.props);
        /* this.props.fetchUser().then(res => {
             console.log(res);
         }); */

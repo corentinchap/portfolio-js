@@ -1,29 +1,51 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+import {checkAuth} from '../actions/index';
+
+import ProjectList from './projects/ProjectList';
+import ProjectNew from './projects/ProjectNew';
 
 
-import ProjectList from './ProjectList';
 
 class Admin extends Component {
-    componentWillMount(){
-        Promise.resolve(this.props.checkAuth).then((res) => {
-            console.log(res);
-        });
+    componentDidMount(){
+        this.props.checkAuth();
     }
-    render() {
-        return (
-            <div id="content" className="row">
-                <div className="col s12">Ugly Admin Interface</div>
-                <div className="col s6">
-                    <h2>Job Editor</h2>
-                    <ProjectList></ProjectList>
+
+    renderContent(){
+        switch (this.props.auth) {
+            case null:
+              return;
+            case false:
+              return <li><a href="/auth/google">Login With Google</a></li>;
+            default:
+              return [
+                <div id="content" className="row">
+                    <div className="col s12">Ugly Admin Interface</div>
+                    <div className="col s6">
+                        <h2>Job Editor</h2>
+                        <ProjectList></ProjectList>
+                    </div>
+                    <div className="col s6">
+                        <ProjectNew/>
+                    </div>
                 </div>
-                <div className="col s6">6-columns (one-half)</div>
+              ];
+          }
+    }
+
+    render() {
+        return(
+            <div>
+                 {this.renderContent()}
             </div>
         )
     }
 }
 
 
-export default connect(null, actions)(Admin);
+function mapStateToProps(state) {
+    return { auth: state.auth }
+}
+  
+  export default connect(mapStateToProps, {checkAuth})(Admin);
