@@ -1,6 +1,5 @@
 const passport = require('passport');
 const project = require('../models/Project');
-const about = require('../models/About');
 const mongoose = require('mongoose');
 const keys = require('../config/keys');
 
@@ -25,10 +24,12 @@ module.exports = (app) => {
     });
 
     app.get('/api/check_auth', (req, res) => {
+ 
         if(req.user && req.user.googleId == keys.googlePersonalID)
             res.send(true);
         else
             res.send(false);
+        
     });
 
     app.get('/api/projects', (req, res) => {
@@ -36,8 +37,6 @@ module.exports = (app) => {
             res.send(projects);
         })
     });
-
-
 
     app.get('/api/logout', (req, res) => {
          req.logout();

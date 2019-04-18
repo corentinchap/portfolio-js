@@ -6,6 +6,7 @@ import { fetchProjects } from '../../actions';
 class ProjectList extends Component {
     componentDidMount(){
         this.props.fetchProjects();
+        console.log(this.props.projects);
     }
 
     renderList(){

@@ -1,30 +1,29 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+import {checkAuth} from '../actions';
 import './App.css'; 
 
 
 import Landing from './Landing';
 import Admin from './Admin';
+import DummyComponent from './DummyComponent';
 
 
 
 
 class App extends Component {
-    componentDidMount() {
-       /* this.props.fetchUser().then(res => {
-            console.log(res);
-        }); */
+    componentDidMount(){
+        console.log(this.props.auth);
+        console.log(this.props.checkAuth());
     }
-
     render() {
     return (
         <div>
             <BrowserRouter>
                 <div>
                     <Route exact path="/" component={ Landing } />
-                    <Route exact path="/admin" component={ Admin } />
+                    <Route exact path="/admin" component={ this.props.auth ? Admin : DummyComponent } />
                 </div>
             </BrowserRouter>
         </div>
@@ -33,5 +32,8 @@ class App extends Component {
 };
 
 
-
-export default connect(null, actions)(App);
+function mapStateToProps(state) {
+    return { auth: state.auth }
+}
+  
+  export default connect(mapStateToProps, {checkAuth})(App);
