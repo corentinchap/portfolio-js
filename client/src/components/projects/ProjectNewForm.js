@@ -1,17 +1,31 @@
 import React, {Component} from 'react';
 import {reduxForm, Field} from 'redux-form';
+import moment from 'moment';
 
-import ProjectField from './projectField';
+import projectFieldEditor from './projectFieldEditor';
 
 class ProjectNewForm extends Component{
 // https://github.com/jpuri/react-draft-wysiwyg
+  
     renderFields(){
+      let now = moment().format('YYYY-MM-DD');
       return (
         <div>
-          <Field label="Nom du projet" type="text" name="title" component={ProjectField} />
-          <Field label="Tags" type="text" name="tags" component={ProjectField} />
-          <Field label="Body" type="textarea" name="body" component={ProjectField} />
-          <Field label="date" type="date" name="date" value={Date.now()} component={ProjectField} />
+          <div>
+            <label htmlFor="pjName">First Name</label>
+            <Field name="pjName" type="text" component="input" />
+          </div>
+          <div>
+            <label htmlFor="pjTags">Tags [,]</label>
+            <Field name="pjTags" type="text"component="input" />
+          </div>
+          <div>
+            <label htmlFor="pjBody">Body</label>
+            <Field name="pjBody" type="textarea" component={projectFieldEditor} />
+          </div>
+          <div>
+            <Field hidden type="text" id="test" props={{value: now}} name="date" component="input" />
+          </div>
         </div>
       )
     }
@@ -23,7 +37,6 @@ class ProjectNewForm extends Component{
                {this.renderFields()}
                 <button type="submit">Submit</button>
               </form>
-                ProjectNew fromdfgdfg
             </div>
         )
     }
