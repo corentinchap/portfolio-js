@@ -10,7 +10,10 @@ class WorkSection extends Component {
                 <div className="work-section">
                 <div className="container">
                     <div className="row">
-                        <ProjectList />
+                        <div className="col s12 m6" >
+                            <ProjectList />
+                        </div>
+                        
                         <div className="title right-align col s6"><h1>Work</h1></div>
                     </div>
                 </div>

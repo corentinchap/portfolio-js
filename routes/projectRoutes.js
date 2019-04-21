@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
-const requireLogin = require('../middlewares/requireLogin');
-var fs = require('fs');
+
 
 const Project = mongoose.model('projects');
-const User = mongoose.model('users')
+
 
 module.exports = (app) => {
-  
+    
+     
     app.get('/api/projects',async function (req, res, next) {
         try{
             Project.find({}, async function(err, projects){

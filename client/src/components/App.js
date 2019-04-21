@@ -23,6 +23,7 @@ class App extends Component {
             <BrowserRouter>
                 <div>
                     <Route exact path="/" component={ Landing } />
+                    <Route exact path="/projects/:name" component={ Landing } />
                     <Route exact path="/admin" component={ this.props.auth ? Admin : DummyComponent } />
                 </div>
             </BrowserRouter>

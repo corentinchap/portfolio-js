@@ -9,13 +9,16 @@ class projectFieldEditor extends Component {
     super(props);
     this.state = {
       editorState: EditorState.createEmpty(),
+      editorHtml: ''
     };
   }
 
   onEditorStateChange = (editorState) => {
     this.setState({
       editorState,
+      editorHtml : draftToHtml(convertToRaw(editorState.getCurrentContent())),
     });
+    
   };
 
   render() {
@@ -30,7 +33,7 @@ class projectFieldEditor extends Component {
         />
         <textarea
           hidden
-        //   onChange={}
+          onChange={this.props.retrieveBody(draftToHtml(convertToRaw(editorState.getCurrentContent())))}
           value={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
         /> 
       </div>

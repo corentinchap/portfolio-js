@@ -12,22 +12,13 @@ class ProjectList extends Component {
     renderList(){
         if(this.props.projects) return this.props.projects.map(project => {
             return(
-            <div className="col s6" key={project._id}>
-            <div className="card">
-                <div className="card-image waves-effect waves-block waves-light">
-                <img alt="" className="activator" src="https://via.placeholder.com/250" />
-                
-                </div>
+            
+            <div className="card" key={project._id}>
                 <div className="card-content">
-                <span className="card-title activator grey-text text-darken-4">{project.name}<i className="material-icons right">more_vert</i></span>
-                <p><a href="/">This is a link</a></p>
-                </div>
-                <div className="card-reveal">
-                <span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
-                <p>{project.body}</p>
+                    {project.name}
                 </div>
             </div>
-        </div>
+      
         );
         });
         
@@ -38,7 +29,7 @@ class ProjectList extends Component {
         
         return (
            <div>
-               <div className="content col s6">
+               <div className="content col m6 s12">
                     <div className="row projects">
                         {this.renderList()}
                     </div>

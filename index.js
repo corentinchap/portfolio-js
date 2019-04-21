@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
+var ImageRouter = require('./routes/imageRoutes');
 
 const keys = require('./config/keys');
 
@@ -11,6 +12,14 @@ require('./services/passport');
 mongoose.connect(keys.mongoURI, { useNewUrlParser: true});
 
 const app = express();
+
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Methods', '*');  // enables all the methods to take place
+    return next();
+  });
 
 app.use(
     cookieSession({
@@ -22,10 +31,16 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.use('/uploads', express.static('uploads'));
 
+app.use('/image', ImageRouter);
 
 require('./routes/authRoutes')(app);
 require('./routes/projectRoutes')(app);
+
+
+
+
 
 if(process.env.NODE_ENV === 'production'){
     //servce prod assets
