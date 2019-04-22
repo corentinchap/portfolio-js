@@ -1,99 +1,93 @@
 import React, {Component} from 'react';
 import ProjectImageUploader from './ProjectImageUploader';
-import DefaultImage from '../../../src/assets/default-img.jpg';
 import ProjectFieldEditor from './ProjectFieldEditor';
 
-//import moment from 'moment';
-import axios from 'axios';
-
+var mongoose = require('mongoose');
 
 class ProjectNewForm extends Component{
 // https://github.com/jpuri/react-draft-wysiwyg
 
     constructor(props){
       super(props);
+
       this.state = {
-        multerImage: DefaultImage,
+        projectId: mongoose.Schema.Types.ObjectId,
+        multerImages: [],
         body: '',
         name: '',
         tags: '',
         date: Date.now()      
       };
-      this.handleChange = this.handleChange.bind(this);
+
+
+      this.handleNameChange = this.handleNameChange.bind(this);
+      this.handleTagsChange = this.handleTagsChange.bind(this);
+      this.handleBodyChange = this.handleBodyChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleImageChange = this.handleImageChange.bind(this);
     }
 
-    handleChange(event){
-      var target = event.target;
-      const value = target.value;
-      const name = target.name;
-
-      this.setState({
-        [name]: value
-      })
+    handleNameChange(e){
+      this.setState({ name: e.target.value });
     }
-
+    handleTagsChange(e){
+      this.setState({tags: e.target.value});
+    }
     handleSubmit(event){
-      alert('okay bro : ' + this.state.value);
-
       event.preventDefault();
     }
 
-    retrieveBody(body){
-      this.setState({
-        body
-      })
+    handleBodyChange(body){
+       this.setState({
+         body
+       });
     }
 
-    uploadImage(e) {
-      let imageFormObj = new FormData();
-
-      imageFormObj.append("imageName", "multer-image-" + Date.now());
-      imageFormObj.append("imageData", e.target.files[0]);
-
-      // stores a readable instance of 
-      // the image being uploaded using multer
-      this.setState({
-          multerImage: URL.createObjectURL(e.target.files[0])
-      });
-
-      axios.post(`http://localhost:5000/image/uploadmulter`, imageFormObj)
-      .then((data) => {
-          if (data.data.success) {
-          alert("Image has been successfully uploaded");
-          }
-      })
-      .catch((err) => {
-          alert("Error while uploading image using multer" + err);
-      });
+    handleImageChange(multerImage){
+      this.setState(prevState => ({
+        multerImages: [...prevState.multerImages, multerImage]
+      }))
+   
     }
+
 
     render(){
       return (
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} method="post" encType="multipart/form-data">
           <div>
             <label htmlFor="pjName">First Name</label>
-            <input type="text" name="pjName" placeholder={this.state.name} value={this.state.name} onChange={this.handleChange} />
+            <input type="text" name="pjName"value={this.state.name} onChange={this.handleNameChange} />
           </div>
           <div>
             <label htmlFor="pjTags">Tags [,]</label>
-            <input type="text" name="pjTags" placeholder={this.state.tags} value={this.state.tags} onChange={this.handleChange} />
-          </div>
-          <div>
-            <label htmlFor="pjDate">Date</label>
-            <input type="text" name="pjTags" placeholder={this.state.tags} value={this.state.tags} onChange={this.handleChange} />
+            <input type="text" name="pjTags" value={this.state.tags} onChange={this.handleTagsChange} />
           </div>
           <div>
             <label htmlFor="pjImages">images</label>
-              <ProjectImageUploader uploadImage={this.uploadImage} />
+              <ProjectImageUploader projectId={this.state.projectId} handleImageChange={this.handleImageChange} />
+              {this.renderUploadedImages()}
           </div>
           <div>
             <label htmlFor="pjBody">Body</label>
-              <ProjectFieldEditor retrieveBody={this.retrieveBody} />
+              <ProjectFieldEditor handleBodyChange={this.handleBodyChange} />
           </div>
           <button type="submit">Submit</button>
         </form>
       )
 
+    }
+
+    renderUploadedImages(){
+      
+      if(this.state.multerImages.length > 0){
+        return (
+        <div>
+          {this.state.multerImages.map((image, i) => (
+              <img key={i} alt="preview" width="75px" src={image.get('imageData')} /> 
+          ))}
+          </div>
+        );
+      }
     }
 }
 export default ProjectNewForm;

@@ -14,8 +14,7 @@ import DummyComponent from './DummyComponent';
 
 class App extends Component {
     componentDidMount(){
-        console.log(this.props.auth);
-        console.log(this.props.checkAuth());
+        this.props.checkAuth();
     }
     render() {
     return (

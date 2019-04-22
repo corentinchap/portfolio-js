@@ -7,6 +7,7 @@ import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 class projectFieldEditor extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       editorState: EditorState.createEmpty(),
       editorHtml: ''
@@ -18,7 +19,7 @@ class projectFieldEditor extends Component {
       editorState,
       editorHtml : draftToHtml(convertToRaw(editorState.getCurrentContent())),
     });
-    
+    this.props.handleBodyChange(draftToHtml(convertToRaw(editorState.getCurrentContent())));
   };
 
   render() {
@@ -33,8 +34,7 @@ class projectFieldEditor extends Component {
         />
         <textarea
           hidden
-          onChange={this.props.retrieveBody(draftToHtml(convertToRaw(editorState.getCurrentContent())))}
-          value={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
+          defaultValue={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
         /> 
       </div>
     )

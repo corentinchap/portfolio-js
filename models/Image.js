@@ -14,6 +14,10 @@ var ImageSchema = new Schema({
     imageData: {
         type: String,
         required: true
+    },
+    projectId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
     }
 });
 

@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import DefaultImage from '../../../src/assets/default-img.jpg';
-
-
+import axios from 'axios';
+const API_URL = "http://localhost:5000";
  
 export default class ProjectImageUploader extends Component {
     constructor(props){
         super(props);
 
-        this.state = {
-            multerImage: DefaultImage
+        this.state = {  
+            multerImages: []
         }
     }
     
@@ -16,24 +15,39 @@ export default class ProjectImageUploader extends Component {
       let imageFormObj = new FormData();
 
       imageFormObj.append("imageName", "multer-image-" + Date.now());
-      imageFormObj.append("imageData", e.target.files[0]);
+      imageFormObj.append("imageData", URL.createObjectURL(e.target.files[0]));
+      imageFormObj.append("projectId", this.props.projectId);
 
-      // stores a readable instance of 
-      // the image being uploaded using multer
-      this.setState({
-          multerImage: URL.createObjectURL(e.target.files[0])
-      });
+
+      
+      this.props.handleImageChange(imageFormObj);
+
+      this.uploadImage(imageFormObj);
 
     }
 
+    
+    uploadImage(imageFormObj) {
+        
+        axios.post(API_URL + `/image/uploadmulter`, imageFormObj)
+        .then((data) => {
+            if (data.data.success) {
+            console.log(data.data)
+            alert("Image has been successfully uploaded");
+            }
+        })
+        .catch((err) => {
+            alert("Error while uploading image using multer : WHY ? HERE IS : " + err);
+        });
+      }
+   
     render() {
         return (
         <div className="image-container">
             <div className="process">
                 <p className="process__details">Upload image</p>
 
-                <input type="file" className="process__upload-btn" onChange={(e) => this.updateState(e, "multer")} />
-                <img width="100px;" src={this.state.multerImage} alt="upload" className="process__image" />
+                <input type="file" name="project-image" className="process__upload-btn" onChange={(e) => this.updateState(e)} />
             </div>
         </div>
         );
