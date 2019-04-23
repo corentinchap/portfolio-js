@@ -24,6 +24,7 @@ class projectFieldEditor extends Component {
 
   render() {
     const { editorState } = this.state;
+
     return (
         <div>
         <Editor
@@ -38,6 +39,6 @@ class projectFieldEditor extends Component {
         /> 
       </div>
     )
-  }
+    }
 }
 export default projectFieldEditor;

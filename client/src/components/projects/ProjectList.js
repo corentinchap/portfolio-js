@@ -29,11 +29,11 @@ class ProjectList extends Component {
         
         return (
            <div>
-               <div className="content col m6 s12">
+               
                     <div className="row projects">
                         {this.renderList()}
                     </div>
-                </div>
+ 
            </div>
         )
     }

@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
 var ImageRouter = require('./routes/imageRoutes');
+var bodyParser = require('body-parser');
 
 const keys = require('./config/keys');
 
@@ -34,6 +35,9 @@ app.use(passport.session());
 app.use('/uploads', express.static('uploads'));
 
 app.use('/image', ImageRouter);
+
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); 
 
 require('./routes/authRoutes')(app);
 require('./routes/projectRoutes')(app);

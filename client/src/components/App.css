@@ -3,3 +3,7 @@ body{
     margin:0;
     font-family: 'IBM Plex Mono', monospace;
 };
+.DraftEditor-editorContainer {
+    border: 2px solid #bcb4b4;
+    margin: 10px 0;
+}

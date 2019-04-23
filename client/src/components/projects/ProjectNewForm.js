@@ -1,24 +1,25 @@
 import React, {Component} from 'react';
 import ProjectImageUploader from './ProjectImageUploader';
 import ProjectFieldEditor from './ProjectFieldEditor';
+import axios from 'axios';
 
 var mongoose = require('mongoose');
+const API_URL = "http://localhost:5000";
+
 
 class ProjectNewForm extends Component{
-// https://github.com/jpuri/react-draft-wysiwyg
-
+    
     constructor(props){
       super(props);
 
       this.state = {
-        projectId: mongoose.Schema.Types.ObjectId,
-        multerImages: [],
+        projectId: mongoose.Types.ObjectId(),
+        images: [],
         body: '',
         name: '',
         tags: '',
         date: Date.now()      
       };
-
 
       this.handleNameChange = this.handleNameChange.bind(this);
       this.handleTagsChange = this.handleTagsChange.bind(this);
@@ -33,20 +34,37 @@ class ProjectNewForm extends Component{
     handleTagsChange(e){
       this.setState({tags: e.target.value});
     }
-    handleSubmit(event){
-      event.preventDefault();
-    }
+    handleSubmit(e){
+      e.preventDefault();
 
+      var project = {
+        name : this.state.name,
+        date : this.state.date,
+        body : this.state.body,
+        tags : this.state.tags
+      }
+
+      axios.post(API_URL + `/api/projects`, project)
+      .then((data) => {
+          if (data.data.success) {
+          console.log('success : ' + data.data);
+          }
+      })
+      .catch((err) => {
+          alert("Error while uploading image using multer : WHY ? HERE IS : " + err);
+      });
+    }
+    
     handleBodyChange(body){
        this.setState({
          body
        });
     }
 
-    handleImageChange(multerImage){
+    handleImageChange(Image){
       this.setState(prevState => ({
-        multerImages: [...prevState.multerImages, multerImage]
-      }))
+        images: [...prevState.images, Image]
+      }));
    
     }
 
@@ -76,14 +94,14 @@ class ProjectNewForm extends Component{
       )
 
     }
-
+    
     renderUploadedImages(){
       
-      if(this.state.multerImages.length > 0){
+      if(this.state.images.length > 0){
         return (
         <div>
-          {this.state.multerImages.map((image, i) => (
-              <img key={i} alt="preview" width="75px" src={image.get('imageData')} /> 
+          {this.state.images.map((url, i) => (
+              <img key={i} alt="preview" width="75px" src={url.replace('client\\public\\','')} /> 
           ))}
           </div>
         );

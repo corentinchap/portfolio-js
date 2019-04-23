@@ -15,12 +15,8 @@ export default class ProjectImageUploader extends Component {
       let imageFormObj = new FormData();
 
       imageFormObj.append("imageName", "multer-image-" + Date.now());
-      imageFormObj.append("imageData", URL.createObjectURL(e.target.files[0]));
+      imageFormObj.append("imageData", e.target.files[0]);
       imageFormObj.append("projectId", this.props.projectId);
-
-
-      
-      this.props.handleImageChange(imageFormObj);
 
       this.uploadImage(imageFormObj);
 
@@ -28,12 +24,12 @@ export default class ProjectImageUploader extends Component {
 
     
     uploadImage(imageFormObj) {
-        
+
         axios.post(API_URL + `/image/uploadmulter`, imageFormObj)
         .then((data) => {
             if (data.data.success) {
-            console.log(data.data)
-            alert("Image has been successfully uploaded");
+            
+            this.props.handleImageChange(data.data.imgPath);
             }
         })
         .catch((err) => {

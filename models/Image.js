@@ -16,7 +16,7 @@ var ImageSchema = new Schema({
         required: true
     },
     projectId: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         required: true
     }
 });

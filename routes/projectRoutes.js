@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const requireLogin = require('../middlewares/requireLogin');
 
 const Project = mongoose.model('projects');
 
@@ -17,17 +17,13 @@ module.exports = (app) => {
             res.send(err);
         }
       })
-    /*
-    app.post('/api/projets', requireLogin, async (req, res) => {
-        const {name, date, thumbnailPath, body, tags} = req.body;
-        var thumbnail;
-        thumbnail.data = fs.readFileSync(thumbnailPath);
-        thumbnail.type = 'image/png';
-
+    
+    app.post('/api/projects', async (req, res) => {
+        const {name, date, body, tags} = req.body;
+       
         const project = new Project({
             name,
             date,
-            thumbnail,
             body,
             tags
         });
@@ -39,5 +35,5 @@ module.exports = (app) => {
             res.status(422).send(err);
           }
     });
-    */
+    
 };
