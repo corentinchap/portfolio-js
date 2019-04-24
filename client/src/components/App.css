@@ -7,3 +7,16 @@ body{
     border: 2px solid #bcb4b4;
     margin: 10px 0;
 }
+.project-delete-button{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    padding-left: 4.5px;
+    color: #fff;
+    background-color: red;
+    font-size: 10px;
+    border: 1px solid red;
+    border-radius: 50%;
+    width: 17px;
+    height: 17px;
+}

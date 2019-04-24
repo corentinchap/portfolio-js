@@ -6,7 +6,7 @@ const Project = mongoose.model('projects');
 
 module.exports = (app) => {
     
-     
+    // get project
     app.get('/api/projects',async function (req, res, next) {
         try{
             Project.find({}, async function(err, projects){
@@ -16,8 +16,9 @@ module.exports = (app) => {
         } catch(err){
             res.send(err);
         }
-      })
+    })
     
+    // create new project
     app.post('/api/projects', async (req, res) => {
         const {name, date, body, tags} = req.body;
        
@@ -35,5 +36,24 @@ module.exports = (app) => {
             res.status(422).send(err);
           }
     });
+
+    // delete project
+    app.post('/api/projects/delete/:id', async (req, res) => {
+        const id = mongoose.Types.ObjectId(req.params.id);
+        
+        Project.deleteOne({_id : id}, function(err) {
+            if(err)
+                return res.status(500).send(err);
+        });
+        
+        const response = {
+            message: "Project successfully deleted",
+            id: id
+        };
+
+        return res.status(200).send(response);
+
+    });
+
     
 };

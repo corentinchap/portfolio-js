@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { fetchProjects } from '../../actions';
 import ProjectImageUploader from './ProjectImageUploader';
 import ProjectFieldEditor from './ProjectFieldEditor';
 import axios from 'axios';
@@ -28,6 +30,10 @@ class ProjectNewForm extends Component{
       this.handleImageChange = this.handleImageChange.bind(this);
     }
 
+    componentDidMount(){
+      this.props.fetchProjects();
+    }
+
     handleNameChange(e){
       this.setState({ name: e.target.value });
     }
@@ -41,7 +47,7 @@ class ProjectNewForm extends Component{
         name : this.state.name,
         date : this.state.date,
         body : this.state.body,
-        tags : this.state.tags
+        tags : this.state.tags.split(',')
       }
 
       axios.post(API_URL + `/api/projects`, project)
@@ -51,7 +57,7 @@ class ProjectNewForm extends Component{
           }
       })
       .catch((err) => {
-          alert("Error while uploading image using multer : WHY ? HERE IS : " + err);
+          alert("Error while uploading image using multer :" + err);
       });
     }
     
@@ -108,4 +114,9 @@ class ProjectNewForm extends Component{
       }
     }
 }
-export default ProjectNewForm;
+function mapStateToProps({projects}) {
+  return { projects }
+}
+
+
+export default connect(mapStateToProps, {fetchProjects})(ProjectNewForm);
