@@ -18,23 +18,46 @@ module.exports = (app) => {
         }
     })
     
-    // create new project
-    app.post('/api/projects', async (req, res) => {
-        const {name, date, body, tags} = req.body;
-       
-        const project = new Project({
-            name,
-            date,
-            body,
-            tags
+    // create / update new project
+    app.post('/api/projects', (req, res) => {
+        const {projectId, name, date, body, tags} = req.body;
+        var exists = false;
+
+        Project.findById(projectId, function(err,res) {
+            if(res !== null){
+                exists = true;  
+                console.log('does exists');          
+            }
         });
-  
-        try {
-            await project.save();
-            res.send(true);
-          } catch (err) {
-            res.status(422).send(err);
-          }
+
+        if(exists == true)
+        {
+            console.log('findone and update exec');
+            Project.findOneAndUpdate({name},{name, date, body, tags},function(err, doc){
+                if(err){
+                    res.status(422).send(err);
+                }else{
+                    res.send('updated successfully');
+                }
+            });
+        }
+        else{
+            const project = new Project({
+                name,
+                date,
+                body,
+                tags
+            });
+      
+            try {
+                project.save();
+                res.send('Project created successfully');
+            } catch (err) {
+                res.status(422).send(err);
+            }
+        }
+       console.log('exists : ' + exists)
+        
     });
 
     // delete project

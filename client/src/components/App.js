@@ -6,7 +6,7 @@ import './App.css';
 
 
 import Landing from './Landing';
-import Admin from './Admin';
+import Admin from '../containers/Admin';
 import DummyComponent from './DummyComponent';
 
 

@@ -13,6 +13,12 @@
             "type": "shell",
             "command": "npm run dev",
             "problemMatcher": []
+        },
+        {
+            "label": "sudo npm run dev",
+            "type": "shell",
+            "command": "sudo npm run dev",
+            "problemMatcher": []
         }
     ]
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AboutSection from './AboutSection';
-import WorkSection from './WorkSection';
+import WorkSection from '../containers/WorkSection';
 import './Landing.css';
 
 class Landing extends Component {

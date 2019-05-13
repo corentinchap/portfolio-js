@@ -1,11 +1,19 @@
-import { FETCH_PROJECTS } from '../actions/types';
+import { RECEIVE_PROJECTS, REQUEST_PROJECTS } from '../actions/types';
 
-
-export default function(state = null, action) {
+var initState ={
+    list: undefined,
+    isLoading: true
+}
+export default function(state = initState, action) {
     switch (action.type){
-        case FETCH_PROJECTS:
-            return action.payload;
+        case REQUEST_PROJECTS:
+            return initState;
 
+        case RECEIVE_PROJECTS:
+            return {
+                list: action.payload,
+                isLoading: false
+            };
         default:
             return state;
     }
