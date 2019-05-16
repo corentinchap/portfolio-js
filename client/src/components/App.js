@@ -10,8 +10,6 @@ import Admin from '../containers/Admin';
 import DummyComponent from './DummyComponent';
 
 
-
-
 class App extends Component {
     componentDidMount(){
         this.props.checkAuth();
@@ -22,13 +20,14 @@ class App extends Component {
             <BrowserRouter>
                 <div>
                     <Route exact path="/" component={ Landing } />
-                    <Route exact path="/projects/:name" component={ Landing } />
                     <Route exact path="/admin" component={ this.props.auth ? Admin : DummyComponent } />
                 </div>
             </BrowserRouter>
         </div>
     );
     }
+
+   
 };
 
 
@@ -36,4 +35,4 @@ function mapStateToProps(state) {
     return { auth: state.auth }
 }
   
-  export default connect(mapStateToProps, {checkAuth})(App);
+export default connect(mapStateToProps, {checkAuth})(App);

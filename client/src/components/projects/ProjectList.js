@@ -23,56 +23,48 @@ class ProjectList extends Component {
     }
     renderListWithEdit(){
 
-        if(this.props.projects) return this.props.projects.map((project, index) => {
-            var selected = 'card';
-            if(index === this.props.selectedProjectIndex){
-                selected += 'selected';
-                
-            }
-            return(
-            <div className={selected} key={project._id}>
-            <span id={'delete-card-' + index} onClick={(e) => this.deleteProject(e, project._id, index)} className="project-delete-button z-depth-2">X</span>
-                <div onClick={(e) => this.props.onProjectClick(index)} className="card-content">
-                    {project.name}
-                </div>
-            </div>
-    
-            );
+        if(this.props.projects.length > 0) 
+            return this.props.projects.map((project, index) => {
+                var selected = 'card cursor-active';
+                if(index === this.props.selectedProjectIndex){
+                    selected += ' selected';
+                    
+                }
+                return(
+                    <div className={selected} key={project._id}>
+                    <span id={'delete-card-' + index} onClick={(e) => this.deleteProject(e, project._id, index)} className="project-delete-button z-depth-2">X</span>
+                        <div onClick={(e) => this.props.onProjectClick(index)} className="card-content">
+                            {project.name}
+                        </div>
+                    </div>
+                );
         });
     }
-    renderList(){
-        
+    renderList(){   
 
-    if(this.props.enableEdits)
-    {
-        this.renderListWithEdit()
-    }
-    else{
-        if(this.props.projects) return this.props.projects.map((project, index) => {
-            var selected = 'card';
-            if(index === this.props.selectedProjectIndex){
-                selected += ' selected';
-            }
-
-            return(
-            <div className={selected} key={project._id}>
-                <div onClick={(e) => this.props.onProjectClick(index)} className="card-content">
-                    {project.name}
-                </div>
-            </div>
-    
-            );
-        });
-    }        
+        if(this.props.projects.length > 0) 
+            return this.props.projects.map((project, index) => {
+                var selected = 'card cursor-active';
+                if(index === this.props.selectedProjectIndex){
+                    selected += ' selected';
+                    
+                }
+                return(
+                    <div className={selected} key={project._id}>
+                        <div onClick={(e) => this.props.onProjectClick(index)} className="card-content">
+                            {project.name}
+                        </div>
+                    </div>
+                );
+            });             
        
     }
 
-    render() {
-        
+    render() {     
         return (
            <div>
             <div id="projects-list" className="row projects">
-                {this.renderList()}
+                {this.props.enableEdits ? this.renderListWithEdit() : this.renderList()}
             </div>
            </div>
         )

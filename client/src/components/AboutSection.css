@@ -1,5 +1,59 @@
-.social span > img {
-    margin: 0 10px;
+.about-section .container, .about-section .container .row.flex{
+    height:100%;
+}
+
+.social  img {
+    margin-right: 15px;
     width: 30px;
 }
-.social span > img path {fill: #fff;}
+.social img path {fill: #fff;}
+.social {
+    display: flex;
+    padding-top: 18px;
+}
+.profile-picture img {
+    width: 100%;
+    padding: 15px;
+    height: 100%;
+}
+.profile-picture{
+	width: 125px;
+	height: 125px;
+	border-radius: 50%;
+    border: 2px solid white;
+}
+.about-section{
+    height: 30%;
+    background: linear-gradient(208deg, #2df1be, #828282, #08958c);
+	background-size: 600% 600%;
+
+	-webkit-animation: dynamic-gradient 28s ease infinite;
+	-moz-animation: dynamic-gradient 28s ease infinite;
+	-o-animation: dynamic-gradient 28s ease infinite;
+	animation: dynamic-gradient 28s ease infinite;
+}
+.about-section .summary{
+    font-size: 16px;
+    text-transform: lowercase;
+	color: #FFFFFF;
+}
+@-webkit-keyframes dynamic-gradient {
+    0%{background-position:0% 91%}
+    50%{background-position:100% 10%}
+    100%{background-position:0% 91%}
+}
+@-moz-keyframes dynamic-gradient {
+    0%{background-position:0% 91%}
+    50%{background-position:100% 10%}
+    100%{background-position:0% 91%}
+}
+@-o-keyframes dynamic-gradient {
+    0%{background-position:0% 91%}
+    50%{background-position:100% 10%}
+    100%{background-position:0% 91%}
+}
+@keyframes dynamic-gradient { 
+    0%{background-position:0% 91%}
+    50%{background-position:100% 10%}
+    100%{background-position:0% 91%}
+}
