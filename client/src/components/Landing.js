@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AboutSection from './AboutSection';
 import WorkSection from '../containers/WorkSection';
 import './Landing.css';
+import Cursor from './Cursor';
 
 class Landing extends Component {
 
@@ -14,10 +15,7 @@ class Landing extends Component {
             <div className="landing">
                 <AboutSection />
                 <WorkSection />
-
-                <div id="cursor">
-                      <div id="circle"></div>
-                  </div>
+                <Cursor />
             </div>
         )
     }
