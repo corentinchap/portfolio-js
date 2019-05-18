@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {isNullOrUndefined} from 'util';
 
 const API_URL = "http://localhost:5000";
 
@@ -23,7 +24,7 @@ class ProjectList extends Component {
     }
     renderListWithEdit(){
 
-        if(this.props.projects.length > 0) 
+        if(!isNullOrUndefined(this.props.projects)) 
             return this.props.projects.map((project, index) => {
                 var selected = 'card cursor-active';
                 if(index === this.props.selectedProjectIndex){
@@ -42,7 +43,7 @@ class ProjectList extends Component {
     }
     renderList(){   
 
-        if(this.props.projects.length > 0) 
+        try{
             return this.props.projects.map((project, index) => {
                 var selected = 'card cursor-active';
                 if(index === this.props.selectedProjectIndex){
@@ -58,6 +59,10 @@ class ProjectList extends Component {
                 );
             });             
        
+        }
+        catch{
+            console.log('Error while mappings projects');
+        }
     }
 
     render() {     

@@ -6,24 +6,22 @@ const Project = mongoose.model('projects');
 
 module.exports = (app) => {
     
-    // get project
+    // GET project
     app.get('/api/projects',async function (req, res, next) {
-        try{
-            Project.find({}, async function(err, projects){
-                if(err) next(err);
-                await res.send(projects);
-            });
-        } catch(err){
-            res.send(err);
-        }
+        Project.find({}, async function(err, docs) {
+            if (!err){ 
+                await res.send(docs)
+            } else {res.status(422).send(err)}
+        });
     })
     
-    // create / update new project
+    // POST create / update new project
     app.post('/api/projects', (req, res) => {
         const {projectId, name, date, body, tags} = req.body;
         var exists = false;
 
         Project.findById(projectId, function(err,res) {
+            if(err){res.status(422).send(err)}
             if(res !== null){
                 exists = true;  
                 console.log('does exists');          
@@ -32,7 +30,6 @@ module.exports = (app) => {
 
         if(exists == true)
         {
-            console.log('findone and update exec');
             Project.findOneAndUpdate({name},{name, date, body, tags},function(err, doc){
                 if(err){
                     res.status(422).send(err);

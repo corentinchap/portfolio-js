@@ -22,8 +22,8 @@ class AboutSection extends Component {
                                 </div>
                                 <div className="social-contact">
                                     <div className="social">
-                                        <a target="_blank" class="cursor-active" rel="noopener noreferrer" href="https://www.linkedin.com/in/corentin-chapatte-684234160/" alt="linkedIn"><img alt="LinkedIn" src={linkedin} /></a>
-                                        <a target="_blank" class="cursor-active" rel="noopener noreferrer" href="https://github.com/corentinchap"><img alt="Github" src={github}/></a>
+                                        <a target="_blank" className="cursor-active" rel="noopener noreferrer" href="https://www.linkedin.com/in/corentin-chapatte-684234160/" alt="linkedIn"><img alt="LinkedIn" src={linkedin} /></a>
+                                        <a target="_blank" className="cursor-active" rel="noopener noreferrer" href="https://github.com/corentinchap"><img alt="Github" src={github}/></a>
                                     </div>
                                 </div>
                             </div>

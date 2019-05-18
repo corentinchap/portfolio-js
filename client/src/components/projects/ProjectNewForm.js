@@ -3,7 +3,6 @@ import ProjectImageUploader from './ProjectImageUploader';
 import ProjectFieldEditor from './ProjectFieldEditor';
 import axios from 'axios';
 import mongoose from 'mongoose';
-import ProjectDetails from './ProjectDetails';
 
 const API_URL = "http://localhost:5000";
 
