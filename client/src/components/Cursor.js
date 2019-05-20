@@ -31,11 +31,16 @@ class Cursor extends Component {
                         activate_cursor = true;
                         currentElement = e.target;
                     } else {
-                        if(!isNullOrUndefined(e.target.parentNode.className)){
-                            if(e.target.parentNode.className.includes('cursor-active')){
-                                activate_cursor = true;
-                                currentElement = e.target;
+                        if(!isNullOrUndefined(e.target.parentNode)){
+                            try{
+                                if(e.target.parentNode.className.includes('cursor-active')){
+                                    activate_cursor = true;
+                                    currentElement = e.target;
+                                }
+                            } catch(e) {
+                                console.log(e);
                             }
+                            
                         }
                         
 

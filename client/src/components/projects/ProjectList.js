@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {isNullOrUndefined} from 'util';
 
-const API_URL = "http://localhost:5000";
-
 class ProjectList extends Component {
     removeProjectDOM(index) {
         document.getElementById('delete-card-' + index).parentElement.remove();
@@ -12,7 +10,7 @@ class ProjectList extends Component {
     deleteProject(e, id, index){
         e.preventDefault();
 
-        axios.post(API_URL + `/api/projects/delete/`+ id)
+        axios.post(`/api/projects/delete/`+ id)
         .then((data) => {
             this.removeProjectDOM(index);                 
         })

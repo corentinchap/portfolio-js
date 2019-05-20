@@ -5,7 +5,7 @@ const Project = mongoose.model('projects');
 
 
 module.exports = (app) => {
-    
+       
     // GET project
     app.get('/api/projects',async function (req, res, next) {
         Project.find({}, async function(err, docs) {
@@ -16,7 +16,7 @@ module.exports = (app) => {
     })
     
     // POST create / update new project
-    app.post('/api/projects', (req, res) => {
+    app.post('/api/projects',requireLogin, (req, res) => {
         const {projectId, name, date, body, tags} = req.body;
         var exists = false;
 

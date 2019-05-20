@@ -1,68 +1,57 @@
+// Load local env. variables
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+
 const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
-var ImageRouter = require('./routes/imageRoutes');
-var bodyParser = require('body-parser');
-const proxy = require('http-proxy-middleware');
-
-
-const keys = require('./config/keys');
+const bodyParser = require('body-parser');
 
 require('./models/User');
+require('./models/Image');
+require('./models/Project');
 require('./services/passport');
 
-mongoose.connect(keys.mongoURI || process.env.mongoURI, { useNewUrlParser: true});
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true});
+
+
 
 const app = express();
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Methods', '*');  // enables all the methods to take place
-    return next();
-  });
+
+// for parsing application/json
+app.use(bodyParser.json()); 
+app.use(bodyParser.urlencoded({ extended: true })); 
 
 app.use(
     cookieSession({
         maxAge: 30 * 24 * 60 * 60 * 1000,
         keys: [
-            keys.cookieKey
+            process.env.COOKIE_KEY
         ]
     })
 );
+
+
+//OAuth requirement
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+
+// Mutler Image upload requirement
 app.use('/uploads', express.static('uploads'));
-app.use('/image', ImageRouter);
-
-app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); 
-
-app.use(proxy('/auth/google', { 
-    target: 'http://localhost:5000',
-    headers: {
-        "Connection": "keep-alive"
-    }
- }));
-app.use(proxy('/api', { 
-    target: 'http://localhost:5000',
-    headers: {
-        "Connection": "keep-alive"
-    },
-}));
+app.use('/image', require('./routes/imageRoutes'));
 
 require('./routes/authRoutes')(app);
 require('./routes/projectRoutes')(app);
 
 
-
-
-
 if(process.env.NODE_ENV === 'production'){
     //servce prod assets
+
     app.use(express.static('client/build'));
 
     const path = require('path');
@@ -70,6 +59,9 @@ if(process.env.NODE_ENV === 'production'){
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     })
 }
+
+
+
 
 const PORT = process.env.PORT || 5000;
 

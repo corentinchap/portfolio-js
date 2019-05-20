@@ -1,7 +1,5 @@
 const passport = require('passport');
-const project = require('../models/Project');
 const mongoose = require('mongoose');
-const keys = require('../config/keys');
 
 
 module.exports = (app) => {
@@ -24,12 +22,10 @@ module.exports = (app) => {
     });
 
     app.get('/api/check_auth', (req, res) => {
- 
-        if(req.user && req.user.googleId == keys.googlePersonalID)
+        if(req.user && req.user.googleId == process.env.GOOGLE_PERSONAL_ID)
             res.send(true);
         else
             res.send(false);
-        
     });
 
     app.get('/api/projects', (req, res) => {
