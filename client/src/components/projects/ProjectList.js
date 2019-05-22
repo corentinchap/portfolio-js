@@ -25,7 +25,7 @@ class ProjectList extends Component {
         if(!isNullOrUndefined(this.props.projects)) 
             return this.props.projects.map((project, index) => {
                 var selected = 'card cursor-active';
-                if(index === this.props.selectedProjectIndex){
+                if(project === this.props.currentProject){
                     selected += ' selected';
                     
                 }
@@ -44,7 +44,7 @@ class ProjectList extends Component {
         try{
             return this.props.projects.map((project, index) => {
                 var selected = 'card cursor-active';
-                if(index === this.props.selectedProjectIndex){
+                if(index === this.props.selectedProject){
                     selected += ' selected';
                     
                 }

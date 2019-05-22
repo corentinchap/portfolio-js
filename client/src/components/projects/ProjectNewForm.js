@@ -1,8 +1,16 @@
 import React, {Component} from 'react';
 import ProjectImageUploader from './ProjectImageUploader';
-import ProjectFieldEditor from './ProjectFieldEditor';
+import {connect} from 'react-redux';
 import axios from 'axios';
 import mongoose from 'mongoose';
+import { EditorState , ContentState, convertToRaw} from 'draft-js';
+import { Editor } from 'react-draft-wysiwyg';
+import draftToHtml from 'draftjs-to-html';
+import htmlToDraft from 'html-to-draftjs';
+
+import { adminUpdatePreview } from '../../actions/index'
+
+import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 const API_URL = "http://localhost:5000";
 
@@ -17,23 +25,48 @@ class ProjectNewForm extends Component{
         body: '',
         name: '',
         tags: '',
-        date: Date.now()      
+        date: Date.now(),
+        editorState: EditorState.createEmpty()      
       };
      
-      this.handleNameChange = this.handleNameChange.bind(this);
-      this.handleTagsChange = this.handleTagsChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleChange = this.handleChange.bind(this);
       this.handleImageChange = this.handleImageChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    
+
+    onEditorStateChange = (editorState) => {
+      
+      this.setState({
+        editorState
+      });
+      
+      this.dispatchLastestProject();
+      
     }
 
-    handleNameChange(e){
-      this.setState({ name: e.target.value });
+    dispatchLastestProject(){
+      // Dispatch up to date project
+      this.props.adminUpdatePreview({
+        body: this.getEditorStateToHtml(),
+        name: this.state.name,
+        tags: this.state.tags
+      })
+    }
+    
+    getEditorStateToHtml(){
+      
+      var raw = convertToRaw(this.state.editorState.getCurrentContent());
+
+      return draftToHtml(raw);
     }
 
-    handleTagsChange(e){
-      this.setState({tags: e.target.value});
+    handleChange(event) {
+      this.setState( {...this.state, [event.target.name]: event.target.value});
+      
+      this.dispatchLastestProject()
     }
-
+   
     handleSubmit(e){
       e.preventDefault();
 
@@ -72,14 +105,13 @@ class ProjectNewForm extends Component{
       });
     }
     
-    
     handleImageChange(Image){
       this.setState(prevState => ({
         images: [...prevState.images, Image]
       }));
    
     }
-
+   
     renderUploadedImages(){
    
       if(typeof this.state.images !== 'undefined' && this.state.images.length > 0){
@@ -93,37 +125,57 @@ class ProjectNewForm extends Component{
       }
     }
 
+    injectBodyToEditorState(html){
+        const blocksFromHtml = htmlToDraft(html);
+        const { contentBlocks, entityMap } = blocksFromHtml;
+        const contentState = ContentState.createFromBlockArray(contentBlocks, entityMap);
+
+        return EditorState.createWithContent(contentState)
+    }
     render(){
       // Handle render when new projects => empty selectedProject props
       // Handle update => selectedProject is set
-      var projectToRender = {};
+      let projectToRender = {};
+      let editorState;
 
-      this.props.selectedProject === undefined ?
-        projectToRender = this.state :
-        projectToRender = this.props.selectedProject
-
+      if(this.props.selectedProject === undefined){
+        projectToRender = this.state;
+        editorState = this.state.editorState;
+      }
+      else{
+        projectToRender = this.props.selectedProject;
+        editorState = this.injectBodyToEditorState(this.props.selectedProject.body);      
+      }
+      
+     
       
       return (
         <form onSubmit={this.handleSubmit} method="post" encType="multipart/form-data">
           <div>
-            <label htmlFor="pjName">First Name</label>
-            <input type="text" name="pjName"value={projectToRender.name} onChange={this.handleNameChange} />
+            <label htmlFor="name">First Name</label>
+            <input type="text" name="name"value={projectToRender.name} onChange={this.handleChange} />
           </div>
           <div>
-            <label htmlFor="pjTags">Tags [,]</label>
-            <input type="text" name="pjTags" value={projectToRender.tags} onChange={this.handleTagsChange} />
+            <label htmlFor="tags">Tags [,]</label>
+            <input type="text" name="tags" value={projectToRender.tags} onChange={this.handleChange} />
           </div>
           <div>
-            <label htmlFor="pjImages">images</label>
+            <label htmlFor="images">images</label>
               <ProjectImageUploader projectId={projectToRender.projectId} handleImageChange={this.handleImageChange} />
               {this.renderUploadedImages()}
           </div>
           <div>
-            <label htmlFor="pjBody">Body</label>
-              <ProjectFieldEditor selectedProject={projectToRender} />
+            <label htmlFor="body">Body</label>
+              <Editor
+                editorState={editorState}
+                wrapperClassName="wrapper"
+                editorClassName="editor"
+                onEditorStateChange={this.onEditorStateChange}
+              />   
           </div>
           <button type="submit">Submit</button>
         </form>
+
       )
 
     }
@@ -131,4 +183,5 @@ class ProjectNewForm extends Component{
 }
 
 
-export default ProjectNewForm;
+export default connect(null, {adminUpdatePreview})(ProjectNewForm);
+

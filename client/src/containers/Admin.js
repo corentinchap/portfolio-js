@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {fetchProjects} from '../actions/index';
+import {fetchProjects, adminUpdatePreview } from '../actions/index';
 
 import ProjectList from './../components/projects/ProjectList';
 import ProjectNewForm from './../components/projects/ProjectNewForm';
@@ -13,34 +13,26 @@ class Admin extends Component {
     constructor(props){
         super(props);
         
-        // selectedProjectIndex : -1 = no project selected, insert project form
         this.state = {
-            selectedProjectIndex: -1,
-            selectedProject : undefined
+            currentProject: undefined
         };
 
         this.onProjectClick = this.onProjectClick.bind(this);
 
     }
+
     componentDidMount(){
         this.props.fetchProjects();
     }
     
     onProjectClick(i){
-        this.setState({selectedProjectIndex: i});
+        this.setState({currentProject : this.props.projects[i]});
+
+        this.props.adminUpdatePreview(this.props.projects[i]);
     }
 
-    render() {
-        // // Handle when project not retreived yet
-        // var selectedProjectForm = (<ProjectNewForm selectedProject={null} ></ProjectNewForm>);
-        
-        // if(this.props.projects !== undefined){
-        //     var selectedProject = this.props.projects[this.state.selectedProjectIndex];
-        //     selectedProjectForm = (
-        //         <ProjectNewForm selectedProject={selectedProject} />
-        //     )
-        // }
 
+    render() {
         return(
             <div>
                  <div id="content" className="admin row">
@@ -50,24 +42,26 @@ class Admin extends Component {
                             <LoaderCard isLoading={this.props.areProjectsLoading} numberOfCards={3}>
                                 <ProjectList 
                                     projects={this.props.projects}
+                                    currentProject={this.props.currentProject}
                                     onProjectClick={this.onProjectClick} 
-                                    selectedProjectIndex={this.state.selectedProjectIndex} 
                                     enableEdits={true} 
                                 />
                             </LoaderCard>
                         </div>
-                        <div className="col s12 m3">
+                    
+                        <div className="col s12 m10">
+                            <LoaderCard isLoading={this.props.areProjectsLoading} numberOfCards={1}>
+                                <ProjectDetails selectedProject={this.props.currentProject} />
+                            </LoaderCard>
+                        </div>
+
+                        <div className="col s12 m12">
                             <LoaderCard isLoading={this.props.areProjectsLoading} numberOfCards={1}>
                                 {isUndefined(this.props.projects) ? 
                                 <ProjectNewForm /> : 
-                                <ProjectNewForm selectedProject={this.props.projects[this.state.selectedProjectIndex]} />}
-                            </LoaderCard>
-                        </div>
-                        <div className="col s12 m7">
-                            <LoaderCard isLoading={this.props.areProjectsLoading} numberOfCards={1}>
-                                {isUndefined(this.props.projects) ? 
-                                <ProjectDetails /> : 
-                                <ProjectDetails selectedProject={this.props.projects[this.state.selectedProjectIndex]} />}
+                                <ProjectNewForm 
+                                selectedProject={this.state.currentProject} 
+                                />}
                             </LoaderCard>
                         </div>
                 </div>
@@ -78,10 +72,13 @@ class Admin extends Component {
 
 
 function mapStateToProps(state) {
+    const { projects, admin } = state;
+ 
     return { 
-        projects: state.projects.list,
-        areProjectsLoading: state.projects.isLoading
+        projects: projects.list,
+        areProjectsLoading: projects.isLoading,
+        currentProject: admin.lastest
     }
 }
-  
-  export default connect(mapStateToProps, {fetchProjects})(Admin);
+
+export default connect(mapStateToProps, {fetchProjects, adminUpdatePreview})(Admin);

@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
-import { isNullOrUndefined } from 'util';
+
 
 class ProjectDetails extends Component {  
     renderTags(tags){
+        // tags can be array, empty string or string comma separated
         let output = '';
-        if(!isNullOrUndefined(tags)){
+
+       
+        if(typeof tags == 'string' & tags.indexOf(',') > -1){
+            tags = tags.split(',');
+        }
+        
+        if(typeof tags == 'object'){
             tags.forEach(tag => {
                 output += '<span>' + String(tag) +'</span>';
             });
         }
+                
+        
+         
         
         return output
     }
