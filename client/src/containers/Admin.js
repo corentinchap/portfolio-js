@@ -4,9 +4,9 @@ import {fetchProjects, adminUpdatePreview } from '../actions/index';
 
 import ProjectList from './../components/projects/ProjectList';
 import ProjectNewForm from './../components/projects/ProjectNewForm';
-import LoaderCard from './../components/LoaderCards';
-import { isUndefined } from 'util';
+import LoaderCard from './../components/utils/LoaderCards';
 import ProjectDetails from '../components/projects/ProjectDetails';
+import { isUndefined } from 'util';
 
 
 class Admin extends Component {

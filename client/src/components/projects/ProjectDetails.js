@@ -5,8 +5,7 @@ class ProjectDetails extends Component {
     renderTags(tags){
         // tags can be array, empty string or string comma separated
         let output = '';
-
-       
+      
         if(typeof tags == 'string' & tags.indexOf(',') > -1){
             tags = tags.split(',');
         }
@@ -16,18 +15,15 @@ class ProjectDetails extends Component {
                 output += '<span>' + String(tag) +'</span>';
             });
         }
-                
-        
-         
-        
+
         return output
     }
     render() {
         return (        
-        <div className="project-details z-depth-1">
+        <div className="project-details">
             <div className="project-content">
             <div className="project-title">
-                <h5>{this.props.selectedProject.name}</h5>
+                <h1>{this.props.selectedProject.name}</h1>
             </div>
             <div className="project-tags"
                 dangerouslySetInnerHTML={{__html: this.renderTags(this.props.selectedProject.tags)}}>

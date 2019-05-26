@@ -7,7 +7,7 @@ import './App.css';
 
 import Landing from './Landing';
 import Admin from '../containers/Admin';
-import DummyComponent from './DummyComponent';
+import DummyComponent from './utils/DummyComponent';
 
 
 class App extends Component {

@@ -1,7 +1,11 @@
 .about-section .container, .about-section .container .row.flex{
     height:100%;
+    padding:70px 0;
 }
-
+.social-contact{
+    display: flex;
+    justify-content: space-between;
+}
 .social  img {
     margin-right: 15px;
     width: 30px;

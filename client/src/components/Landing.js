@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import AboutSection from './AboutSection';
 import WorkSection from '../containers/WorkSection';
 import './Landing.css';
-import Cursor from './Cursor';
+import Cursor from './utils/Cursor';
+import ContactModal from './utils/ContactModal';
+import FooterComponent from './FooterComponent';
 
 class Landing extends Component {
     
@@ -11,7 +13,9 @@ class Landing extends Component {
             <div className="landing">
                 <AboutSection />
                 <WorkSection />
+                <FooterComponent />
                 <Cursor />
+                <ContactModal />
             </div>
         )
     }

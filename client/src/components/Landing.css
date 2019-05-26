@@ -1,21 +1,24 @@
 .landing{
     width: 100%;
-    height: 100vh;
     cursor: pointer;
 }
 .landing h1{
-    font-family: monoton;
-    font-size: 45px;
-    color: #fff;
+    font-family: vt323;
+    font-size: 60px;
+    color: #174ffc;
     margin: 15px 0;
 }
 .landing > .row{
     margin-bottom: 0;
 }
 .summary-text {
-    border: 2px solid white;
-    padding: 5px;
-    font-size: 50px
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 60px;
+}
+.summary-subtext{
+    font-family: 'VT323', monospace;
+    font-size: 22px;
+    color: #174ffc;
 }
 .white-ball{
 	width: 25px;

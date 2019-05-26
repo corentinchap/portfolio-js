@@ -1,20 +1,22 @@
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono|IBM+Plex+Sans+Condensed:300i,400|Monoton');
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700|Nanum+Pen+Script|Space+Mono|VT323&display=swap');
+
 body{
     margin:0;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Nanum Gothic';
     cursor: none;
+    margin-bottom:200px;
 }
 .about-section{
     /* To app.css level to share gradient settings */
-    min-height: 275px;
     height: 30%;
-    background: linear-gradient(208deg, #2df1be, #828282, #08958c);
+    /* background: linear-gradient(208deg, #2df1be, #828282, #08958c);
 	background-size: 600% 600%;
 
 	-webkit-animation: dynamic-gradient 28s ease infinite;
 	-moz-animation: dynamic-gradient 28s ease infinite;
 	-o-animation: dynamic-gradient 28s ease infinite;
-	animation: dynamic-gradient 28s ease infinite;
+    animation: dynamic-gradient 90s ease infinite; */
+    background: #1e1d28;
 }
 body a{
     cursor:none!important;
@@ -24,16 +26,14 @@ body a{
     margin: 10px 0;
 }
 .admin{cursor:pointer;}
-.container.fluid {
-    width: 90%;
-    max-width:initial;
+
+.projects .card {
+    margin: 0 10px;
 }
-.container.fluid > .row {
-margin: 0;
+.card.selected {
+    background-color: #00808029;
 }
-.container.fluid > .row > .col {
-padding: 0;
-}
+
 .project-delete-button{
     position: absolute;
     right: 5px;
@@ -52,24 +52,33 @@ padding: 0;
     text-align:justify;
 }
 .project-tags {
-    margin: 15px 0;
-    text-align:right;
-    background: linear-gradient(108deg, #2df1be, #828282, #08958c);
+    margin-top: 43px;
+    float: right;
+}
+.project-body {
+    font-size: 21px;
+    max-width: 850px;
+}
+.project-body p:last-child {
+    float: right;
 }
 
+.project-title{
+    display: inline-block;
+    margin-bottom: 29px;
+    text-align: left;
+    font-size: 36px;
+}
 .project-tags span {
     margin: 0 10px;
-    border-left: 2px #fff solid;
-    color: #fff;
     padding: 2px 0 0 15px;
+    color: hsla(233, 28%, 59%, 0.8);
 }
 .flex {
     display: flex;
     flex-wrap: wrap;
   }
-.card.selected {
-    background-color: #00808029;
-}
+
 .animated-loader{
     width: 80%;
     animation-duration: 1s;
@@ -97,8 +106,78 @@ padding: 0;
   ::-webkit-scrollbar {
     width: 5px;
 }
- 
-
+/* Browserframe  */
+.browser-frame-wrapper {
+    position: relative;
+    margin: 50px -70px;
+}
+.browser-frame {
+    border-radius: 10px;
+    overflow: hidden;
+    max-width: 750px;
+    background: #fff;
+  }
+  .browser-frame img {
+    max-width: 100%;
+  }
+  .browser-frame:nth-child(2) {
+    position: absolute;
+    top: 290px;
+    right: 0;
+    max-width: 550px;
+    float: right;
+}
+.browser-frame:nth-child(2) .browser-controls {
+    height: 40px;
+}
+.browser-frame:nth-child(3) {
+    margin-top: 80px;
+    max-width: 800px;
+    margin: 96px auto 0 auto;
+}
+  .browser-controls {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #E6ECEF;
+    color: #BEC4C6;
+  }
+  
+  .window-controls {
+    flex: 0 0 60px;
+    margin: 0 2%;
+  }
+  .window-controls span {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50px;
+    background: #FF8585;
+  }
+  .window-controls span.minimise {
+    background: #FFD071;
+  }
+  .window-controls span.maximise {
+    background: #74ED94;
+  }
+  
+  .url-bar {
+    flex-grow: 1;
+    margin-right: 2%;
+    padding: 5px 5px 0 10px;
+    font-family: monospace;
+    color: #889396;
+    overflow: hidden;
+  }
+  
+  .white-container {
+    height: 25px;
+    border-radius: 3px;
+    font-size: 11px;
+    background: white;
+  }
+  
 /* Handle */
 ::-webkit-scrollbar-thumb {
     -webkit-border-radius: 10px;

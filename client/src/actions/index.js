@@ -13,6 +13,7 @@ export const fetchProjects = () => {
     axios
         .get('/api/projects')
         .then(res => dispatch({type: RECEIVE_PROJECTS, payload: res.data}))
+        .catch(err => console.log(err));
   }
 }
 
@@ -27,6 +28,7 @@ export const checkAuth = () => {
     return function (dispatch) {
         axios
         .get('/api/check_auth')
-        .then(res => dispatch({ type: CHECK_AUTH, payload: res.data}));
+        .then(res => dispatch({ type: CHECK_AUTH, payload: res.data}))
+        .catch(err => console.log(err));
     }
 };

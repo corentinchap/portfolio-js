@@ -4,7 +4,7 @@ import { fetchProjects } from '../actions';
 
 import ProjectList from '../components/projects/ProjectList';
 import ProjectDetails from '../components/projects/ProjectDetails';
-import LoaderCard from '../components/LoaderCards';
+import LoaderCard from '../components/utils/LoaderCards';
 
 import './WorkSection.css';
 import { isUndefined } from 'util';
@@ -34,8 +34,10 @@ class WorkSection extends Component {
                 <div className="work-section">
                 <div className="container fluid">
                     <div className="row">
-                        <div className="col s12 m4" >
-                            <h2>My Work</h2>
+                        <div className="col s12 center">
+                            <h2>Some of my Work</h2>
+                        </div>
+                        <div className="col s12" >
                             <LoaderCard isLoading={this.props.areProjectsLoading} numberOfCards={3}>
                                 <ProjectList 
                                     projects={this.props.projects}
@@ -47,7 +49,7 @@ class WorkSection extends Component {
                             
                         </div>
                         
-                        <div className="title right-align col m7 offset-m1">               
+                        <div className="col m12 title right-align">               
                             <LoaderCard isLoading={this.props.areProjectsLoading} numberOfCards={1}> 
                                 {isUndefined(this.props.projects) ?
                                     <ProjectDetails /> :
