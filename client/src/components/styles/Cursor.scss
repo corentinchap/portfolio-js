@@ -1,3 +1,5 @@
+@import 'variables';
+
 /* all Of [data-cursor="hover"] attributes are transition states*/
 /* INIT states */
 
@@ -13,26 +15,28 @@
     user-select: none;
     z-index: 999;
     transition: all 1.1s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+    .wrapper{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;  
+        
+        & > span{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
 }
 /* onClick action */
 .expend{
     transform: scale(.7);
 }
 
-#cursor .wrapper{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;   
-}
-#cursor .wrapper > span{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
 
 #cursor[data-cursor="ring"] .cursor-ring::after, #cursor[data-cursor="hover"] .cursor-hover::after, #cursor[data-cursor="action"] .cursor-action::after{
     /* final state */
@@ -44,7 +48,7 @@
 #cursor .cursor-ring::after{
     /* init state  */
     content: "";
-    border: 2px solid #174ffc;
+    border: 2px solid $blue;
     border-radius: 50%;
     width: 100%;
     height: 100%;
@@ -58,7 +62,7 @@
 #cursor .cursor-hover::after{
     /* init state  */
     content: "";
-    background-color: #174ffc;
+    background-color: $blue;
     border-radius: 50%;
     width: 100%;
     height: 100%;
@@ -76,7 +80,7 @@
 #cursor .cursor-action::after{
     /* init state  */
     content: "";
-    background-color: #174ffc;
+    background-color: $blue;
     color: #fff;
     border-radius: 50%;
     width: 100%;

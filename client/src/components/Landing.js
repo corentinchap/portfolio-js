@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AboutSection from './AboutSection';
 import WorkSection from '../containers/WorkSection';
-import './Landing.css';
+import './styles/Landing.scss';
 import Cursor from './utils/Cursor';
 import ContactModal from './utils/ContactModal';
 import FooterComponent from './FooterComponent';

@@ -71,12 +71,11 @@ class Testimonials extends Component {
                             <Carousel carouselId="carousel-1" options={{fullWidth: true}} >                
                                 {testimonials.map((testimonial, i) => (
                                         <div key={i} className="testimonial">
-                                            <div className="testimonial-quote">
-                                                <div dangerouslySetInnerHTML={{__html: this.renderHtmlContent(testimonial.quote)}} />
-                                                <br />
+                                            <blockquote className="testimonial-quote">
+                                                <span dangerouslySetInnerHTML={{__html: this.renderHtmlContent(testimonial.quote)}} />                            
                                                 <cite> – {testimonial.author}</cite>
                                                 <div className="website-link">{testimonial.project}</div>
-                                            </div>
+                                            </blockquote>
                                             
                                             <img className="hide-on-med-and-down" src={testimonial.avatar} alt="testimonial-avatar"></img>
                                         </div>                 

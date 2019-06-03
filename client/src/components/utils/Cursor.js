@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import './Cursor.css';
+import '../styles/Cursor.scss';
+
+
 
 class Cursor extends Component {
     constructor(props){
@@ -13,11 +15,7 @@ class Cursor extends Component {
         this.setState({
             cursorElement : document.getElementById('cursor')
         });
-        this.addDocumentListener();
-    }
-
-    addDocumentListener(){       
-
+        
         this.props.listenerElement.addEventListener('mousemove',e => {                    
             this.setCursorPosition(e);
         });

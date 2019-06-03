@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ContactForm from './ContactForm';
 
-import './FooterComponent.css';
+import './styles/FooterComponent.scss';
 import github from '../img/github.svg';
 import linkedin from '../img/linkedin.svg';
 class FooterComponent extends Component {

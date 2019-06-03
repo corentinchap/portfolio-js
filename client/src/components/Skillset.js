@@ -16,8 +16,8 @@ function Skillset (){
                     alt: 'Javascript : Front End framework'
                 },
                 {
-                    logo: 'images/logos/less.svg',
-                    alt: 'LESS : Better CSS'
+                    logo: 'images/logos/sass.svg',
+                    alt: 'Sass : CSS with superpowers'
                 },
                 {
                     logo: 'images/logos/materialize.svg',

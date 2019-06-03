@@ -1,0 +1,55 @@
+.about-section{
+    background: #1e1d28;
+    position: relative;
+}
+.scroll-indicator{
+    color: #ffffff78;
+    font-size: 35px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    animation: upanddown 1s infinite alternate;
+}
+@keyframes upanddown{
+    0%{
+        bottom: 0;
+    }
+    100%{
+        bottom: 10px;
+    }
+}
+
+
+
+.container, .about-section .row.flex{
+    height:100%;
+    padding:20px 0;
+}
+.social-contact{
+    display: flex;
+    justify-content: space-between;
+}
+.social  img {
+    margin-right: 15px;
+    width: 30px;
+}
+.social img path {fill: #fff;}
+.social {
+    display: flex;
+    padding-top: 18px;
+}
+.profile-picture img {
+    width: 100%;
+    padding: 15px;
+    height: 100%;
+}
+.profile-picture{
+    width: 420px;
+    padding: 50px 0;
+}
+
+.about-section .summary{
+    font-size: 16px;
+    text-transform: lowercase;
+	color: #FFFFFF;
+}

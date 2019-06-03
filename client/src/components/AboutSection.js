@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import CursorAwareButton from './utils/CursorAwareButton';
-import './AboutSection.css';
+import './styles/AboutSection.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
-
 
 
 import github from '../img/github.svg';
