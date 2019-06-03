@@ -5,11 +5,72 @@ class Cursor extends Component {
     constructor(props){
         super(props);
         this.state = {
-            cursorType: 'ring'
-        }
+            cursorType: 'ring',
+            target : undefined,
+            cursorElement: undefined        }
     }
     componentDidMount(){
-        this.initCustomCursor();
+        this.setState({
+            cursorElement : document.getElementById('cursor')
+        });
+        this.addDocumentListener();
+    }
+
+    addDocumentListener(){       
+
+        this.props.listenerElement.addEventListener('mousemove',e => {                    
+            this.setCursorPosition(e);
+        });
+
+        this.props.listenerElement.addEventListener('mousedown', e => {
+           this.handleClick(e);
+         })
+
+    }
+
+    setCursorPosition(e){
+        
+        let off = 26;
+
+        let left = e.pageX -off;
+        let top = e.pageY-window.scrollY -off; 
+
+        let previousState;
+
+        this.state.cursorElement.setAttribute('style','top: '+top+'px; left:'+left+'px;');
+
+        setTimeout(() => {
+            previousState = this.state.cursorType;
+                //check wether the cursor is on something that is interactable
+                if(e.target.hasAttribute('data-cursor'))
+                {
+                    this.setState({
+                        cursorType: e.target.getAttribute('data-cursor'),
+                        target: e.target                        
+                    })
+                }
+                else{
+                    // Default to ring
+                    if(this.state.cursorType !== 'ring'){
+                        this.setState({
+                            cursorType: 'ring'
+                        })
+                    }
+                } 
+                
+                // enable hover state for my interactive buttons
+                if(e.target.classList.contains('btn-cursor')){
+                    e.target.classList.add('active');
+                }else{
+                    if(previousState === 'hover'){
+                        // btn can be null when hovering links that dont interact neither active class
+                        if(document.body.contains(document.querySelector('.active')))
+                            document.querySelector('.active').classList.toggle('active')
+                        
+                    }
+                }
+           
+        }, 300);
     }
     
     render() {
@@ -26,65 +87,14 @@ class Cursor extends Component {
         )
     }
     
-    initCustomCursor(){
-        let cursor = document.getElementById('cursor');
-        let off = 26;
 
-        let currentElement; // prevent click event to fire the cursor pseudo-elemnet
-        let previousState;
+    handleClick(e){
 
+        this.state.cursorElement.classList.add('expend');
 
-        document.addEventListener('mousemove',e => {         
-             let left = e.pageX -off;
-             let top = e.pageY-window.scrollY -off; 
-
-            cursor.setAttribute('style','top: '+top+'px; left:'+left+'px;');
-
-            setTimeout(() => {
-                previousState = this.state.cursorType;
-                    //check wether the cursor is on something that is interactable
-                    if(e.target.hasAttribute('data-cursor'))
-                    {
-                        currentElement = e.target;
-                        this.setState({cursorType: e.target.getAttribute('data-cursor')})
-                    }
-                    else{
-                        // Default to ring
-                        if(this.state.cursorType !== 'ring'){
-                            this.setState({
-                                cursorType: 'ring'
-                            })
-                        }
-                    } 
-                    
-                    // enable hover state for my interactive buttons
-                    if(e.target.classList.contains('btn-cursor')){
-                        e.target.classList.add('active');
-                    }else{
-                        if(previousState === 'hover'){
-                            // btn can be null when hovering links that dont interact neither active class
-                            if(document.body.contains(document.querySelector('.active')))
-                                document.querySelector('.active').classList.toggle('active')
-                            
-                        }
-                    }
-               
-            }, 300);
-
-        });
-        
-
-         document.addEventListener('mousedown', e => {
-            if(e.target.className === 'cursor-enabled'){
-                currentElement.click();
-            }
-            cursor.classList.add('expend');
-
-            setTimeout(() => {
-                cursor.classList.remove('expend');
-            }, 1000);
-         })
-
+        setTimeout(() => {
+            this.state.cursorElement.classList.remove('expend');
+        }, 500);
     }
 }
 

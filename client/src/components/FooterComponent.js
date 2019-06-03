@@ -1,31 +1,43 @@
 import React, { Component } from 'react';
+import ContactForm from './ContactForm';
+
 import './FooterComponent.css';
 import github from '../img/github.svg';
 import linkedin from '../img/linkedin.svg';
-import CursorAwareButton from './utils/CursorAwareButton'
-
 class FooterComponent extends Component {
     
     render() {
         return (
           <footer className="footer">
+              <div className="container">
               <div className="row">
-                <div className="col center m6">
-                    <h1>Check me out on social media</h1>
-                    <div className="social-contact">
-                        <div className="social">
-                            <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/corentin-chapatte-684234160/" alt="linkedIn">
-                                <img data-cursor="hover" alt="LinkedIn" src={linkedin} />
-                            </a>
-                            <a target="_blank" rel="noopener noreferrer" href="https://github.com/corentinchap">
-                                <img data-cursor="hover" alt="Github" src={github}/>
-                            </a>
+                <div className="col center s12 m6">
+                <h3>Stalk my social media</h3>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/corentin-chapatte-684234160/" alt="linkedIn">
+                    <div className="row social-links">
+                        <div className="col s4 social-icon">                    
+                            <img data-cursor="action" alt="LinkedIn" src={linkedin} />            
                         </div>
-                        <div className="contact wrap">                
-                            <CursorAwareButton text={'Hire me'} />
+                        <div  data-cursor="action" className="col s8 social-text">
+                             +Corentin Chapatte
                         </div>
                     </div>
+                </a>
+                <a target="_blank" rel="noopener noreferrer" href="https://github.com/corentinchap" alt="github">
+                    <div className="row">
+                        <div className="col s4 social-icon">         
+                                <img data-cursor="action" alt="Github" src={github}/>
+                        </div>
+                        <div data-cursor="action" className="col s8 social-text">
+                             @corentinchap
+                        </div>
+                    </div>
+                </a>
                 </div>
+                <div className="col m6 s12 ">
+                    <ContactForm />
+                </div>
+              </div>
               </div>
           </footer>
         )

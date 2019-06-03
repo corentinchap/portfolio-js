@@ -5,16 +5,21 @@ import './Landing.css';
 import Cursor from './utils/Cursor';
 import ContactModal from './utils/ContactModal';
 import FooterComponent from './FooterComponent';
+import Testimonials from './Testimonials';
+import Skillset from './Skillset';
+
 
 class Landing extends Component {
     
     render() {
         return (
-            <div className="landing">
+            <div className="landing z-depth-5">
+                <Cursor listenerElement={document} />
                 <AboutSection />
                 <WorkSection />
-                <FooterComponent />
-                <Cursor />
+                <Testimonials intervalCarousel={8000}/>
+                <Skillset />
+                <FooterComponent />           
                 <ContactModal />
             </div>
         )

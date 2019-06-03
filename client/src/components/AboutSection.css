@@ -1,6 +1,29 @@
-.about-section .container, .about-section .container .row.flex{
+.about-section{
+    background: #1e1d28;
+    position: relative;
+}
+.scroll-indicator{
+    color: #ffffff78;
+    font-size: 35px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    animation: wiggle 1s infinite alternate;
+}
+@keyframes wiggle{
+    0%{
+        bottom: 0;
+    }
+    100%{
+        bottom: 10px;
+    }
+}
+
+
+
+.container, .about-section .container .row.flex{
     height:100%;
-    padding:70px 0;
+    padding:20px 0;
 }
 .social-contact{
     display: flex;
@@ -21,10 +44,8 @@
     height: 100%;
 }
 .profile-picture{
-	width: 125px;
-	height: 125px;
-	border-radius: 50%;
-    border: 2px solid white;
+    width: 420px;
+    padding: 50px 0;
 }
 
 .about-section .summary{

@@ -26,11 +26,11 @@ class CursorAwareButton extends Component {
  
     render() {
         return (
-            <a onMouseEnter={this.buttonMouseInteraction} 
+            <button onMouseEnter={this.buttonMouseInteraction} 
                onMouseLeave={this.buttonMouseInteraction}
-            className="btn-cursor btn-6" data-cursor="hover" href="#">
+            className="cursor-button" data-cursor="hover" >
                {this.props.text}<span></span>
-            </a>
+            </button>
         )
     }
 
