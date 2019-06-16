@@ -33,11 +33,10 @@ class WorkSection extends Component {
         return (
                 <div className="work-section">
                 <div className="container fluid">
-                    <div className="row no-bottom-margin">
-                        <div className="col s12">
-                            <h1>Some of my Work</h1>
-                        </div>
+                    <div className="row">
                         <div className="col s12" >
+                            <h1>some of my projects</h1>
+
                             <LoaderCard isLoading={this.props.areProjectsLoading} numberOfCards={3}>
                                 <ProjectList 
                                     projects={this.props.projects}

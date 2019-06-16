@@ -1,11 +1,9 @@
-import './CursorAwareButton.css';
+import '../styles/CursorAwareButton.scss';
 import React, { Component } from 'react';
-
+import {css} from 'glamor';
 
 class CursorAwareButton extends Component {
-
-    
-    
+ 
     buttonMouseInteraction(e){
         var top=0, left=0;
         var elem = e.target;
@@ -25,12 +23,36 @@ class CursorAwareButton extends Component {
 
  
     render() {
+        let cursor_buttonStyle = css({
+            color: this.props.defaultColor,
+            border: '1px solid' + this.props.defaultColor,
+            ':hover':{
+                color: this.props.activeColor
+            },
+            '.active' :{
+                color: this.props.activeColor
+            }
+        });
+        const cursor_button_spanStyle = css({
+            backgroundColor: this.props.defaultColor,
+        });
+
+        
+          
         return (
-            <button onMouseEnter={this.buttonMouseInteraction} 
-               onMouseLeave={this.buttonMouseInteraction}
-            className="cursor-button" data-cursor="hover" >
-               {this.props.text}<span></span>
-            </button>
+            <div data-cursor="hover">
+                <a onMouseEnter={this.buttonMouseInteraction} 
+                    onMouseLeave={this.buttonMouseInteraction}
+                    onClick={this.props.onClick}
+                    className="cursor-button"       
+                    {...cursor_buttonStyle}
+                    >
+                {this.props.text}
+                    <span {...cursor_button_spanStyle}></span>
+                </a> 
+           
+            </div>            
+            
         )
     }
 

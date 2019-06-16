@@ -6,6 +6,8 @@ import Cursor from './utils/Cursor';
 import ContactModal from './utils/ContactModal';
 import FooterComponent from './FooterComponent';
 import Testimonials from './Testimonials';
+// import CarouselTest from './CarouselTest';
+import CursorAwareButton from './utils/CursorAwareButton'
 import Skillset from './Skillset';
 
 

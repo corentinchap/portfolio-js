@@ -20,6 +20,13 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true});
 
 const app = express();
 
+// let headers = new Headers();
+
+
+// headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+// headers.append('Access-Control-Allow-Credentials', 'true');
+
+// app.use(headers);
 
 // for parsing application/json
 app.use(bodyParser.json()); 

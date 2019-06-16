@@ -38,7 +38,7 @@ class AboutSection extends Component {
                                         </a>
                                     </div>
                                     <div className="contact wrap">                
-                                       <CursorAwareButton text={'Hire me'} />
+                                       <CursorAwareButton defaultColor={"#fff"} activeColor={"#174ffc"} text={'Hire me'} />
                                     </div>
                                 </div>
                             </div>

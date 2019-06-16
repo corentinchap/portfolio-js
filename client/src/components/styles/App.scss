@@ -4,18 +4,45 @@ body{
     margin:0;
     font-family: 'Nanum Gothic';
     font-size: 20px;
-    margin-bottom:500px;
+    margin-bottom:600px;
     color: $black;
-}
-.no-bottom-margin{
-    margin-bottom:0;
 }
 
 .DraftEditor-editorContainer {
     border: 2px solid $blue;
     margin: 10px 0;
 }
-.project{
+.landing .project{
+    
+    &-content {
+         text-align:justify;
+    }
+    &-tags {
+        float: right;
+        margin-top: 58px;
+
+        span {
+            margin-top:20px;
+            padding: 2px 0 0 15px;
+            color: darken($orange, 10%);
+        }
+    }
+    &-body {
+        p{font-size: 1.2em;}
+        max-width: 850px;
+    }
+    &-body p:last-child {
+        float: right;
+    }
+    
+    &-title {
+        display: inline-block;
+        h1{
+            margin: 30px 0 30px 0;
+            text-align: left;
+        }
+    }
+
     &-delete-button{
         position: absolute;
         right: 5px;
@@ -29,39 +56,21 @@ body{
         width: 17px;
         height: 17px;
     }
-    &-content {
-        padding: 20px;
-        text-align:justify;
-    }
-    &-tags {
-        margin-top: 43px;
-        float: right;
-    }
-    &-body {
-        font-size: 1rem;
-        max-width: 850px;
-    }
-    &-body p:last-child {
-        float: right;
-    }
     
-    &-title{
-        display: inline-block;
-        margin-bottom: 29px;
-        text-align: left;
-        font-size: 36px;
-    }
-    &-tags span {
-        margin: 0 10px;
-        padding: 2px 0 0 15px;
-        color: hsla(233, 28%, 59%, 0.8);
-    }
 }
 .projects .card {
     margin: 0 10px;
+    background-color: $orange;
+    color: #fff;
+    .card-content{
+        font-size: 2rem;
+        font-variant: small-caps;
+        letter-spacing: 1.1px;
+        font-family: Passion One;
 
+    }
     &.selected {
-        background-color: lighten($blue, 30%);
+        background-color: darken($orange, 15%);
     }
 }
 
@@ -85,6 +94,15 @@ body{
         width: 90%;
     }
 }
+@keyframes changeBgColorLoader {
+    from {
+        background-color: #ecebeb;
+    }
+  
+    to {
+        background-color: #bdbcbc;
+    }
+  }
 
 
   
@@ -137,12 +155,13 @@ body{
                 height: 15px;
                 border-radius: 50px;
                 background: #FF8585;
-            }
-            &.minimise {
-                background: #FFD071;
-            }
-            &.maximise {
-                background: #74ED94;
+            
+                &.minimise {
+                    background: #FFD071;
+                }
+                &.maximise {
+                    background: #74ED94;
+                }
             }     
         }
 
@@ -188,7 +207,7 @@ body{
         margin-bottom:850px;
     }
     .footer{
-        height: 850px!important;
+        //height: 850px!important;
     }
 }
 

@@ -4,36 +4,32 @@
     background-color: #fff;
     h1 {
       font-family: vt323;
-      font-size: $font-size-h1;
+      font-size: 3em;
       color: $blue;
-      margin: 15px 0;
+      margin: 50px 0;
     }
   }
   
   .summary-text {
     font-family: 'Nanum Gothic', sans-serif;
-    font-size: 60px;
+    font-size: 4em;
   }
   
   .summary-subtext {
     font-family: 'VT323', monospace;
-    font-size: 22px;
+    font-size: 2em;
     color: $blue;
   }
   
   .testimonials {
-    padding: 150px 0 0 0;
-    font-size: 21px;
     blockquote {
-      margin: 20px 0;
       border-left: 3px solid $orange;
     }
   }
   
   .testimonial-quote {
     color: #1e1e28;
-    height: 70%;
-    font-size: 18px;
+    font-size: 1.1em;
     align-self: center;
     padding: 50px 70px;
     font-style: italic;
@@ -41,8 +37,15 @@
     text-align: center;
     .website-link {
       float: right;
+      bottom: 0;
+      right: 25px;
+    }
+    cite{
+      bottom:0;
+      left: 25px;
     }
     cite, .website-link {
+      position: absolute;
       display: inline-block;
       font-family: Nanum Gothic;
       font-style: italic;
@@ -100,7 +103,6 @@
         background-color: #1e1d28 !important;
       }
     }
-    margin-top: 60px;
   }
   
   .testimonials {
@@ -131,29 +133,27 @@
   }
   
   .skillsets {
-    padding: 30px 0;
-    .row {
-      margin: 100px auto;
-    }
+  
     img {
       width: 65%;
       margin: auto;
     }
     .text {
-      font-size: 22px;
-    }
+      font-size: 1.2em;
+    }    
   }
   
   .relative {
     position: relative;
   }
   
-  .skillsets .img-right img {
+  .img-right img {
     float: right;
   }
   
   hr {
     border: 0;
+    margin: 100px auto;
     width: 50%;
     height: 2px;
     background-image: -webkit-linear-gradient(left, #f0f0f000, $orange, #f0f0f0);
@@ -178,23 +178,4 @@
     padding-bottom: 20px;
   }
   
-  @media screen and (max-width: 813px) {
-    .testimonial-quote {
-      p {
-        &::before {
-          top: -100px;
-          left: -35px;
-          font-size: 100px;
-        }
-        &::after {
-          bottom: -75px;
-          right: -35px;
-          position: relative;
-        }
-      }
-      padding: 0;
-    }
-    .about-section {
-      height: 800px;
-    }
-  }
+ 

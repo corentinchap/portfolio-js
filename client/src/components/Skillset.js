@@ -35,7 +35,7 @@ function Skillset (){
         },
         {
             title: 'Back End Development',
-            text: 'Wether you need an API, a custom Windows app or a custom web application for your buisness, my knowledge with PHP and .NET / C# will help you.',
+            text: 'Wether you need an <b>API</b>, a custom <b>web app</b> or a native Windows app to answer specific needs for you buisness, my <b>expertise</b> and knowledge will make sure your app <b>easy to use, stable and future-proof</b>.',
             image: 'images/process_building.svg',
             techs: [
                 {
@@ -66,7 +66,7 @@ function Skillset (){
         },
         {
             title: 'User Experience',
-            text: 'For your online and mobile touch-points, I’ll create wireframes, user flows, information architecture, and interactive design.',
+            text: 'For your desktop, tablet and mobile touch-points, I’ll create <b>wireframes</b> to build the best possible experience for your product, maximizing readability, SEO ranking and <b>user engagment</b>.',
             techs: [
                 {
                     logo: 'images/logos/figma.svg',                  
@@ -83,7 +83,7 @@ function Skillset (){
         },
         {
             title: 'Methodology',
-            text: 'Whether I work solo or in a team, I always apply the SCRUM methodology with lean and agile development. I still stay flexible for any change while having a clear overview of the work ahead.',
+            text: 'Whether I work solo or in a team, I always apply the <b>SCRUM methodology</b> with lean and agile development. I still stay <b>flexible</b> for any change while having a clear overview of the work ahead.',
             image: 'images/scrum_board.svg'
         }
     ]

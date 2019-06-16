@@ -35,7 +35,7 @@ class ProjectList extends Component {
                     
                 }
                 return(
-                    <div className="col s6 m3" key={project._id}>
+                    <div className="col s6 m4" key={project._id}>
                         <div className={baseClasses} >
                             {this.props.enableEdits ? editJsx : '' }
                             <div data-cursor="action" onClick={(e) => this.props.onProjectClick(index)} className="card-content">

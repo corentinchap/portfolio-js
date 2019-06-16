@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { FETCH_USER, CHECK_AUTH, RECEIVE_PROJECTS, REQUEST_PROJECTS, ADMIN_UPDATE_PREVIEW } from './types';
-
+import { FETCH_USER, CHECK_AUTH, RECEIVE_PROJECTS, REQUEST_PROJECTS, ADMIN_UPDATE_PREVIEW, MAIL_SENT } from './types';
+import emailjs from 'emailjs-com';
 
 export const fetchUser = () => async dispatch => {
     const res = await axios.get('/api/current_user');
@@ -20,6 +20,14 @@ export const fetchProjects = () => {
 export const adminUpdatePreview = (project) => {
     return function(dispatch){
         dispatch({type:ADMIN_UPDATE_PREVIEW, payload: project});
+    }
+}
+
+export const sendContactMail = (form) => {
+    return function(dispatch){
+        emailjs.sendForm('gmail','template_HMQ3hbU7',form).then((res) => {
+            dispatch({type: MAIL_SENT, payload:res.text})
+        });
     }
 }
 
