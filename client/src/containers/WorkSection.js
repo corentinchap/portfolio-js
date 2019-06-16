@@ -5,8 +5,8 @@ import { fetchProjects } from '../actions';
 import ProjectList from '../components/projects/ProjectList';
 import ProjectDetails from '../components/projects/ProjectDetails';
 import LoaderCard from '../components/utils/LoaderCards';
+import M from 'materialize-css';
 
-import './WorkSection.css';
 import { isUndefined } from 'util';
 
 class WorkSection extends Component {
@@ -18,6 +18,11 @@ class WorkSection extends Component {
         };
         this.onProjectClick = this.onProjectClick.bind(this);
 
+    }
+    componentDidUpdate(){
+        if(this.state.selectedProjectIndex == 2){
+            M.Collapsible.init(document.querySelectorAll('.collapsible'));
+        }
     }
     
     componentDidMount(){

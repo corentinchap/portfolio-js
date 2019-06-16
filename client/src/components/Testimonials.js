@@ -9,19 +9,19 @@ const testimonials = [
     {
         author: 'Fanny Zambaz',
         project : 'fannyzambaz.ch',
-        quote: 'I feel really lucked out on finding Corentin. He is a great developer and very <b>easy</b> to work with. It’s great to find a developer who is <b> professional, efficient, sensitive to deadlines and always willing to help. </b>',
+        quote: 'I feel really lucked out on finding Corentin. He is a great developer and very <b>easy</b> to work with. He always willing to help, he\'s always replying <b>quickly</b> to my emails.100% recommend </b>',
         avatar: 'images/testimonials-woman-1.svg'
     },
     {
         author: 'Philipp Reiss',
         project : 'abgefatz.de',
-        quote: 'I am very happy with the website and the work you have done. It’s such a pleasure to see the site look exactly like I wanted it to be. I know I have praised you already, but it’s not often that I work with a programmer as good as you',
+        quote: 'I am very happy with the website and the work he has done. It’s such a pleasure to see the site look exactly like I wanted it to be. The great this is he\'s not only knowledgable, but he\'s also a great person to work with',
         avatar: 'images/testimonials-men-1.svg'
     },
     {
         author: 'Aurélie Gross',
         project: 'instinctmaman.be/',
-        quote: 'Corentin was an absolute pleasure to work with on our e-commerce site. He definitely exceeded our tasks by fixing the issues extremely quickly and efficiently. He has the technical expertise to handle any problem. He is completely professional and we would work with her again in a heartbeat.',
+        quote: 'Corentin was an absolute pleasure to work with on our e-commerce site. He definitely exceeded our tasks by fixing the issues extremely quickly and efficiently. He is completely professional and I would work with him again in a heartbeat.',
         avatar: 'images/testimonials-woman-2.svg'
     }
 ]

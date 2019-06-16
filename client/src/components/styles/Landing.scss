@@ -6,10 +6,16 @@
       font-family: vt323;
       font-size: 3em;
       color: $blue;
-      margin: 50px 0;
-    }
+      margin: 50px 0 100px 0;   
+     }
   }
-  
+  .work-section h2{
+    color: #314ffc;
+    font-family: vt323;
+    margin: 100px 0 0px 0;
+    font-size: 45px;
+}
+
   .summary-text {
     font-family: 'Nanum Gothic', sans-serif;
     font-size: 4em;
@@ -153,7 +159,7 @@
   
   hr {
     border: 0;
-    margin: 100px auto;
+    margin: 200px auto;
     width: 50%;
     height: 2px;
     background-image: -webkit-linear-gradient(left, #f0f0f000, $orange, #f0f0f0);

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import M from "materialize-css";
 
 
 class ProjectDetails extends Component {  
+   
     renderTags(tags){
         // tags can be array, empty string or string comma separated
         let output = '';
@@ -19,6 +21,8 @@ class ProjectDetails extends Component {
         return output
     }
     render() {
+         // Collapsible init
+        
         return (        
         <div className="project-details">
             <div className="project-content">

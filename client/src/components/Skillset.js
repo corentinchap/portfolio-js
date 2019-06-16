@@ -4,7 +4,7 @@ function Skillset (){
     const data = [
         {
             title: 'Front End Development',
-            text: 'My knowledge of the DOM allow me to write <b>minimal</b>, clean and reusable code. I\'ve been working on front-end projects since <b>2016</b>. I build my layouts with the lastest standards, <b>flexboxes and CSS grids</b> are the way to go in 2019 !',
+            text: 'My knowledge of the DOM allow me to write <b>minimal</b>, clean and reusable code. I\'ve been working on front-end projects since <b>2016</b>. I build my layouts with the lastest standards, <b>flexboxes and CSS grids</b> are the way to go nowadays !',
             image: 'images/image_post.svg',
             techs: [
                 {
