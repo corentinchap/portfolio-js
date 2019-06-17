@@ -9,13 +9,13 @@ const testimonials = [
     {
         author: 'Fanny Zambaz',
         project : 'fannyzambaz.ch',
-        quote: 'I feel really lucked out on finding Corentin. He is a great developer and very <b>easy</b> to work with. He always willing to help, he\'s always replying <b>quickly</b> to my emails.100% recommend </b>',
+        quote: 'I am very happy with the website and the work he has done. It’s such a pleasure to see the site look exactly like I wanted it to be. The great this is he\'s not only <b> knowledgable </b>, but he\'s also a great person to work with',
         avatar: 'images/testimonials-woman-1.svg'
     },
     {
         author: 'Philipp Reiss',
         project : 'abgefatz.de',
-        quote: 'I am very happy with the website and the work he has done. It’s such a pleasure to see the site look exactly like I wanted it to be. The great this is he\'s not only knowledgable, but he\'s also a great person to work with',
+        quote: 'Since the beginning of this business relationship Mr. Chapatte always proved to be a <b>reliable</b> partner and a precious consultant in terms of customization and perfectionating. Furthermore his <b>deep knowledge of Computing- and IT-related topics</b> has been a consistent source of valuable information. ',
         avatar: 'images/testimonials-men-1.svg'
     },
     {
