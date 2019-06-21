@@ -20,7 +20,7 @@ class WorkSection extends Component {
 
     }
     componentDidUpdate(){
-        if(this.state.selectedProjectIndex == 2){
+        if(this.state.selectedProjectIndex === 2){
             M.Collapsible.init(document.querySelectorAll('.collapsible'));
         }
     }

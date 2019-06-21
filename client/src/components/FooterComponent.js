@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ContactForm from './ContactForm';
+import ContactForm from './utils/ContactForm';
 
 import './styles/FooterComponent.scss';
 import github from '../img/github.svg';

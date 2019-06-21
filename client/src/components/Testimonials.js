@@ -15,7 +15,8 @@ const testimonials = [
     {
         author: 'Philipp Reiss',
         project : 'abgefatz.de',
-        quote: 'Since the beginning of this business relationship Mr. Chapatte always proved to be a <b>reliable</b> partner and a precious consultant in terms of customization and perfectionating. Furthermore his <b>deep knowledge of Computing- and IT-related topics</b> has been a consistent source of valuable information. ',
+        quote: "Corentin Chapatte has been assisting me throughout the entire process of creating and maintaining my own webpage 'www.abgefatzt.de'. He was  and is a very reliable consultant in all of my programming related issues." +
+        "Since the beginning of this business relationship Mr. Chapatte always proved to be a <b>reliable partner and a precious consultant</b> in terms of customization and perfectionating. Furthermore his <b>deep knowledge</b> of Computing- and IT-related topics has been a consistent source of valuable information. I wish him all the best for his private and profesionnal life.",
         avatar: 'images/testimonials-men-1.svg'
     },
     {

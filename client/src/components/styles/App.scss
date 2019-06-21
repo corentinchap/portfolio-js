@@ -7,11 +7,30 @@ body{
     margin-bottom:600px;
     color: $black;
 }
-
-.DraftEditor-editorContainer {
-    border: 2px solid $blue;
-    margin: 10px 0;
+.success{
+    background-color: #74ED94;
 }
+.warning{
+    background-color: #FFD071;
+}
+.animated-selector {
+    bottom: 113px;
+    position: relative;
+    line-height: 44px;
+    z-index: 1;
+
+    & > div{
+        transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    } 
+    .push-m0 {
+        left: 0%!important;
+    }
+    .card{
+        background-color: darken($orange, 15%);
+        margin: 0 10px;
+    }
+}
+
 .landing .project{
     
     &-content {
@@ -65,7 +84,7 @@ body{
 
     &-website-link {
         border: 3px solid #314ffc;
-        padding: 5px;
+        padding: 5px 5px 10px 5px;
         border-radius: 10px;
         float: right;
         margin-top: 30px;
@@ -75,7 +94,7 @@ body{
         .external-link-icon{ 
             width: 30px;
             position: relative;
-            top: 4px;
+            top: 7px;
             margin-left: 10px;
         }
       
@@ -91,11 +110,10 @@ body{
         font-variant: small-caps;
         letter-spacing: 1.1px;
         font-family: Passion One;
-
+        z-index: 2;
+        position: relative;
     }
-    &.selected {
-        background-color: darken($orange, 15%);
-    }
+    
 }
 
 .flex {
@@ -230,8 +248,6 @@ body{
     body{
         margin-bottom:850px;
     }
-    .footer{
-        //height: 850px!important;
-    }
+    
 }
 

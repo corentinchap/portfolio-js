@@ -35,7 +35,7 @@ function Skillset (){
         },
         {
             title: 'Back End Development',
-            text: 'Wether you need an <b>API</b>, a custom <b>web app</b> or a native Windows app to answer specific needs for you buisness, my <b>expertise</b> and knowledge will make sure your app <b>easy to use, stable and future-proof</b>.',
+            text: 'Wether you need an <b>API</b>, a custom <b>web app</b> or a native Windows app to answer specific needs for you business, my <b>expertise</b> and knowledge will make sure your app <b>easy to use, stable and future-proof</b>.',
             image: 'images/process_building.svg',
             techs: [
                 {
