@@ -90,20 +90,7 @@ class Testimonials extends Component {
                                     
                                 </div>                 
                         ))}
-                    </Slider>
-                                       
-                                {/* {testimonials.map((testimonial, i) => (
-                                        <div key={i} className="testimonial">
-                                            <blockquote className="testimonial-quote">
-                                                <span dangerouslySetInnerHTML={{__html: testimonial.quote}} />                            
-                                                <cite> – {testimonial.author}</cite>
-                                                <div className="website-link">{testimonial.project}</div>
-                                            </blockquote>
-                                            
-                                            <img className="hide-on-med-and-down" src={testimonial.avatar} alt="testimonial-avatar"></img>
-                                        </div>                 
-                                ))} */}
-                           
+                    </Slider>                      
                         
                     </div>
                 </div>
