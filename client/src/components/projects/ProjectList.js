@@ -31,12 +31,12 @@ class ProjectList extends Component {
     onProjectClick(index,e){
         this.props.onProjectClick(index);
         
-       
-
+    
         var child = e.target.parentNode;
         var parent = child.parentNode.parentNode;
-        // The equivalent of parent.children.indexOf(child)
+        
         var i = Array.prototype.indexOf.call(parent.children, child.parentNode);
+
         this.setState({
             pushStatus: ' push-m' + i*4
         })
@@ -57,7 +57,7 @@ class ProjectList extends Component {
                     
                 }
                 return(
-                    <div className="col s6 m4" key={project._id}>
+                    <div className="col s12 m4" key={project._id}>
                         <div className={baseClasses} >
                             {this.props.enableEdits ? editJsx : '' }
                             <div data-cursor="action" onClick={(e) => this.onProjectClick(index,e)} className="card-content">
@@ -77,11 +77,11 @@ class ProjectList extends Component {
     render() {     
         return (
            <div>
-            <div id="projects-list" className="row projects">
+            <div id="projects-list" className="row flex projects">
                 {this.renderList()}
             </div>
-            <div className="row animated-selector show-on-medium-and-up">
-                <div className={'col s6 m4 ' + this.state.pushStatus}>
+            <div className="row flex animated-selector show-on-medium-and-up">
+                <div className={'col s12 m4 ' + this.state.pushStatus}>
                         <div className="card">
                             <div className="card-content">
                             &nbsp;
