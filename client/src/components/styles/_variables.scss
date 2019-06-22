@@ -6,20 +6,7 @@ $darkblue: #1e1d28;
 $black: #1e1e28;
 
 @media screen and (max-width: 813px) {
-    .testimonial-quote {
-      p {
-        &::before {
-          top: -100px;
-          left: -35px;
-          font-size: 100px;
-        }
-        &::after {
-          bottom: -75px;
-          right: -35px;
-          position: relative;
-        }
-      }
-    }
+    
     .about-section {
       height: 800px;
     }
