@@ -14,9 +14,11 @@ import Skillset from './Skillset';
 class Landing extends Component {
     
     render() {
+        let viewportW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
         return (
             <div className="landing z-depth-5">
-                <Cursor listenerElement={document} />
+                {viewportW >= 1020 ? <Cursor listenerElement={document} /> : console.log('oui')}
                 <AboutSection />
                 <WorkSection />
                 <Testimonials intervalCarousel={8000}/>

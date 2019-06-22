@@ -87,13 +87,15 @@ function Skillset (){
             image: 'images/scrum_board.svg'
         }
     ]
+    let viewportW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
     return (
             <div className="skillsets container">
                 <h1>Skillset</h1>
                 {data.map((skill, i) => 
                         <div key={i}>
                             <div className="row flex">       
-                                <div className={i%2 === 0 ? 'text m6 col push-m6' : 'text m6 col'}>
+                                <div className={'skillset-text s12 m12 l6 col ' + (i%2 === 0  ? 'push-l6' : '')}>
                                     <h4>{skill.title}</h4>
                                     <div dangerouslySetInnerHTML={{__html: skill.text}} />
                                     <div className="techs">      
@@ -101,7 +103,7 @@ function Skillset (){
                                     </div>
                                     
                                 </div>
-                                <div className={i%2 === 0 ? 'valign-wrapper text m6 s12 col pull-m6' : 'valign-wrapper text m6 s12 col'}>
+                                <div className={'skillset-image valign-wrapper s12 m12 l6 col ' + (i%2 === 0 ? 'pull-l6' : '')}>
                                     <img className={i%2 === 0 ? 'left' : ''} src={skill.image} alt={skill.title}></img>
                                 </div>                        
                             </div>   

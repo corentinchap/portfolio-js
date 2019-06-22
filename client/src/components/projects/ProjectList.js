@@ -42,7 +42,8 @@ class ProjectList extends Component {
         })
     }
    
-    renderList(){   
+    renderList(){  
+ 
         try{
             return this.props.projects.map((project, index) => {
                 var baseClasses = 'card';
@@ -77,10 +78,10 @@ class ProjectList extends Component {
     render() {     
         return (
            <div>
-            <div id="projects-list" className="row flex projects">
+            <div id="projects-list" className="row projects">
                 {this.renderList()}
             </div>
-            <div className="row flex animated-selector show-on-medium-and-up">
+            <div className="row animated-selector">
                 <div className={'col s12 m4 ' + this.state.pushStatus}>
                         <div className="card">
                             <div className="card-content">

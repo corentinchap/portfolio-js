@@ -30,7 +30,7 @@ function PrevArrow(props) {
     const {onClick} = props;
     return (
         <span onClick={onClick} 
-        className="control-left hide-on-med-and-down" >  
+        className="control-left" >  
             <FontAwesomeIcon icon={faArrowLeft} /> 
         </span>
     );
@@ -40,7 +40,7 @@ function PrevArrow(props) {
     const {onClick} = props;
     return (
         <span onClick={onClick} 
-        className="control-right hide-on-med-and-down" >  
+        className="control-right" >  
             <FontAwesomeIcon icon={faArrowRight} /> 
         </span>
     );
@@ -78,17 +78,17 @@ class Testimonials extends Component {
                     <div className="col m12 s12 relative">
                     <Slider {...settings}>
                         {testimonials.map((testimonial, i) => (
-                                <div key={i} className="testimonial">
-                                    <blockquote className="testimonial-quote">
-                                        <span dangerouslySetInnerHTML={{__html: testimonial.quote}} />                            
-                                        <cite> – {testimonial.author}</cite>
-                                        <div className="website-link">{testimonial.project}</div>
-                                    </blockquote>
-                                    <div className="testimonial-picture hide-on-med-and-down">
-                                        <img src={testimonial.avatar} alt="testimonial-avatar"></img>
-                                    </div>
-                                    
-                                </div>                 
+                            <div key={i} className="testimonial">
+                                <blockquote className="testimonial-quote">
+                                    <span dangerouslySetInnerHTML={{__html: testimonial.quote}} />                            
+                                    <cite> – {testimonial.author}</cite>
+                                    <div className="website-link">{testimonial.project}</div>
+                                </blockquote>
+                                <div className="testimonial-picture hide-on-med-and-down">
+                                    <img src={testimonial.avatar} alt="testimonial-avatar"></img>
+                                </div>
+                                
+                            </div>                 
                         ))}
                     </Slider>                      
                         

@@ -113,7 +113,9 @@ body{
         z-index: 2;
         position: relative;
     }
-    
+    &.selected {
+        background-color: darken($orange, 15%);
+    }
 }
 
 .flex {

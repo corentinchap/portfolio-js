@@ -11,7 +11,7 @@ class FooterComponent extends Component {
           <footer className="footer">
               <div className="container">
               <div className="row">
-                <div className="col center s12 m6">
+                <div className="col center m12 l6">
                 <h3>Stalk my social media</h3>
                 <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/corentin-chapatte-684234160/" alt="linkedIn">
                     <div className="row social-links">
@@ -34,7 +34,7 @@ class FooterComponent extends Component {
                     </div>
                 </a>
                 </div>
-                <div className="col m6 s12 ">
+                <div className="col m12 l6">
                     <ContactForm />
                 </div>
               </div>
