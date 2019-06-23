@@ -8,13 +8,13 @@
       color: $blue;
       margin: 50px 0 100px 0;  
       
-      &:first-child{
-        margin-bottom:50px;
-      }
      }
   }
   .work-section {
     padding-top: 60px;
+    h1:first-child{
+      margin-bottom:50px;
+    }
     h2{
     color: #314ffc;
     font-family: vt323;
@@ -35,7 +35,7 @@
   }
   
   .skillsets {
-  
+    padding-top: 100px;
     img {
       width: 65%;
       margin: auto;

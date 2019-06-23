@@ -30,9 +30,17 @@ class WorkSection extends Component {
     }
     
     onProjectClick(i){
-        this.setState({selectedProjectIndex: i});
-    }
+        //this.setState({selectedProjectIndex: i});
+        document.querySelector('.project-details').classList.add('fadeOut');
 
+        setTimeout(() => {
+            document.querySelector('.project-details').classList.remove('fadeOut');
+            document.querySelector('.project-details').classList.add('fadeIn');
+        }, 500);    
+    
+        document.querySelector('.project-details').classList.remove('fadeIn');
+    }
+    
     render() {
 
         return (
@@ -68,6 +76,31 @@ class WorkSection extends Component {
         )
     }
 
+    fade(element) {
+        var op = 1;  // initial opacity
+        var timer = setInterval(function () {
+            if (op <= 0.1){
+                clearInterval(timer);
+                element.style.display = 'none';
+            }
+            element.style.opacity = op;
+            element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+            op -= op * 0.1;
+        }, 40);
+    }
+
+    unfade(element) {
+        var op = 0.1;  // initial opacity
+        element.style.display = 'block';
+        var timer = setInterval(function () {
+            if (op >= 1){
+                clearInterval(timer);
+            }
+            element.style.opacity = op;
+            element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+            op += op * 0.1;
+        }, 40);
+    }
    
 }
 
