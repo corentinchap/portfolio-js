@@ -9,6 +9,14 @@ import github from '../img/github.svg';
 import linkedin from '../img/linkedin.svg';
 
 class AboutSection extends Component {
+
+    scrollToForm(){
+        window.scrollBy({ 
+            top: document.getElementById('root').scrollHeight, 
+            left: 0, 
+            behavior: 'smooth' 
+          });
+    }
     
     render() {
         return (
@@ -38,7 +46,7 @@ class AboutSection extends Component {
                                         </a>
                                     </div>
                                     <div className="contact wrap">                
-                                       <CursorAwareButton defaultColor={"#fff"} activeColor={"#174ffc"} text={'Hire me'} />
+                                       <CursorAwareButton onClick={this.scrollToForm} defaultColor={"#fff"} activeColor={"#174ffc"} text={'Get in touch'} />
                                     </div>
                                 </div>
                             </div>

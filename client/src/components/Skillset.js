@@ -87,7 +87,6 @@ function Skillset (){
             image: 'images/scrum_board.svg'
         }
     ]
-    let viewportW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
     return (
             <div className="skillsets container">

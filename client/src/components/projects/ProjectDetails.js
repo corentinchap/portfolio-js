@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import M from "materialize-css";
-
 
 class ProjectDetails extends Component {  
    
     renderTags(tags){
         // tags can be array, empty string or string comma separated
+        
         let output = '';
-      
+        if(typeof tags !== 'string' && typeof tags !== 'object'){
+            return
+        }   
+
         if(typeof tags == 'string' & tags.indexOf(',') > -1){
             tags = tags.split(',');
         }

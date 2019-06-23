@@ -61,14 +61,14 @@ class ContactForm extends Component {
                         <div className="input-field col s12">
                             <i className="material-icons prefix"><FontAwesomeIcon icon={faUserTie} /></i>
                             <input name="full_name" id="full_name" type="text" onChange={this.handleChange} className="validate" />
-                            <label htmlFor="full_name">Full name</label>
+                            <label data-cursor="hover" htmlFor="full_name">Full name</label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="input-field col s12">
                             <i id="mail-icon" className="material-icons email prefix"><FontAwesomeIcon id={'email-icon'} icon={faEnvelope} /></i>
                             <input name="email" id="email" type="email" onChange={this.handleChange} className="validate" />
-                            <label htmlFor="email">Email</label>
+                            <label data-cursor="hover" htmlFor="email">Email</label>
                         </div>
                     </div>
 
@@ -76,11 +76,11 @@ class ContactForm extends Component {
                         <div className="input-field col s12">
                             <i className="material-icons prefix"><FontAwesomeIcon icon={faPen} /></i>
                             <textarea name="message" id="textarea1" onChange={this.handleChange} className="materialize-textarea"></textarea>
-                            <label htmlFor="textarea1">Message content</label>
+                            <label data-cursor="hover" htmlFor="textarea1">Message content</label>
                         </div>
 
                         <div className="input-field col s12 m6 push-m6">
-                            <CursorAwareButton onClick={e => this.submitForm(e)} defaultColor='#fff' activeColor="#fe9b34" text={'Send'} />
+                            <CursorAwareButton onClick={e => this.submitForm(e)} defaultColor='#fff' activeColor="#fe9b34" footerFix={true} text={'Contact me'} />
                         </div>
                     </div>
                 </form>

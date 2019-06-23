@@ -15,7 +15,7 @@ const testimonials = [
     {
         author: 'Philipp Reiss',
         project : 'abgefatz.de',
-        quote: "Corentin Chapatte has been assisting me throughout the entire process of creating and maintaining my own webpage 'www.abgefatzt.de'.<br><br> He was  and is a <b> very reliable </b>consultant in all of my programming related issues." +
+        quote: "Corentin Chapatte has been assisting me throughout the entire process of creating and maintaining my own webpage <i>'abgefatzt.de'</i>.<br><br> He was  and is a <b> very reliable </b>consultant in all of my programming related issues." +
         "Since the beginning of this business relationship Mr. Chapatte always proved to be a <b>reliable partner and a precious consultant</b> in terms of customization and perfectionating.<br><br>Furthermore his <b>deep knowledge</b> of Computing- and IT-related topics has been a consistent source of valuable information. I wish him all the best for his private and profesionnal life.",
         avatar: 'images/testimonials-men-1.svg'
     },
@@ -57,18 +57,10 @@ class Testimonials extends Component {
             adaptiveHeight: true,
             pauseOnHover: true,
             speed: 500,
-            slidesToShow: 34,
+            slidesToShow: 1,
             slidesToScroll: 1,
             nextArrow: <NextArrow />,
             prevArrow: <PrevArrow />,
-            responsive: [
-                {
-                  breakpoint: 1024,
-                  settings: {
-                    slidesToShow: 1
-                  }
-                },
-            ]
           };
         return (
             <div className="testimonials" onMouseUp={() => {return false}}>

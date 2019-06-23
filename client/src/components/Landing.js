@@ -6,8 +6,6 @@ import Cursor from './utils/Cursor';
 import ContactModal from './utils/ContactModal';
 import FooterComponent from './FooterComponent';
 import Testimonials from './Testimonials';
-// import CarouselTest from './CarouselTest';
-import CursorAwareButton from './utils/CursorAwareButton'
 import Skillset from './Skillset';
 
 
@@ -18,7 +16,7 @@ class Landing extends Component {
 
         return (
             <div className="landing z-depth-5">
-                {viewportW >= 1020 ? <Cursor listenerElement={document} /> : console.log('oui')}
+                {viewportW >= 1020 ? <Cursor listenerElement={document} /> : ''}
                 <AboutSection />
                 <WorkSection />
                 <Testimonials intervalCarousel={8000}/>

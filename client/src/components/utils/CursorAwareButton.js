@@ -35,6 +35,7 @@ class CursorAwareButton extends Component {
         });
         const cursor_button_spanStyle = css({
             backgroundColor: this.props.defaultColor,
+            top: this.props.footerFix ? '0!important' :  ''
         });
 
         
@@ -44,11 +45,12 @@ class CursorAwareButton extends Component {
                 <a onMouseEnter={this.buttonMouseInteraction} 
                     onMouseLeave={this.buttonMouseInteraction}
                     onClick={this.props.onClick}
-                    className="cursor-button"       
+                    className="cursor-button"  
+                    data-cursor="hover"     
                     {...cursor_buttonStyle}
                     >
                 {this.props.text}
-                    <span {...cursor_button_spanStyle}></span>
+                    <span  {...cursor_button_spanStyle} ></span>
                 </a> 
            
             </div>            

@@ -6,14 +6,21 @@
       font-family: vt323;
       font-size: 3em;
       color: $blue;
-      margin: 50px 0 100px 0;   
+      margin: 50px 0 100px 0;  
+      
+      &:first-child{
+        margin-bottom:50px;
+      }
      }
   }
-  .work-section h2{
+  .work-section {
+    padding-top: 60px;
+    h2{
     color: #314ffc;
     font-family: vt323;
     margin: 100px 0 0px 0;
     font-size: 45px;
+    }
 }
 
   .summary-text {

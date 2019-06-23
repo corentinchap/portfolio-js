@@ -19,10 +19,14 @@
         color: $orange;
         font-size: 2em;
         font-family: Passion One;
+        text-align: left;
     }
 
     input, textarea{
         color:#fff;
+    }
+    textarea{
+        height: 200px;
     }
 
     > .container > .row {
@@ -43,7 +47,7 @@
     transition: color .2s;
 }
 .social {
-    &-icon img{
+    &-icon{
         height: 65px;
         float: right;
     }
@@ -53,9 +57,11 @@
         text-align: left;
         font-size: 22px;
         line-height: 65px;
+        margin-left: 20px;
     }
     &-links{
         padding-top: 50px;
+        display: flex;
     }
 
 }
