@@ -30,15 +30,16 @@ class WorkSection extends Component {
     }
     
     onProjectClick(i){
-        //this.setState({selectedProjectIndex: i});
-        document.querySelector('.project-details').classList.add('fadeOut');
+        this.setState({selectedProjectIndex: i});
 
-        setTimeout(() => {
-            document.querySelector('.project-details').classList.remove('fadeOut');
-            document.querySelector('.project-details').classList.add('fadeIn');
-        }, 500);    
+        // document.querySelector('.project-details').classList.add('fadeOut');
+
+        // setTimeout(() => {
+        //     document.querySelector('.project-details').classList.remove('fadeOut');
+        //     document.querySelector('.project-details').classList.add('fadeIn');
+        // }, 500);    
     
-        document.querySelector('.project-details').classList.remove('fadeIn');
+        // document.querySelector('.project-details').classList.remove('fadeIn');
     }
     
     render() {
