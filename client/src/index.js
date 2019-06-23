@@ -18,7 +18,7 @@ import reducers from './reducers';
 //     reducers, 
 //     composeEnhancers(applyMiddleware(reduxThunk, logger)));
 
- const store = createStore(reducers, applyMiddleware(reduxThunk));
+const store = createStore(reducers, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
     <Provider store={store}> <App /> </Provider>, 

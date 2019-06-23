@@ -19,7 +19,7 @@ class Landing extends Component {
                 {viewportW >= 1020 ? <Cursor listenerElement={document} /> : ''}
                 <AboutSection />
                 <WorkSection />
-                <Testimonials intervalCarousel={8000}/>
+                <Testimonials/>
                 <Skillset />
                 <FooterComponent />           
                 <ContactModal />

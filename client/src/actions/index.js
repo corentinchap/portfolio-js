@@ -2,6 +2,7 @@ import axios from 'axios';
 import { FETCH_USER, CHECK_AUTH, RECEIVE_PROJECTS, REQUEST_PROJECTS, ADMIN_UPDATE_PREVIEW, MAIL_SENT } from './types';
 import emailjs from 'emailjs-com';
 
+
 export const fetchUser = () => async dispatch => {
     const res = await axios.get('/api/current_user');
     dispatch({type: FETCH_USER, payload: res.data});
@@ -11,7 +12,7 @@ export const fetchProjects = () => {
   return function(dispatch){
     dispatch({type: REQUEST_PROJECTS});
     axios
-        .get('/api/projects')
+        .get('http://localhost:5000/api/projects')
         .then(res => dispatch({type: RECEIVE_PROJECTS, payload: res.data}))
         .catch(err => console.log(err));
   }
