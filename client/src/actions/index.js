@@ -12,7 +12,7 @@ export const fetchProjects = () => {
   return function(dispatch){
     dispatch({type: REQUEST_PROJECTS});
     axios
-        .get('http://localhost:5000/api/projects')
+        .get('/api/projects')
         .then(res => dispatch({type: RECEIVE_PROJECTS, payload: res.data}))
         .catch(err => console.log(err));
   }
