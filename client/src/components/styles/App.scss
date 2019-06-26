@@ -33,6 +33,15 @@ body{
 
 .landing .project{
     
+    &-details{
+        transition: opacity 1s ease-in-out;
+        &.fadeOut{
+            opacity: 0;
+        }
+        &.fadeIn{
+            opacity: 1;
+        }
+    }
     &-content {
          text-align:left;
     }

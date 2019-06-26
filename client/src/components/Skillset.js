@@ -93,7 +93,7 @@ function Skillset (){
                 <h1>Skillset</h1>
                 {data.map((skill, i) => 
                         <div key={i}>
-                            <div className="row flex">       
+                            <div data-aos="zoom-in-up" data-aos-duration="3000" data-aos-anchor-placement="top-center"  className="row flex">       
                                 <div className={'skillset-text s12 m12 l6 col ' + (i%2 === 0  ? 'push-l6' : '')}>
                                     <h4>{skill.title}</h4>
                                     <div dangerouslySetInnerHTML={{__html: skill.text}} />

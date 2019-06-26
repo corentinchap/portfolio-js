@@ -30,13 +30,13 @@ class AboutSection extends Component {
                         </div>
                         <div className="content valign-wrapper col s12 m6">
                             <div className="summary">
-                                <div className="summary-text">
+                                <div data-aos="fade-left" className="summary-text">
                                     Corentin Chapatte
                                 </div>
-                                <div className="summary-subtext">
+                                <div data-aos="fade-left" className="summary-subtext">
                                     a full-stack developer
                                 </div>
-                                <div className="social-contact">
+                                <div data-aos="fade" className="social-contact">
                                     <div className="social">
                                         <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/corentin-chapatte-684234160/" alt="linkedIn">
                                             <img data-cursor="hover" alt="LinkedIn" src={linkedin} />

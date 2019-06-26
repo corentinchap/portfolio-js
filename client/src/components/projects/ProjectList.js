@@ -43,7 +43,7 @@ class ProjectList extends Component {
     }
    
     renderList(){  
- 
+        let viewportW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
         try{
             return this.props.projects.map((project, index) => {
                 var baseClasses = 'card';
@@ -53,7 +53,7 @@ class ProjectList extends Component {
                     className="project-delete-button z-depth-2">X</span>
                 );
 
-                if(index === this.props.selectedProjectIndex){
+                if(index === this.props.selectedProjectIndex && viewportW < 1020){
                     baseClasses += ' selected';
                     
                 }

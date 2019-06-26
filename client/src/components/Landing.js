@@ -7,10 +7,13 @@ import ContactModal from './utils/ContactModal';
 import FooterComponent from './FooterComponent';
 import Testimonials from './Testimonials';
 import Skillset from './Skillset';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 class Landing extends Component {
-    
+    componentDidMount(){
+        AOS.init({duration:1500});
+    }
     render() {
         let viewportW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 

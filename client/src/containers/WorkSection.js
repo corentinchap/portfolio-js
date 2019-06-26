@@ -29,17 +29,26 @@ class WorkSection extends Component {
         this.props.fetchProjects();
     }
     
-    onProjectClick(i){
-        this.setState({selectedProjectIndex: i});
+    async onProjectClick(i){
+        // let _this = this;
+        // // this.setState({selectedProjectIndex: i});
+        // await this.fadeOut(document.querySelector('.project-details'))
+        // setTimeout(
+        //     this.fadeIn(document.querySelector('.project-details'))
+        //     ,2000
+        // );
+        
+        document.querySelector('.project-details').classList.add('fadeOut');
 
-        // document.querySelector('.project-details').classList.add('fadeOut');
-
-        // setTimeout(() => {
-        //     document.querySelector('.project-details').classList.remove('fadeOut');
-        //     document.querySelector('.project-details').classList.add('fadeIn');
-        // }, 500);    
+        setTimeout(() => {
+            document.querySelector('.project-details').classList.remove('fadeOut');
+            document.querySelector('.project-details').classList.add('fadeIn');
+            this.setState({selectedProjectIndex: i});
+        }, 500);    
     
-        // document.querySelector('.project-details').classList.remove('fadeIn');
+        document.querySelector('.project-details').classList.remove('fadeIn');
+
+        
     }
     
     render() {
@@ -77,31 +86,33 @@ class WorkSection extends Component {
         )
     }
 
-    fade(element) {
-        var op = 1;  // initial opacity
-        var timer = setInterval(function () {
-            if (op <= 0.1){
-                clearInterval(timer);
-                element.style.display = 'none';
-            }
-            element.style.opacity = op;
-            element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-            op -= op * 0.1;
-        }, 40);
-    }
-
-    unfade(element) {
-        var op = 0.1;  // initial opacity
-        element.style.display = 'block';
-        var timer = setInterval(function () {
-            if (op >= 1){
-                clearInterval(timer);
-            }
-            element.style.opacity = op;
-            element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-            op += op * 0.1;
-        }, 40);
-    }
+     async fadeOut(el){
+         el.style.opacity = 1;
+      
+        (function fade() {
+          if ((el.style.opacity -= .1) < 0) {
+            el.style.display = "none";
+          } else {
+            requestAnimationFrame(fade);
+          }
+          if(el.stylle.opacity === 0){
+              return true
+          }
+        })();
+      };
+      
+      fadeIn(el, display){
+        el.style.opacity = 0;
+        el.style.display = display || "block";
+      
+        (function fade() {
+          var val = parseFloat(el.style.opacity);
+          if (!((val += .1) > 1)) {
+            el.style.opacity = val;
+            requestAnimationFrame(fade);
+          }
+        })();
+      };
    
 }
 

@@ -63,7 +63,7 @@ class Testimonials extends Component {
             prevArrow: <PrevArrow />,
           };
         return (
-            <div className="testimonials" onMouseUp={() => {return false}}>
+            <div data-aos="zoom-in-up" data-aos-duration="3000" className="testimonials">
             <div className="container">
                 <div className="row">
                     <h1>What people says about me</h1>
