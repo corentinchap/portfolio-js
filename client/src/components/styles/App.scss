@@ -13,6 +13,9 @@ body{
 .warning{
     background-color: #FFD071;
 }
+.displayContens{
+    display:contents;
+}
 .animated-selector {
     bottom: 113px;
     position: relative;
@@ -28,102 +31,6 @@ body{
     .card{
         background-color: darken($orange, 15%);
         margin: 0 10px;
-    }
-}
-
-.landing .project{
-    
-    &-details{
-        transition: opacity 1s ease-in-out;
-        &.fadeOut{
-            opacity: 0;
-        }
-        &.fadeIn{
-            opacity: 1;
-        }
-    }
-    &-content {
-         text-align:left;
-    }
-    &-tags {
-        float: right;
-        margin-top: 58px;
-
-        span {
-            margin-top:20px;
-            padding: 2px 0 0 15px;
-            color: darken($orange, 10%);
-        }
-    }
-    &-body {
-        p{
-            font-size: 1.2em;
-            &:last-child{
-                float: right;
-            }
-        }
-
-        iframe{
-            margin-top: 50px;
-        }
-    }
-   
-    
-    &-title {
-        display: inline-block;
-        h1{
-            text-align: left;
-        }
-    }
-
-    &-delete-button{
-        position: absolute;
-        right: 5px;
-        top: 5px;
-        padding-left: 4.5px;
-        color: #fff;
-        background-color: red;
-        font-size: .5em;
-        border: 1px solid red;
-        border-radius: 50%;
-        width: 17px;
-        height: 17px;
-    }
-   
-
-    &-website-link {
-        border: 3px solid #314ffc;
-        padding: 5px 5px 10px 5px;
-        border-radius: 10px;
-        float: right;
-        margin-top: 30px;
-
-        a{color: #314ffc;}
-
-        .external-link-icon{ 
-            width: 30px;
-            position: relative;
-            top: 7px;
-            margin-left: 10px;
-        }
-      
-    }
-    
-}
-.projects .card {
-    margin: 0 10px;
-    background-color: $orange;
-    color: #fff;
-    .card-content{
-        font-size: 2rem;
-        font-variant: small-caps;
-        letter-spacing: 1.1px;
-        font-family: Passion One;
-        z-index: 2;
-        position: relative;
-    }
-    &.selected {
-        background-color: darken($orange, 15%);
     }
 }
 

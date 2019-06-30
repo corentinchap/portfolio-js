@@ -6,7 +6,7 @@
       font-family: vt323;
       font-size: 3em;
       color: $blue;
-      margin: 50px 0 100px 0;  
+      margin: 20px 0 100px 0;  
       
      }
   }
@@ -80,4 +80,129 @@
     padding-bottom: 20px;
   }
   
+.landing .project{
+    
+  &-details{
+      visibility: hidden;
+      opacity: 0;
+      height: 0;
+      
+      transition: visibility 0s 1.5s, opacity 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+      &.selected{
+          height: auto;
+          transition: opacity 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+          visibility: visible;
+          opacity: 1;
+        
+          
+      }
+  }
  
+  &-title h1{
+    text-align: left;
+  }
+  &-content {
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    width: 100%;
+  }
+  &-tags {
+    text-align: right;
+    flex-grow: 1;
+      span {
+          margin-top:20px;
+          padding: 2px 0 0 15px;
+          color: darken($orange, 10%);
+      }
+  }
+  &-body {
+      p{
+          font-size: 1.2em;
+          &:last-child{
+              float: right;
+          }
+      }
+
+      iframe{
+          margin-top: 50px;
+      }
+  }
+ 
+  
+ 
+
+  &-delete-button{
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      padding-left: 4.5px;
+      color: #fff;
+      background-color: red;
+      font-size: .5em;
+      border: 1px solid red;
+      border-radius: 50%;
+      width: 17px;
+      height: 17px;
+  }
+ 
+
+  &-website-link {
+      border: 3px solid #314ffc;
+      padding: 5px 5px 10px 5px;
+      border-radius: 10px;
+      float: right;
+      margin-top: 30px;
+
+      a{color: #314ffc;}
+
+      .external-link-icon{ 
+          width: 30px;
+          position: relative;
+          top: 7px;
+          margin-left: 10px;
+      }
+    
+  }
+  
+}
+.projects .card {
+  margin: 0 10px;
+  background-color: $orange;
+  color: #fff;
+  .card-content{
+      font-size: 2rem;
+      font-variant: small-caps;
+      letter-spacing: 1.1px;
+      font-family: Passion One;
+      z-index: 2;
+      position: relative;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    -webkit-transform: translateZ(-80px);
+            transform: translateZ(-80px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateZ(-80px);
+    transform: translateZ(-80px);
+opacity: 0;
+  }
+}

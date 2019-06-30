@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 
 class ProjectDetails extends Component {  
-   
+  
+   componentDidUpdate(){
+       if(this.props.showProjectId !== this.props.project._id){
+         
+           this.renderBody();
+       }
+     
+   }
     renderTags(tags){
         // tags can be array, empty string or string comma separated
         
@@ -19,37 +26,36 @@ class ProjectDetails extends Component {
                 output += '<span>' + String(tag) +'</span>';
             });
         }
+        
 
         return output
     }
-    render() {
-         // Collapsible init
-        
-        return (        
-        <div className="project-details">
-            <div className="project-content">
-            <div className="project-title">
-                <h1>{this.props.selectedProject.name}</h1>
-            </div>
-            <div className="project-tags"
-                dangerouslySetInnerHTML={{__html: this.renderTags(this.props.selectedProject.tags)}}>
-            
-            </div>
-            <div className="project-body" 
-                dangerouslySetInnerHTML={{ __html: this.props.selectedProject.body}}>
-                {this.__html}
-            </div>
+    
+    renderBody(){
+        return(
+            <div className={this.props.showProjectId === this.props.project._id ? 'project-details selected' : 'project-details'} >
+                <div className="project-content">
+                <div className="project-title">
+                    <h1>{this.props.project.name}</h1>
+                </div>
+                <div className="project-tags"
+                    dangerouslySetInnerHTML={{__html: this.renderTags(this.props.project.tags)}}>
+                
+                </div>
+                <div className="project-body" 
+                    dangerouslySetInnerHTML={{ __html: this.props.project.body}}>
+                    {this.__html}
+                </div>
             </div>
         </div>  
         )
     }
-    
-}
-ProjectDetails.defaultProps = {
-    selectedProject : {
-        name: '',
-        tags: '',
-        body: ''
+    render() {
+         
+         return(
+           this.renderBody()
+        )
     }
+    
 }
 export default ProjectDetails;

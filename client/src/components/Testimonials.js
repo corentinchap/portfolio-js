@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Slider from "react-slick";
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PrevArrow from './utils/PrevArrow.js';
+import NextArrow from './utils/NextArrow.js';
 import './styles/Testimonials.scss';
 
 
@@ -9,7 +9,7 @@ const testimonials = [
     {
         author: 'Fanny Zambaz',
         project : 'fannyzambaz.ch',
-        quote: 'I am very happy with the website and the work he has done. It’s such a pleasure to see the site look exactly like I wanted it to be. The great this is he\'s not only <b> knowledgable </b>, but he\'s also a great person to work with',
+        quote: 'I had no previous experience in website development, and I <b>fully trusted</b> Corentin to imagine and create my professional website. Some major changes were necessary after a few years, and Corentin rapidly took the matter into hands. <br>Today I manage my website myself, but should I need help, he is always here to sort it out. He has done a <b>brilliant work<b/>, and continues to do so.',
         avatar: 'images/testimonials-woman-1.svg'
     },
     {
@@ -26,25 +26,6 @@ const testimonials = [
         avatar: 'images/testimonials-woman-2.svg'
     }
 ]
-function PrevArrow(props) {
-    const {onClick} = props;
-    return (
-        <span onClick={onClick} 
-        className="control-left" >  
-            <FontAwesomeIcon icon={faArrowLeft} /> 
-        </span>
-    );
-  }
-
-  function NextArrow(props) {
-    const {onClick} = props;
-    return (
-        <span onClick={onClick} 
-        className="control-right" >  
-            <FontAwesomeIcon icon={faArrowRight} /> 
-        </span>
-    );
-  }
 
 class Testimonials extends Component {
    
@@ -63,7 +44,7 @@ class Testimonials extends Component {
             prevArrow: <PrevArrow />,
           };
         return (
-            <div data-aos="zoom-in-up" data-aos-duration="3000" className="testimonials">
+            <div className="testimonials">
             <div className="container">
                 <div className="row">
                     <h1>What people says about me</h1>

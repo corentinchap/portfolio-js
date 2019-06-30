@@ -28,8 +28,8 @@ class ProjectList extends Component {
        
     }
 
-    onProjectClick(index,e){
-        this.props.onProjectClick(index);
+    onProjectClick(e){
+        this.props.onProjectClick(e);
         
     
         var child = e.target.parentNode;
@@ -43,25 +43,24 @@ class ProjectList extends Component {
     }
    
     renderList(){  
-        let viewportW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
         try{
             return this.props.projects.map((project, index) => {
                 var baseClasses = 'card';
                 var editJsx = (
                     <span id={'delete-card-' + index} 
-                    onClick={(e) => this.deleteProject(e, project._id, index)} 
+                    onClick={(e) => this.deleteProject(e, index)} 
                     className="project-delete-button z-depth-2">X</span>
                 );
 
-                if(index === this.props.selectedProjectIndex && viewportW < 1020){
+                if(index === this.props.selectedProjectIndex){
+                    // We don't want the animated div on mobile
                     baseClasses += ' selected';
-                    
                 }
                 return(
                     <div className="col s12 m4" key={project._id}>
-                        <div className={baseClasses} >
+                        <div className={baseClasses} pj-index={index}>
                             {this.props.enableEdits ? editJsx : '' }
-                            <div data-cursor="action" onClick={(e) => this.onProjectClick(index,e)} className="card-content">
+                            <div data-cursor="action" onClick={this.onProjectClick} className="card-content">
                                 {project.name}
                             </div>
                         </div>   

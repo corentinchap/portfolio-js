@@ -13,6 +13,12 @@ $black: #1e1e28;
   .testimonials .control-left{
     left:5px!important;
   }
+  #root{
+    overflow:hidden;
+  }
+  // .footer > .container{
+  //   width:100%;
+  // }
 }
 // Tablet Devices (m)
 @media screen and (min-width: 600px) and (max-width:992px) {
@@ -33,20 +39,20 @@ $black: #1e1e28;
     margin: -40px 0 10px 0;
     width: 100%;
   }
-
+  
   .browser-frame-wrapper {
     position: relative;
     margin: 50px 0;
 
     .browser-frame:nth-child(2) {
       max-width: 100%;
-      top: 290px;
+      top: 230px;
       left: 10%;
       max-width: 550px;
     }
     .browser-frame:nth-child(3) {
       max-width: 100%;
-      margin: 250px 15px 0 15px;
+      margin: 200px 15px 0 15px;
     }
   }
   .skillset-image{
@@ -57,6 +63,9 @@ $black: #1e1e28;
   }
   .scroll-indicator{
     display:none;
+  }
+  .landing h1{
+    margin: 50px 0;
   }
 }
 // Desktop (l)
@@ -76,4 +85,9 @@ $black: #1e1e28;
   .animated-selector{
     display:none;
   }
+  .projects .card {
+    &.selected {
+        background-color: darken($orange, 15%);
+    }
+}
 }

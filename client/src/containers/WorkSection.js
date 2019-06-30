@@ -6,6 +6,8 @@ import ProjectList from '../components/projects/ProjectList';
 import ProjectDetails from '../components/projects/ProjectDetails';
 import LoaderCard from '../components/utils/LoaderCards';
 import M from 'materialize-css';
+import PrevArrow from '../components/utils/PrevArrow';
+import NextArrow from '../components/utils/NextArrow';
 
 import { isUndefined } from 'util';
 
@@ -13,8 +15,8 @@ class WorkSection extends Component {
     constructor(props){
         super(props);
         this.state = {
-            selectedProject : undefined,
-            selectedProjectIndex: 0
+            selectedProjectIndex: 0,
+            selectedProjectId: '5cc06b5d2197c42b1c7de3ce'
         };
         this.onProjectClick = this.onProjectClick.bind(this);
 
@@ -23,34 +25,34 @@ class WorkSection extends Component {
         if(this.state.selectedProjectIndex === 2){
             M.Collapsible.init(document.querySelectorAll('.collapsible'));
         }
+        
     }
     
     componentDidMount(){
         this.props.fetchProjects();
     }
     
-    async onProjectClick(i){
-        // let _this = this;
-        // // this.setState({selectedProjectIndex: i});
-        // await this.fadeOut(document.querySelector('.project-details'))
-        // setTimeout(
-        //     this.fadeIn(document.querySelector('.project-details'))
-        //     ,2000
-        // );
-        
-        document.querySelector('.project-details').classList.add('fadeOut');
+    onProjectClick(e){
+        this.setState({
+            selectedProjectId:this.props.projects[e.target.parentNode.getAttribute('pj-index')]._id
+        })
 
-        setTimeout(() => {
-            document.querySelector('.project-details').classList.remove('fadeOut');
-            document.querySelector('.project-details').classList.add('fadeIn');
-            this.setState({selectedProjectIndex: i});
-        }, 500);    
-    
-        document.querySelector('.project-details').classList.remove('fadeIn');
+        this.renderProjectDetails();
 
-        
     }
+   
+    renderProjectDetails(){
+
     
+     return this.props.projects.map((project,i) => {
+        return ( 
+            <div key={i}>
+                <ProjectDetails project={project} showProjectId={this.state.selectedProjectId} ></ProjectDetails>
+            </div> 
+        );
+     });
+    }
+
     render() {
 
         return (
@@ -59,7 +61,6 @@ class WorkSection extends Component {
                     <div className="row">
                         <div className="col s12" >
                             <h1>some of my projects</h1>
-
                             <LoaderCard isLoading={this.props.areProjectsLoading} numberOfCards={3}>
                                 <ProjectList 
                                     projects={this.props.projects}
@@ -67,17 +68,14 @@ class WorkSection extends Component {
                                     selectedProjectIndex={this.state.selectedProjectIndex} 
                                     enableEdits={false} 
                                 />
-                            </LoaderCard>
-                            
+                            </LoaderCard>                          
                         </div>
-                        
-                        <div className="col m12 title right-align">               
-                            <LoaderCard isLoading={this.props.areProjectsLoading} numberOfCards={1}> 
-                                {isUndefined(this.props.projects) ?
-                                    <ProjectDetails /> :
-                                    <ProjectDetails selectedProject={this.props.projects[this.state.selectedProjectIndex]} />
-                                } 
-                            </LoaderCard>            
+                        <div className="col m12 right-align displayContens">                              
+                           {!this.props.areProjectsLoading ? this.renderProjectDetails() : ''}          
+                        </div>
+                        <div className="project-switch-button_container">
+                            <PrevArrow onClick={(e) => this.onProjectClick(this.state.selectedProjectIndex - 1,e)}/>
+                            <NextArrow onClick={(e) => this.onProjectClick(this.state.selectedProjectIndex + 1,e)}/>            
                         </div>
                     </div>
                 </div>
@@ -85,34 +83,6 @@ class WorkSection extends Component {
             </div>
         )
     }
-
-     async fadeOut(el){
-         el.style.opacity = 1;
-      
-        (function fade() {
-          if ((el.style.opacity -= .1) < 0) {
-            el.style.display = "none";
-          } else {
-            requestAnimationFrame(fade);
-          }
-          if(el.stylle.opacity === 0){
-              return true
-          }
-        })();
-      };
-      
-      fadeIn(el, display){
-        el.style.opacity = 0;
-        el.style.display = display || "block";
-      
-        (function fade() {
-          var val = parseFloat(el.style.opacity);
-          if (!((val += .1) > 1)) {
-            el.style.opacity = val;
-            requestAnimationFrame(fade);
-          }
-        })();
-      };
    
 }
 
