@@ -21,6 +21,24 @@
     margin: 100px 0 0px 0;
     font-size: 45px;
     }
+    .control-right{
+      float:right;
+      font-size: 16px;
+      span{margin-left: 15px;}
+    }
+    .control-left{
+      float:left;
+      font-size: 16px;
+      span{margin-right: 15px;}
+    }
+    .control-right span, .control-left span{
+      padding: 7px 12px;
+      border: 3px solid $orange;
+      border-radius: 50%;
+      svg path{
+        fill:$orange;
+      }
+    }
 }
 
   .summary-text {
@@ -87,10 +105,10 @@
       opacity: 0;
       height: 0;
       
-      transition: visibility 0s 1.5s, opacity 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+      transition: visibility 0s 1s, opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1);
       &.selected{
           height: auto;
-          transition: opacity 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+          transition: opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1);
           visibility: visible;
           opacity: 1;
         
@@ -153,7 +171,7 @@
       padding: 5px 5px 10px 5px;
       border-radius: 10px;
       float: right;
-      margin-top: 30px;
+      margin: 30px 0;
 
       a{color: #314ffc;}
 
@@ -167,42 +185,52 @@
   }
   
 }
-.projects .card {
-  margin: 0 10px;
-  background-color: $orange;
-  color: #fff;
-  .card-content{
-      font-size: 2rem;
-      font-variant: small-caps;
-      letter-spacing: 1.1px;
-      font-family: Passion One;
-      z-index: 2;
-      position: relative;
+
+.project-column{
+  flex-grow: 1;
+  margin: 10px;
+  &:last-child{
+    padding-right: 0;
   }
+  &:first-child{
+    padding-left: 0;
+  }
+}
+.project-switch-button_container{
+  justify-content: space-between;
+  display: flex;
+  padding-bottom: 100px;
+  > span{
+    background: linear-gradient(to right, rgba(255,255,255,0) 50%, $orange 50%);
+    background-size: 200%;
+    background-position: 0 0;
+    display: inline;
+    transition: .5s ease-in-out;
+    
+  }
+  .control-left:hover, .control-right:hover{
+      background-position: -100% 0;
+      color: #fff;
+  }
+  
+}
+.projects{
+  justify-content: space-between;
+  .card {
+    background-color: $orange;
+    color: #fff;
+    &.selected{
+      background-color: darken($orange,15%);
+    }
+    .card-content{
+        font-size: 2rem;
+        font-variant: small-caps;
+        letter-spacing: 1.1px;
+        font-family: Passion One;
+        z-index: 2;
+        position: relative;
+      }
+    }
 }
 
-@keyframes fade-in {
-  0% {
-    -webkit-transform: translateZ(-80px);
-            transform: translateZ(-80px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-    opacity: 1;
-  }
-}
 
-@keyframes fade-out {
-  0% {
-    -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: translateZ(-80px);
-    transform: translateZ(-80px);
-opacity: 0;
-  }
-}

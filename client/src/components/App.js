@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import {checkAuth} from '../actions';
 import './styles/App.scss'; 
 
-
 import Landing from './Landing';
 import Admin from '../containers/Admin';
 import DummyComponent from './utils/DummyComponent';

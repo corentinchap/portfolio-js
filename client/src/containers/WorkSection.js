@@ -9,8 +9,6 @@ import M from 'materialize-css';
 import PrevArrow from '../components/utils/PrevArrow';
 import NextArrow from '../components/utils/NextArrow';
 
-import { isUndefined } from 'util';
-
 class WorkSection extends Component {
     constructor(props){
         super(props);
@@ -32,13 +30,34 @@ class WorkSection extends Component {
         this.props.fetchProjects();
     }
     
-    onProjectClick(e){
-        this.setState({
-            selectedProjectId:this.props.projects[e.target.parentNode.getAttribute('pj-index')]._id
-        })
+    onProjectClick(e,nextPjId){
+        let selectedCard = document.querySelector('#projects-list .card.selected');
+        selectedCard.classList.remove('selected');
+        
+        if(!nextPjId){
+            this.setState({
+                selectedProjectId:this.props.projects[e.target.parentNode.getAttribute('pj-index')]._id
+            });
+            
+            e.target.parentNode.classList.add('selected');    
+        }
+        else{
+            
+            if(nextPjId === -1) {
+                nextPjId = this.props.projects.length -1;
+            }
+            else if(nextPjId === this.props.projects.length){
+                nextPjId = 0;
+            }
+            this.setState({
+                selectedProjectId: this.props.projects[nextPjId]._id
+            });
+            document.querySelector('#projects-list .card[pj-index="' + nextPjId + '"]').classList.add('selected');
+        }
+        
+        
 
         this.renderProjectDetails();
-
     }
    
     renderProjectDetails(){
@@ -74,8 +93,8 @@ class WorkSection extends Component {
                            {!this.props.areProjectsLoading ? this.renderProjectDetails() : ''}          
                         </div>
                         <div className="project-switch-button_container">
-                            <PrevArrow onClick={(e) => this.onProjectClick(this.state.selectedProjectIndex - 1,e)}/>
-                            <NextArrow onClick={(e) => this.onProjectClick(this.state.selectedProjectIndex + 1,e)}/>            
+                            <PrevArrow content="previous project" onClick={(e) => this.onProjectClick(e,parseInt(document.querySelector('#projects-list .card.selected').getAttribute('pj-index')) - 1)}/>
+                            <NextArrow content="next project" onClick={(e) => this.onProjectClick(e,parseInt(document.querySelector('#projects-list .card.selected').getAttribute('pj-index')) + 1)}/>            
                         </div>
                     </div>
                 </div>

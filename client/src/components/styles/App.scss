@@ -16,23 +16,6 @@ body{
 .displayContens{
     display:contents;
 }
-.animated-selector {
-    bottom: 113px;
-    position: relative;
-    line-height: 44px;
-    z-index: 1;
-
-    & > div{
-        transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
-    } 
-    .push-m0 {
-        left: 0%!important;
-    }
-    .card{
-        background-color: darken($orange, 15%);
-        margin: 0 10px;
-    }
-}
 
 .flex {
     display: flex;
@@ -161,11 +144,4 @@ body{
 }
 
 
-
-@media screen and (max-width:600px){
-    body{
-        margin-bottom:850px;
-    }
-    
-}
 
