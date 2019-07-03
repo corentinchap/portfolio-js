@@ -25,8 +25,16 @@
   // m and down Devices
   @media screen and (max-width:992px){
     body{
-      margin-bottom: 850px;
+      margin-bottom: 0!important;
     }
+    .footer{
+        position: inherit!important;
+        > .container > .row{
+            padding-top: 55px!important;
+        }
+
+    } 
+
     .about-section {
       padding: 50px 0;
   }
