@@ -49,20 +49,19 @@ class WorkSection extends Component {
         return projectArrayId;
     }
 
-    onProjectClick(e,nextPjId){
-        
+    onProjectClick(e,nextPjId){      
         nextPjId = this.changeProject(nextPjId);
 
         document.querySelector('#projects-list .card.selected').classList.toggle('selected');
         document.querySelector('#projects-list .card[pj-index="' + nextPjId + '"]').classList.toggle('selected');
-       
-            
      
         document.querySelector('#projects-list .card[pj-index="' + nextPjId + '"]').classList.add('selected');
-        
-        
 
-        
+        window.scroll({ 
+            top: document.querySelector('.project-details.selected .project-title').offsetTop, 
+            left: 0, 
+            behavior: 'smooth' 
+          });     
     }
 
     onProjectClickList(e){

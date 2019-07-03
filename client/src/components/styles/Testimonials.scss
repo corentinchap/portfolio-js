@@ -10,25 +10,27 @@
    }
 }
 .testimonials {
+  .control-left, .control-right{
+    position: absolute;
+    height: 100%;
+    font-size: 30px;
+    transform: translateY(50%);
+    border-radius: 50%;
+    color: $blue;
+    transition: .5s ease-in;
+  }
     .control-right {
-      position: absolute;
-      height: 100%;
-      font-size: 30px;
-      transform: translateY(50%);
-      border-radius: 50%;
-      color: $blue;
       right: -50px;
       top: 0;
+      &:hover{
+        right:-60px;
+      }
     }
     .control-left {
-      position: absolute;
-      height: 100%;
-      font-size: 30px;
-      -webkit-transform: translateY(50%);
-      transform: translateY(50%);
-      border-radius: 50%;
-      color: $blue;
       left: -50px;
+      &:hover{
+        left:-60px;
+      }
     }
   }
   
