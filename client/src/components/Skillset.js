@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Skillset (){
+function Skillsets (){
     const data = [
         {
             title: 'Front End Development',
@@ -88,26 +88,33 @@ function Skillset (){
         }
     ]
 
+    function Skillset(props){
+        const {title, text, techs, image} = props.skill;
+        let i = props.i;
+        return (
+            <div {...props} >
+            <div className="row flex">       
+                <div className={'skillset-text s12 m12 l6 col ' + (i%2 === 0  ? 'push-l6' : '')}>
+                    <h4>{title}</h4>
+                    <div dangerouslySetInnerHTML={{__html: text}} />
+                    <div className="techs">      
+                        {techs && techs.map((tech, i) => <span key={i}><img data-cursor="hover" alt={tech.alt} title={tech.alt} src={tech.logo}></img></span>)}                            
+                    </div>
+                    
+                </div>
+                <div className={'skillset-image valign-wrapper s12 m12 l6 col ' + (i%2 === 0 ? 'pull-l6' : '')}>
+                    <img className={i%2 === 0 ? 'left' : ''} src={image} alt={title}></img>
+                </div>                        
+            </div>   
+            <hr />  
+            </div>  
+        )
+    }
     return (
             <div className="skillsets container">
                 <h1>Skillset</h1>
                 {data.map((skill, i) => 
-                        <div key={i}>
-                            <div data-aos="zoom-in-up" data-aos-duration="3000" data-aos-anchor-placement="top-center"  className="row flex">       
-                                <div className={'skillset-text s12 m12 l6 col ' + (i%2 === 0  ? 'push-l6' : '')}>
-                                    <h4>{skill.title}</h4>
-                                    <div dangerouslySetInnerHTML={{__html: skill.text}} />
-                                    <div className="techs">      
-                                        {skill.techs && skill.techs.map((tech, i) => <span key={i}><img data-cursor="hover" alt={tech.alt} title={tech.alt} src={tech.logo}></img></span>)}                            
-                                    </div>
-                                    
-                                </div>
-                                <div className={'skillset-image valign-wrapper s12 m12 l6 col ' + (i%2 === 0 ? 'pull-l6' : '')}>
-                                    <img className={i%2 === 0 ? 'left' : ''} src={skill.image} alt={skill.title}></img>
-                                </div>                        
-                            </div>   
-                         <hr />  
-                         </div>       
+                      <Skillset data-aos="zoom-in-up" skill={skill} i={i} key={i}/>     
                     )
                         
                 }
@@ -115,4 +122,4 @@ function Skillset (){
 
     )
 }
-export default Skillset;
+export default Skillsets;

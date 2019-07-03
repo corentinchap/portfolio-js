@@ -7,8 +7,8 @@ class ProjectList extends Component {
         this.state = {
             selectedProjectI: 0
         }
-        this.onProjectClick = this.onProjectClick.bind(this);
     }
+    
     removeProjectDOM(index) {
         document.getElementById('delete-card-' + index).parentElement.remove();
     }
@@ -27,20 +27,6 @@ class ProjectList extends Component {
        
     }
 
-    onProjectClick(e){
-        this.props.onProjectClick(e);
-        
-    
-        // var child = e.target.parentNode;
-        // var parent = child.parentNode.parentNode;
-        
-        // var i = Array.prototype.indexOf.call(parent.children, child.parentNode);
-
-        // this.setState({
-        //     pushStatus: ' push-m' + i*4
-        // })
-    }
-   
     renderList(){  
         try{
             return this.props.projects.map((project, index) => {
@@ -59,7 +45,7 @@ class ProjectList extends Component {
                     <div className="project-column" key={project._id}>
                         <div className={baseClasses} pj-index={index}>
                             {this.props.enableEdits ? editJsx : '' }
-                            <div data-cursor="action" onClick={this.onProjectClick} className="card-content">
+                            <div data-cursor="action" onClick={e => this.props.onProjectClick(e)} className="card-content">
                                 {project.name}
                             </div>
                         </div>   

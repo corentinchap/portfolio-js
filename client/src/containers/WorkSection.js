@@ -17,48 +17,63 @@ class WorkSection extends Component {
             selectedProjectId: '5cc06b5d2197c42b1c7de3ce'
         };
         this.onProjectClick = this.onProjectClick.bind(this);
+        this.onProjectClickList = this.onProjectClickList.bind(this);
+        this.changeProject = this.changeProject.bind(this);
 
     }
     componentDidUpdate(){
         if(this.state.selectedProjectIndex === 2){
             M.Collapsible.init(document.querySelectorAll('.collapsible'));
         }
+       
         
     }
     
     componentDidMount(){
         this.props.fetchProjects();
-    }
-    
-    onProjectClick(e,nextPjId){
-        let selectedCard = document.querySelector('#projects-list .card.selected');
-        selectedCard.classList.remove('selected');
         
-        if(!nextPjId){
-            this.setState({
-                selectedProjectId:this.props.projects[e.target.parentNode.getAttribute('pj-index')]._id
-            });
-            
-            e.target.parentNode.classList.add('selected');    
+    }
+
+    changeProject(projectArrayId){
+        if(projectArrayId === -1) {
+            projectArrayId = this.props.projects.length -1;
         }
-        else{
-            
-            if(nextPjId === -1) {
-                nextPjId = this.props.projects.length -1;
-            }
-            else if(nextPjId === this.props.projects.length){
-                nextPjId = 0;
-            }
-            this.setState({
-                selectedProjectId: this.props.projects[nextPjId]._id
-            });
-            document.querySelector('#projects-list .card[pj-index="' + nextPjId + '"]').classList.add('selected');
+        else if(projectArrayId === this.props.projects.length){
+            projectArrayId = 0;
         }
+
+        this.setState({
+            selectedProjectId: this.props.projects[projectArrayId]._id
+        });
+
+        return projectArrayId;
+    }
+
+    onProjectClick(e,nextPjId){
+        
+        nextPjId = this.changeProject(nextPjId);
+
+        document.querySelector('#projects-list .card.selected').classList.toggle('selected');
+        document.querySelector('#projects-list .card[pj-index="' + nextPjId + '"]').classList.toggle('selected');
+       
+            
+     
+        document.querySelector('#projects-list .card[pj-index="' + nextPjId + '"]').classList.add('selected');
         
         
 
-        this.renderProjectDetails();
+        
     }
+
+    onProjectClickList(e){
+        let targetIndex = e.target.parentNode.getAttribute('pj-index');
+        document.querySelector('#projects-list .card.selected').classList.remove('selected');
+        document.querySelector('#projects-list .card[pj-index="'+targetIndex+'"]').classList.add('selected');
+
+        this.changeProject(targetIndex);
+    }
+
+   
    
     renderProjectDetails(){
 
@@ -83,7 +98,7 @@ class WorkSection extends Component {
                             <LoaderCard isLoading={this.props.areProjectsLoading} numberOfCards={3}>
                                 <ProjectList 
                                     projects={this.props.projects}
-                                    onProjectClick={this.onProjectClick} 
+                                    onProjectClick={this.onProjectClickList} 
                                     selectedProjectIndex={this.state.selectedProjectIndex} 
                                     enableEdits={false} 
                                 />
