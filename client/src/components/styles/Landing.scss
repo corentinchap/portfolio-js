@@ -31,7 +31,7 @@
       font-size: 16px;
       span{margin-right: 15px;}
     }
-    .control-right span, .control-left span{
+    .control-right span[data-cursor="hover"], .control-left span[data-cursor="hover"]{
       padding: 7px 12px;
       border: 3px solid $orange;
       border-radius: 50%;
