@@ -14,9 +14,12 @@
     body{
         margin-bottom:850px;
     }
-    // .footer > .container{
-    //   width:100%;
-    // }
+    .hide-on-small-down{
+        display: none;
+    }
+    .project-switch-button_container > span {
+          background: unset!important;
+    }
   }
   // Tablet Devices (m)
   @media screen and (min-width: 600px) and (max-width:992px) {

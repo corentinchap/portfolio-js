@@ -9,7 +9,7 @@ function PrevArrow(props) {
             <span data-cursor="hover"> 
                 <FontAwesomeIcon icon={faArrowLeft} /> 
             </span>
-            {content} 
+            <span className="hide-on-small-down">{content}</span> 
         </span>    
     );
   }

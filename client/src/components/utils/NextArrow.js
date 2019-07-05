@@ -6,7 +6,7 @@ function NextArrow(props) {
     const {onClick, content} = props;
     return (
         <span data-cursor="hover" className="control-right" onClick={onClick}> 
-            {content}
+            <span className="hide-on-small-down">{content}</span> 
             <span data-cursor="hover">  
             <FontAwesomeIcon  icon={faArrowRight} /> 
             </span>
