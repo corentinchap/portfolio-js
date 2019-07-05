@@ -76,7 +76,7 @@ class WorkSection extends Component {
    
     renderProjectDetails(){
 
-    
+    try{
      return this.props.projects.map((project,i) => {
         return ( 
             <div key={i}>
@@ -84,6 +84,10 @@ class WorkSection extends Component {
             </div> 
         );
      });
+    }catch(e){
+        console.log('error while mapping projects');
+        console.log(e);
+    }
     }
 
     render() {
