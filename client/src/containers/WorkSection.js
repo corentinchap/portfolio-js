@@ -22,7 +22,7 @@ class WorkSection extends Component {
 
     }
     componentDidUpdate(){
-        if(this.state.selectedProjectIndex === 2){
+        if(this.state.selectedProjectId === "5ce9043d1c9d440000f73353"){
             M.Collapsible.init(document.querySelectorAll('.collapsible'));
         }
        
