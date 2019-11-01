@@ -59,7 +59,7 @@ require('./routes/skillsetRoutes')(app);
 
 
 
-if(process.env.NODE_ENV === 'production'){
+if(process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'preproduction'){
     //servce prod assets
     app.use(express.static('client/build'));
 
