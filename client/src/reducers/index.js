@@ -3,10 +3,14 @@ import authReducer from './authReducer';
 import projectReducer from './projectReducer';
 import adminReducer from './adminReducer';
 import formReducer from './formReducer';
+import testimonialReducer from './testimonialReducer';
+import skillsetReducer from './skillsetReducer';
 
 export default combineReducers({
     auth: authReducer,
     projects: projectReducer,
     admin: adminReducer,
-    form: formReducer
+    form: formReducer,
+    testimonials:testimonialReducer,
+    skillsets:skillsetReducer
 })

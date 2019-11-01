@@ -1,9 +1,9 @@
-import '../styles/CursorAwareButton.scss';
+import '../../styles/CursorAwareButton.scss';
 import React, { Component } from 'react';
 import {css} from 'glamor';
 
 class CursorAwareButton extends Component {
- 
+    
     buttonMouseInteraction(e){
         var top=0, left=0;
         var elem = e.target;
@@ -20,12 +20,11 @@ class CursorAwareButton extends Component {
         if(span)
             span.setAttribute('style', 'top:'+relY+'px;left:'+relX+'px;')
     }
-
- 
+  
     render() {
         let cursor_buttonStyle = css({
             color: this.props.defaultColor,
-            border: '1px solid' + this.props.defaultColor,
+            border: '1px solid ' + this.props.defaultColor,
             ':hover':{
                 color: this.props.activeColor
             },
@@ -38,19 +37,18 @@ class CursorAwareButton extends Component {
             top: this.props.footerFix ? '0!important' :  ''
         });
 
-        
-          
         return (
             <div data-cursor="hover">
-                <a onMouseEnter={this.buttonMouseInteraction} 
+                <a  onMouseEnter={this.buttonMouseInteraction} 
                     onMouseLeave={this.buttonMouseInteraction}
                     onClick={this.props.onClick}
                     className="cursor-button"  
-                    data-cursor="hover"     
                     {...cursor_buttonStyle}
-                    >
-                {this.props.text}
-                    <span  {...cursor_button_spanStyle} ></span>
+                >
+                {this.props.icon !== "" ? this.props.icon : ""}
+                {this.props.children}
+
+                    <span {...cursor_button_spanStyle}></span>
                 </a> 
            
             </div>            

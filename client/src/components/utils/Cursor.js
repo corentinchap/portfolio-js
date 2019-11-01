@@ -1,86 +1,83 @@
 import React, { Component } from 'react';
-import '../styles/Cursor.scss';
-
-
+import '../../styles/Cursor.scss';
 
 class Cursor extends Component {
+   
     constructor(props){
         super(props);
         this.state = {
             cursorType: 'ring',
-            target : undefined,
-            cursorElement: undefined        }
+            cursorElement: undefined,
+        }
+        this.clientX = -100;
+        this.clientY = -100;
+       
     }
-    componentDidMount(){
-        this.setState({
-            cursorElement : document.getElementById('cursor')
-        });
+
+    setCoordinates = (e) => {
+        this.clientX = e.clientX;
+        this.clientY = e.clientY;
+    }
+
+    componentDidMount(){      
+        this.cursor = document.getElementById('cursor');
         
-        this.props.listenerElement.addEventListener('mousemove',e => {                    
-            this.setCursorPosition(e);
-        });
+        this.initCursor();
 
-        this.props.listenerElement.addEventListener('mousedown', e => {
-           this.handleClick(e);
-         })
+        //There might be a better way to trigger the register event when everything is loaded from the server
+        //I dont want to use redux to register component one by one
+        setTimeout(function() {
+            document.querySelectorAll('[data-cursor]').forEach(item => {         
+                if(item.id !== "cursor"){
+                    this.registerMouseEvent(item);
+                }
+            });
+        }.bind(this), 3000)
 
+      
     }
 
-    setCursorPosition(e){
+ 
+
+    initCursor = () => {
+        let offset = 26;
+        document.addEventListener("mousemove", e => this.setCoordinates(e));
+
+        // Animation loop
+        const render = () => {
+            this.cursor.style.transform =  `translate(${this.clientX-offset}px, ${this.clientY-offset}px)`;
+            requestAnimationFrame(render);
+        }
         
-        let off = 26;
-
-        let left = e.pageX -off;
-        let top = e.pageY-window.scrollY -off; 
-
-        let previousState;
-
-        this.state.cursorElement.setAttribute('style','top: '+top+'px; left:'+left+'px;');
-
-        setTimeout(() => {
-            previousState = this.state.cursorType;
-                //check wether the cursor is on something that is interactable
-                if(e.target.hasAttribute('data-cursor'))
-                {
-                    this.setState({
-                        cursorType: e.target.getAttribute('data-cursor'),
-                        target: e.target                        
-                    })
-                }
-                else{
-                    // Default to ring
-                    if(this.state.cursorType !== 'ring'){
-                        this.setState({
-                            cursorType: 'ring'
-                        })
-                    }
-                } 
-                
-                // enable hover state for my interactive buttons
-                if(e.target.classList.contains('btn-cursor')){
-                    e.target.classList.add('active');
-                }else{
-                    if(previousState === 'hover'){
-                        // btn can be null when hovering links that dont interact neither active class
-                        if(document.body.contains(document.querySelector('.active')))
-                            document.querySelector('.active').classList.toggle('active')
-                        
-                    }
-                }
-           
-        }, 300);
+        requestAnimationFrame(render);
+     
     }
+
+
     
     render() {
+        if(this.state.cursorType.substr(0,6) === "action")
+            var action = this.state.cursorType.substr(7);
+
         return (
             <div id="cursor" data-cursor={this.state.cursorType}>
                 <div className="wrapper">
                     <span className="cursor-ring"></span>
                     <span className="cursor-hover"></span>
                     <span className="cursor-action">
-                        <span>show</span>
+                        <span></span>
                     </span>
                 </div>
+
+                {typeof action !== "undefined" && 
+                <style dangerouslySetInnerHTML={{
+                __html: [
+                   '#cursor[data-cursor^="action"] .cursor-action::after {',
+                   '  content: "'+ action +'";',
+                   '}'
+                  ].join('\n')
+                }}>
+            </style>}
             </div>
         )
     }
@@ -94,6 +91,27 @@ class Cursor extends Component {
             this.state.cursorElement.classList.remove('expend');
         }, 500);
     }
+
+    registerMouseEvent(DOMElement){
+  
+        const handleMouseEnter = (e) => {
+            let action = e.target.getAttribute("data-cursor");
+                  
+            this.setState({
+                cursorType: action
+            });
+        }
+    
+        const handleMouseLeave = (e) => {
+            this.setState({
+                cursorType: "ring"
+            })
+        };
+        DOMElement.addEventListener('mouseenter', handleMouseEnter)
+        DOMElement.addEventListener('mouseleave', handleMouseLeave)
+    }
+
+
 }
 
 export default Cursor;

@@ -8,25 +8,20 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
 const bodyParser = require('body-parser');
+const fs = require('fs');
 
-require('./models/User');
-require('./models/Image');
-require('./models/Project');
+
+// Loop to require all models
+var models_path = __dirname + '/models'
+fs.readdirSync(models_path).forEach(function (file) {
+  require(models_path+'/'+file)
+})
+
 require('./services/passport');
 
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true});
-
-
+mongoose.connect(process.env.MONGO_URI, { useUnifiedTopology: true, useNewUrlParser: true});
 
 const app = express();
-
-// let headers = new Headers();
-
-
-// headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
-// headers.append('Access-Control-Allow-Credentials', 'true');
-
-// app.use(headers);
 
 // for parsing application/json
 app.use(bodyParser.json()); 
@@ -42,7 +37,7 @@ app.use(
 );
 
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
@@ -53,18 +48,19 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-
-// Mutler Image upload requirement
+//Mutler Image upload requirement
 app.use('/uploads', express.static('uploads'));
 app.use('/image', require('./routes/imageRoutes'));
 
 require('./routes/authRoutes')(app);
 require('./routes/projectRoutes')(app);
+require('./routes/testimonialRoutes')(app);
+require('./routes/skillsetRoutes')(app);
+
 
 
 if(process.env.NODE_ENV === 'production'){
     //servce prod assets
-
     app.use(express.static('client/build'));
 
     const path = require('path');
@@ -72,9 +68,9 @@ if(process.env.NODE_ENV === 'production'){
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     })
 }
-
-
-
+else{
+    //mongoose.set('debug', true)
+}
 
 const PORT = process.env.PORT || 5000;
 

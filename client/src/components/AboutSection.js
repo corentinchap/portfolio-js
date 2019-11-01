@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CursorAwareButton from './utils/CursorAwareButton';
-import './styles/AboutSection.scss';
+import '../styles/AboutSection.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -30,23 +30,25 @@ class AboutSection extends Component {
                         </div>
                         <div className="content valign-wrapper col s12 m6">
                             <div className="summary">
-                                <div data-aos="fade-left" className="summary-text">
+                                <div className="summary-text">
                                     Corentin Chapatte
                                 </div>
-                                <div data-aos="fade-left" className="summary-subtext">
-                                    a full-stack developer
+                                <div className="summary-subtext">
+                                    junior full-stack developer
                                 </div>
-                                <div data-aos="fade" className="social-contact">
-                                    <div className="social">
+                                <div className="social-contact">
+                                    <div className="social" data-cursor="hover">
                                         <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/corentin-chapatte-684234160/" alt="linkedIn">
-                                            <img data-cursor="hover" alt="LinkedIn" src={linkedin} />
+                                            <img  alt="LinkedIn" src={linkedin} />
                                         </a>
                                         <a target="_blank" rel="noopener noreferrer" href="https://github.com/corentinchap">
-                                            <img data-cursor="hover" alt="Github" src={github}/>
+                                            <img alt="Github" src={github}/>
                                         </a>
                                     </div>
                                     <div className="contact wrap">                
-                                       <CursorAwareButton onClick={this.scrollToForm} defaultColor={"#fff"} activeColor={"#174ffc"} text={'Get in touch'} />
+                                       <CursorAwareButton onClick={this.scrollToForm} defaultColor={"#fff"} activeColor={"#174ffc"} >
+                                           Get in touch
+                                       </CursorAwareButton>
                                     </div>
                                 </div>
                             </div>

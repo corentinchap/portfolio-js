@@ -1,0 +1,57 @@
+@import './_variables.scss';
+  .skillsets {
+    padding-top: 100px;
+    img {
+      width: 65%;
+      margin: auto;
+    }
+    .skillset-text {
+      font-size: 1.2em;
+    }  
+
+    hr {
+        border: 0;
+        margin: 80px auto;
+        width: 50%;
+        height: 2px;
+        background-image: -webkit-linear-gradient(left, #f0f0f000, $orange, #f0f0f0);
+      }
+      div[skill]:last-child hr{
+        visibility: hidden;
+        margin:40px auto;
+      }  
+      div[skill]:nth-child(odd) img{    
+          margin-left: 0;
+      }
+      div[skill]:nth-child(even) img{    
+        margin-right: 0;
+    }
+  }
+  
+  .relative {
+    position: relative;
+  }
+  
+  .img-right img {
+    float: right;
+  }
+  
+  
+  .techs {
+    span {
+      line-height: 50px;
+      padding: 20px 15px;
+      display: inline-block;
+    }
+    img {
+      width: auto;
+      height: 45px;
+    }
+  }
+  
+  .skillsets h4 {
+    color: $orange;
+    font-weight: 600;
+    font-family: Space Mono;
+    padding-bottom: 20px;
+  }

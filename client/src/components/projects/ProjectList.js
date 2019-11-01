@@ -5,7 +5,7 @@ class ProjectList extends Component {
     constructor(props){
         super(props);
         this.state = {
-            selectedProjectI: 0
+            selectedProjectIndex: 0
         }
     }
     
@@ -42,13 +42,15 @@ class ProjectList extends Component {
                     baseClasses += ' selected';
                 }
                 return(
-                    <div className="project-column" key={project._id}>
-                        <div className={baseClasses} pj-index={index}>
-                            {this.props.enableEdits ? editJsx : '' }
-                            <div data-cursor="action" onClick={e => this.props.onProjectClick(e)} className="card-content">
-                                {project.name}
-                            </div>
-                        </div>   
+                    <div key={project._id}>
+                        <div className="col s12 m6"  data-cursor="action-see">
+                            <div className={baseClasses} pj-index={index}>
+                                {this.props.enableEdits ? editJsx : '' }
+                                <div onClick={e => this.props.onProjectClick(e)} className="card-content">
+                                    {project.name}
+                                </div>
+                            </div>   
+                        </div>
                     </div>
                 );
             });             
@@ -61,20 +63,9 @@ class ProjectList extends Component {
    
     render() {     
         return (
-           <div>
-            <div id="projects-list" className="flex projects">
+            <div id="projects-list" className="projects row">
                 {this.renderList()}
             </div>
-            {/* <div className="animated-selector">
-                <div>
-                        <div className="card">
-                            <div className="card-content">
-                            &nbsp;
-                            </div>
-                        </div>   
-                    </div>
-            </div> */}
-           </div>
         )
     }
     

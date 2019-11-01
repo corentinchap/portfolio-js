@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
-
 const Project = mongoose.model('projects');
 
 

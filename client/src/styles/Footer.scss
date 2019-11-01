@@ -1,0 +1,59 @@
+@import './variables';
+
+.footer{
+    background-color: $darkblue;
+    overflow:hidden;
+    box-shadow: 0px -2px 11px 3px #7b7b7b;
+    padding-top: 50px;
+    .social-text{
+        font-size: 1.2em;
+    }
+
+    h3{
+        color: $orange;
+        font-size: 2em;
+        font-family: Passion One;
+        text-align: left;
+        text-decoration: underline;
+    }
+
+    input, textarea{
+        color:#fff;
+    }
+    textarea{
+        height: 200px;
+    }
+}
+
+.input-field label {
+    color: #fff;
+    font-weight: bold;
+}
+
+ .input-field .prefix {
+    position: absolute;
+    color: #fff;
+    font-size: 2rem;
+    -webkit-transition: color .2s;
+    transition: color .2s;
+}
+.social {
+    &-icon{
+        height: 65px;
+        float: right;
+    }
+    &-text {
+        color: #fff;
+        font-family: vt323;
+        text-align: left;
+        font-size: 22px;
+        line-height: 65px;
+        margin-left: 20px;
+    }
+    &-links{
+        padding-top: 50px;
+        display: flex;
+    }
+
+}
+

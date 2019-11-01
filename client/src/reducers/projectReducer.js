@@ -1,8 +1,8 @@
 import { RECEIVE_PROJECTS, REQUEST_PROJECTS } from '../actions/types';
 
 var initState ={
-    list: undefined,
-    isLoading: true
+    isLoading: true,
+    projects: []
 }
 export default function(state = initState, action) {
     switch (action.type){
@@ -11,8 +11,8 @@ export default function(state = initState, action) {
 
         case RECEIVE_PROJECTS:
             return {
-                list: action.payload,
-                isLoading: false
+                isLoading: false,
+                projects: action.payload
             };
         default:
             return state;
