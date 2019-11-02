@@ -4,8 +4,8 @@
   "description": "backend for the protfolio",
   "main": "index.js",
   "engines": {
-    "node": "8.11.3",
-    "npm": "6.4.1"
+    "node": "12.13.0",
+    "npm": "6.12.0"
   },
   "scripts": {
     "start": "node index.js",
