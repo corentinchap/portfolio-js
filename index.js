@@ -36,6 +36,7 @@ app.use(
     })
 );
 
+
 app.use(function(req, res, next) {
     if(process.env.NODE_ENV === 'dev'){
         res.header("Access-Control-Allow-Origin", "http://localhost:3000");
