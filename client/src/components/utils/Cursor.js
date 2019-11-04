@@ -38,9 +38,8 @@ class Cursor extends Component {
     }
 
  
-
     initCursor = () => {
-        let offset = 26;
+        let offset = 52;
         document.addEventListener("mousemove", e => this.setCoordinates(e));
 
         // Animation loop

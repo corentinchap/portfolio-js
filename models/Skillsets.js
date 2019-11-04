@@ -10,7 +10,8 @@ const skillsetsSchema = new Schema({
             logoUrl: String,
             alt: String
         }
-    ]
+    ],
+    order: Number
 });
 
 mongoose.model('skillsets', skillsetsSchema);
