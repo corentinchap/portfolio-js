@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Slide from './Slide';
 import Arrow from './Arrow';
 import '../../styles/Slider.scss';
 
@@ -9,95 +8,64 @@ class Slider extends Component {
         
         this.state = {
             selected: 0,
-            nbrSlide: this.props.data.length - 1
+            nbrSlide: 0
         }
         
     }
 
- 
-
-    nextSlide = () => {
-        let selected = this.state.selected;
-        if(selected === this.state.nbrSlide)
-        {
-            this.setState({
-                selected: 0
-            });
-        }
-        else{
-            this.setState({
-                selected: selected+1
-            });
-        }
-    }
-
-    prevSlide = () => {
-        let selected = this.state.selected;
-        if(selected === 0)
-        {
-            this.setState({
-                selected: this.state.nbrSlide
-            });
-        }
-        else{
-            this.setState({
-                selected: selected-1
-            });
-        }
-    }
-
-    renderSelector = () => {
-        var output = [];
-        var i;
-        for(i = 0; i < this.props.data.length ;i++){
-            output.push(this.selectable(i));
-        }
-        return (
-            <ul className="selector">
-                {output}
-            </ul>
-        );
-    }
-
-    selectable = (key) => {
-        return(
-            <li className={key === this.state.selected ? "selected" : ""} key={key} onClick={() => this.setState({selected:key})}></li>
-        )
+    slide = (wrapper, items, prev, next) => {
+        let posX1 = 0,
+            posX2 = 0,
+            posInitial,
+            posFinal,
+            threshold = 100,
+            slides = items.getElementsByClassName('project-content'),
+            slidesLength = slides.length,
+            slideSize = items.getElementsByClassName('project-content')[0].offsetWidth,
+            firstSlide = slides[0],
+            lastSlide = slides[slidesLength - 1],
+            cloneFirst = firstSlide.cloneNode(true),
+            cloneLast = lastSlide.cloneNode(true),
+            index = 0,
+            allowShift = true;
+        
+            items.appendChild(cloneFirst);
+            items.insertBefore(cloneLast, firstSlide);
+            wrapper.classList.add('loaded');
     }
 
     render() {
-        if(this.props.data.length !== 0)
-            return(
-                <div className="slider">
-                <div className="slider-wrapper">
-                <Arrow direction="right" onClick={this.nextSlide} />
-                    {typeof this.props.data != "undefined" && 
-                    this.props.data.map((item, index) => {
-                        if(index === this.state.selected)
-                            return(
-                                <Slide display={true} key={index} type={this.props.type} data={item} /> 
-                            );
-                        else
-                            return(
-                                <Slide display={false} key={index} type={this.props.type} data={item} /> 
-                            );
-                    })} 
-                    <Arrow direction="left" onClick={this.prevSlide} />
-                    
-                    {this.renderSelector()}
+        
+        return(
+            <div className="slider">
+            <div className="slider-wrapper">
+            <Arrow direction="right" onClick={this.nextSlide} />
+                {this.props.childrens.map((children, index) => {
+                    return(
+                        <Slide onDragStart={this.onDragStart} onDrag={this.onDrag} display={true} key={index} children={children} /> 
+                    );                
+                })} 
+            <Arrow direction="left" onClick={this.prevSlide} />
+                
 
-                </div>
-                </div>
-            )
-        else
-            return(
-                <div></div>
-            );
+            </div>
+            </div>
+        )
+   
     }
 }
 
 Slider.defaultProps = {
-    type: "testimonial"
+    childrens: []
 }
 
-export default Slider
+
+const Slide = (props) => {
+    return(
+        <div className={"slide-wrapper"  + (props.display ? " show" : "")} onDrag={props.onDrag} onDragStart={props.onDragStart} onDragEnd={props.onDragEnd}>
+            {props.children}
+        </div>
+    )
+          
+}
+export default Slider;

@@ -3,6 +3,7 @@
    display: flex;
    flex-wrap: wrap;
    overflow: hidden;
+   height: 100%;
    &-picture{
         width:22%;
         img{
@@ -26,7 +27,7 @@
   .testimonial-quote {
     color: #1e1e28;
     font-size: 1.1em;
-    align-self: center;
+    align-self: flex-start;
     padding: 10px 30px 60px 30px;
     font-style: italic;
     position: relative;
@@ -83,44 +84,44 @@
   
 
   
-  .carousel-item {
-    display: flex;
-    justify-content: space-around;
-    padding: 0 35px;
-    opacity: 0.1 !important;
-    &.testimonial.active {
-      opacity: 1 !important;
-    }
-    img {
-      width: 150px !important;
-      position: relative;
-      align-self: center;
-      bottom: 126px;
-      left: 15px;
-    }
-  }
+//   .carousel-item {
+//     display: flex;
+//     justify-content: space-around;
+//     padding: 0 35px;
+//     opacity: 0.1 !important;
+//     &.testimonial.active {
+//       opacity: 1 !important;
+//     }
+//     img {
+//       width: 150px !important;
+//       position: relative;
+//       align-self: center;
+//       bottom: 126px;
+//       left: 15px;
+//     }
+//   }
   
-  .carousel {
-    .indicator-item {
-      background-color: rgba(30, 30, 40, 0.3) !important;
-      &.active {
-        background-color: #1e1d28 !important;
-      }
-    }
-  }
+//   .carousel {
+//     .indicator-item {
+//       background-color: rgba(30, 30, 40, 0.3) !important;
+//       &.active {
+//         background-color: #1e1d28 !important;
+//       }
+//     }
+//   }
   
-  @media screen and (max-width:992px){
+//   @media screen and (max-width:992px){
 
-    .testimonial{padding-top:0;}
-    .testimonials{
-      .control-right, .control-left{
-        -webkit-transform:translateY(100%); 
-        transform:translateY(100%); 
-      }
+//     .testimonial{padding-top:0;}
+//     .testimonials{
+//       .control-right, .control-left{
+//         -webkit-transform:translateY(100%); 
+//         transform:translateY(100%); 
+//       }
    
-    }
-    .testimonial-quote{
-      padding:0 10px 70px 10px ;
-    }
+//     }
+//     .testimonial-quote{
+//       padding:0 10px 70px 10px ;
+//     }
 
-  }
+//   }

@@ -5,24 +5,21 @@ import {checkAuth} from '../actions';
 
 import '../styles/App.scss'; 
 import Landing from './Landing';
-import Admin from './Admin';
 
 class App extends Component {
     componentDidMount(){
         this.props.checkAuth();
     }
 
-   
     render() {
     return (
-        <div>
+        <>
             <BrowserRouter>
-                <div>
+                <>
                     <Route exact path="/" component={ Landing } />
-                    <Route exact path="/admin" component={ this.props.auth ? Admin : Component } />
-                </div>
+                </>
             </BrowserRouter>
-        </div>
+        </>
     );
     }
   
