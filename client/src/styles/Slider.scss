@@ -14,7 +14,7 @@
         display:grid;
         grid-template-columns: 1fr;
         padding:15px;
-        & > div {
+        .slide-wrapper {
             grid-row-start:1;
             grid-column-start:1;
             height: 98.5%;

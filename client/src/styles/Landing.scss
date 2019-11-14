@@ -30,31 +30,17 @@
     
 .landing .project{
     
-  &-details{
-      visibility: hidden;
-      opacity: 0;
-      height: 0;
-      
-      transition: visibility 0s 1s, opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1);
-      &.selected{
-          height: auto;
-          transition: opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1);
-          visibility: visible;
-          opacity: 1;
-        
-          
-      }
-  }
- 
+  
   &-title h1{
     text-align: left;
   }
+
   &-content {
-    text-align: left;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    width: 100%;
+    margin: 5px;
+    padding: 15px;
+    border-radius: 5px;
+    border: 3px solid #174ffc;
+   
   }
   &-tags {
     text-align: left;

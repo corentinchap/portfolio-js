@@ -23,9 +23,7 @@ class Ressource extends Component {
 
     render() {
         return(
-            <div>
-             {this.renderConditionnalLoader()} 
-            </div>
+            <>{this.renderConditionnalLoader()}</>
         )
     }
 }
