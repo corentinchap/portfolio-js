@@ -2,8 +2,11 @@ import React, {Component} from 'react';
 import '../../styles/Carousel.scss';
 
 const CarouselLeftArrow = (props) => {
-  const {onClick} = props;
- 
+
+  const onClick = (e) => {
+    document.getElementById(props.scrollInto).scrollIntoView({behavior:"smooth"});
+    props.onClick(e);
+  }
     return (
       <button onClick={onClick} data-cursor="action-prev" className="control prev"></button>
     );
@@ -11,8 +14,12 @@ const CarouselLeftArrow = (props) => {
 }
 
 const CarouselRightArrow = (props) => {
+  const onClick = (e) => {
+    document.getElementById(props.scrollInto).scrollIntoView({behavior:"smooth"});
+    props.onClick(e);
+  }
   return (
-    <button onClick={props.onClick} data-cursor="action-next" className="control next"></button>
+    <button onClick={onClick} data-cursor="action-next" className="control next"></button>
   );
   
 }
@@ -53,14 +60,12 @@ class Carousel extends Component {
     this.items = document.getElementById(this.props.id + "-slides");
     this.slidesLength = this.slides.length;
     this.slideWidth = document.querySelector("#" + this.props.id + " .wrapper").clientWidth + 1;
-
     this.calculateHeight(this.getCurrentSlide());
   }
 
   componentDidUpdate(){
     this.calculateHeight(this.getCurrentSlide());
   }
-
 
   getCurrentSlide = () => {
     let container = document.getElementById(this.props.id + "-slides")
@@ -80,7 +85,8 @@ class Carousel extends Component {
 
   dragStart = (e) => {
     e = e || window.event;
-    e.preventDefault();
+    if(e.cancelable)
+      e.preventDefault();
     
     this.posInitial = this.items.offsetLeft;
    
@@ -97,13 +103,16 @@ class Carousel extends Component {
     e = e || window.event;
     
     if (e.type === 'touchmove') {
+      
       this.posX2 = this.posX1 - e.touches[0].clientX;
       this.posX1 = e.touches[0].clientX;
     } else {
       this.posX2 = this.posX1 - e.clientX;
       this.posX1 = e.clientX;
     }
-    this.items.style.left = (this.items.offsetLeft - this.posX2) + "px";
+
+    if(Math.abs(this.posInitial - (this.items.offsetLeft - this.posX2)) > 5)
+      this.items.style.left = (this.items.offsetLeft - this.posX2) + "px";
   }
 
   dragEnd = (e) => {
@@ -160,19 +169,33 @@ class Carousel extends Component {
     this.setState({allowShift: true});
   }
 
+  renderIndicators = () => {
+    return(
+      <ul className="selectors">
+        {this.props.children.map((item, i) => {
+          return(
+            <li key={i} className={i === this.state.index ? "activ" : ""}></li>
+          )})
+        }
+      </ul>
+    )
+   
+  }
+
   render() {
    let currSlideHeight = parseInt(this.state.currentHeight) + parseInt(this.props.autoHeightOffset);
     return (
+      <>
       <div id={this.props.id} className="r-slider" style={{height: currSlideHeight}}>
         <div className="wrapper">
           <div onMouseDown={(e) => this.dragStart(e)} 
             onTouchStart={(e) => this.dragStart(e)} id={this.props.id + "-slides"} className="r-slides"
-            onTouchEnd={(e) => this.dragStart(e)}
-            onTouchMove={(e) => this.dragStart(e)}
+            onTouchEnd={(e) => this.dragEnd(e)}
+            onTouchMove={(e) => this.dragAction(e)}
             onTransitionEnd={this.checkIndex}
             style={{left: Number.isInteger(this.slideWidth) ? -this.slideWidth : 0}}
             >
-            <div className="r-slide" style={{width: this.slideWidth}}>
+            <div className="r-slide"  style={{width: this.slideWidth}} >
             {this.state.cloneFirst}
             </div>
             {this.props.children.map((slide, index) =>
@@ -189,10 +212,11 @@ class Carousel extends Component {
           </div>
         </div>
 
-        <CarouselLeftArrow onClick={e => this.shiftSlide(-1)} />
-        <CarouselRightArrow onClick={e => this.shiftSlide(1)} />
-
+        <CarouselLeftArrow scrollInto={this.props.id} onClick={e => this.shiftSlide(-1)} />
+        <CarouselRightArrow scrollInto={this.props.id} onClick={e => this.shiftSlide(1)} />
       </div>
+       {this.renderIndicators()}
+      </>
     );
   }
 }

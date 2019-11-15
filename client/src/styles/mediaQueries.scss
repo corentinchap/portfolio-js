@@ -31,6 +31,12 @@
     .skillsets div[skill]:nth-child(even) img {
       margin:auto!important;
     }
+    .cursor-button {
+      .inner-text{
+        font-size: .7em;
+      }
+      padding: 4px 10px;
+    }
   }
   // Tablet Devices (m)
   @media screen and (min-width: 600px) and (max-width:992px) {
@@ -127,15 +133,4 @@
     }
   }
   
-}
-@media screen and (max-width:400px){
-  .landing .project-tags span{
-    display:block;
-  }
-  .cursor-button {
-    .inner-text{
-      font-size: .8em;
-    }
-    padding: 4px 10px;
-  }
 }

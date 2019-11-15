@@ -17,9 +17,8 @@ function Skillsets (props){
                     <div className="techs">      
                         {techs && techs.map((tech, i) => <span data-cursor="hover" key={i}><img alt={tech.alt} title={tech.alt} src={tech.logoUrl}></img></span>)}                            
                     </div>
-                    
                 </div>
-                <div className={'skillset-image valign-wrapper s12 m6 l6 col ' + (i%2 === 0 ? 'pull-l6' : '')}>
+                <div className={'skillset-image valign-wrapper s12 m6 l6 col hide-on-small-only ' + (i%2 === 0 ? 'pull-l6' : '')}>
                     <img className={i%2 === 0 ? 'left' : ''} src={imageUrl} alt={title}></img>
                 </div>                        
             </div>   

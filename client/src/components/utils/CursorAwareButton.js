@@ -38,11 +38,12 @@ class CursorAwareButton extends Component {
         });
 
         return (
-            <div data-cursor="hover">
+           <>
                 <a  onMouseEnter={this.buttonMouseInteraction} 
                     onMouseLeave={this.buttonMouseInteraction}
                     onClick={this.props.onClick}
-                    className="cursor-button"  
+                    className="cursor-button" 
+                    data-cursor="hover" 
                     {...cursor_buttonStyle}
                 >
                 {this.props.icon !== "" ? this.props.icon : ""}
@@ -50,8 +51,8 @@ class CursorAwareButton extends Component {
 
                     <span {...cursor_button_spanStyle}></span>
                 </a> 
-           
-            </div>            
+           </>
+                       
             
         )
     }
