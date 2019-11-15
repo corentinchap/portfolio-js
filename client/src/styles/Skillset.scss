@@ -3,7 +3,6 @@
     padding-top: 100px;
     img {
       width: 65%;
-      margin: auto;
     }
     .skillset-text {
       font-size: 1.2em;
@@ -21,11 +20,9 @@
         margin:40px auto;
       }  
       div[skill]:nth-child(odd) img{    
-          margin-left: 0;
+          margin-left: auto;
       }
-      div[skill]:nth-child(even) img{    
-        margin-right: 0;
-    }
+      
   }
   
   .relative {

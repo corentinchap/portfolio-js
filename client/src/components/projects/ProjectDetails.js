@@ -33,6 +33,7 @@ class ProjectDetails extends Component {
                         <div className="inner-text">website</div>
                         </CursorAwareButton>  }       
                         
+                        {gitUrl.length > 0 && 
                         <CursorAwareButton 
                             activeColor={"white"} 
                             defaultColor={"#fe9b34"} 
@@ -40,7 +41,8 @@ class ProjectDetails extends Component {
                             icon={<FontAwesomeIcon  icon={faCodeBranch} />} 
                         >          
                             <div className="inner-text">code</div>
-                        </CursorAwareButton>         
+                        </CursorAwareButton>}         
+
                     </div>
                 </div>
             </div>
@@ -48,4 +50,5 @@ class ProjectDetails extends Component {
     }
     
 }
+
 export default ProjectDetails;

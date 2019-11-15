@@ -1,3 +1,4 @@
+@import './variables';
 
 $slider-width: 100%;
 $slider-height: auto;
@@ -65,6 +66,23 @@ $slide-width:888px;
 }
 button:focus{
     background-color: #fff!important;
+}
+
+.selectors li.activ {
+  background: $orange;
+  border-color: $orange;
+}
+.selectors {
+  display: flex;
+  margin: 15px auto;
+  width: 60px;
+  justify-content: space-around;
+}
+.selectors li {
+  border: 1px solid black;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
 }
 
 @media screen and (max-width:645px){

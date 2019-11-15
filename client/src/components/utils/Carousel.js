@@ -61,7 +61,6 @@ class Carousel extends Component {
     this.calculateHeight(this.getCurrentSlide());
   }
 
-
   getCurrentSlide = () => {
     let container = document.getElementById(this.props.id + "-slides")
     if(container){
@@ -80,7 +79,8 @@ class Carousel extends Component {
 
   dragStart = (e) => {
     e = e || window.event;
-    e.preventDefault();
+    if(e.cancelable)
+      e.preventDefault();
     
     this.posInitial = this.items.offsetLeft;
    
@@ -160,15 +160,29 @@ class Carousel extends Component {
     this.setState({allowShift: true});
   }
 
+  renderIndicators = () => {
+    return(
+      <ul className="selectors">
+        {this.props.children.map((item, i) => {
+          return(
+            <li key={i} className={i === this.state.index ? "activ" : ""}></li>
+          )})
+        }
+      </ul>
+    )
+   
+  }
+
   render() {
    let currSlideHeight = parseInt(this.state.currentHeight) + parseInt(this.props.autoHeightOffset);
     return (
+      <>
       <div id={this.props.id} className="r-slider" style={{height: currSlideHeight}}>
         <div className="wrapper">
           <div onMouseDown={(e) => this.dragStart(e)} 
             onTouchStart={(e) => this.dragStart(e)} id={this.props.id + "-slides"} className="r-slides"
-            onTouchEnd={(e) => this.dragStart(e)}
-            onTouchMove={(e) => this.dragStart(e)}
+            onTouchEnd={(e) => this.dragEnd(e)}
+            onTouchMove={(e) => this.dragAction(e)}
             onTransitionEnd={this.checkIndex}
             style={{left: Number.isInteger(this.slideWidth) ? -this.slideWidth : 0}}
             >
@@ -191,8 +205,9 @@ class Carousel extends Component {
 
         <CarouselLeftArrow onClick={e => this.shiftSlide(-1)} />
         <CarouselRightArrow onClick={e => this.shiftSlide(1)} />
-
       </div>
+       {this.renderIndicators()}
+      </>
     );
   }
 }
