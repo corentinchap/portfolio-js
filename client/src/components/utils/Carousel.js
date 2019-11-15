@@ -2,8 +2,11 @@ import React, {Component} from 'react';
 import '../../styles/Carousel.scss';
 
 const CarouselLeftArrow = (props) => {
-  const {onClick} = props;
- 
+
+  const onClick = (e) => {
+    document.getElementById(props.scrollInto).scrollIntoView({behavior:"smooth"});
+    props.onClick(e);
+  }
     return (
       <button onClick={onClick} data-cursor="action-prev" className="control prev"></button>
     );
@@ -11,8 +14,12 @@ const CarouselLeftArrow = (props) => {
 }
 
 const CarouselRightArrow = (props) => {
+  const onClick = (e) => {
+    document.getElementById(props.scrollInto).scrollIntoView({behavior:"smooth"});
+    props.onClick(e);
+  }
   return (
-    <button onClick={props.onClick} data-cursor="action-next" className="control next"></button>
+    <button onClick={onClick} data-cursor="action-next" className="control next"></button>
   );
   
 }
@@ -103,8 +110,7 @@ class Carousel extends Component {
       this.posX2 = this.posX1 - e.clientX;
       this.posX1 = e.clientX;
     }
-    console.log(this.posInitial);
-    console.log(this.items.offsetLeft - this.posX2);
+
     if(Math.abs(this.posInitial - (this.items.offsetLeft - this.posX2)) > 5)
       this.items.style.left = (this.items.offsetLeft - this.posX2) + "px";
   }
@@ -206,8 +212,8 @@ class Carousel extends Component {
           </div>
         </div>
 
-        <CarouselLeftArrow onClick={e => this.shiftSlide(-1)} />
-        <CarouselRightArrow onClick={e => this.shiftSlide(1)} />
+        <CarouselLeftArrow scrollInto={this.props.id} onClick={e => this.shiftSlide(-1)} />
+        <CarouselRightArrow scrollInto={this.props.id} onClick={e => this.shiftSlide(1)} />
       </div>
        {this.renderIndicators()}
       </>
