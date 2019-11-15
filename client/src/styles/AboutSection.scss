@@ -27,6 +27,9 @@
     &-contact{
         display: flex;
         justify-content: space-between;
+        .cursor-button {
+            margin-top: 17px;
+        }
     }
     
 }

@@ -22,28 +22,28 @@ class ProjectDetails extends Component {
                 </div>
                 <div className="project-body"> 
                     {description}
-                    <div className="cta">  
-                        {url.length > 0 && 
-                        <CursorAwareButton 
-                            defaultColor={"#1e1d28"} 
-                            activeColor={"#fe9b34"}
-                            onClick={() => window.open(url, "_blank")} 
-                            icon={<FontAwesomeIcon  icon={faExternalLinkAlt} />} 
-                        >
-                        <div className="inner-text">website</div>
-                        </CursorAwareButton>  }       
-                        
-                        {gitUrl.length > 0 && 
-                        <CursorAwareButton 
-                            activeColor={"white"} 
-                            defaultColor={"#fe9b34"} 
-                            onClick={() => window.open(gitUrl, "_blank")} 
-                            icon={<FontAwesomeIcon  icon={faCodeBranch} />} 
-                        >          
-                            <div className="inner-text">code</div>
-                        </CursorAwareButton>}         
+                </div>
+                <div className="cta">  
+                    {url.length > 0 && 
+                    <CursorAwareButton 
+                        defaultColor={"#1e1d28"} 
+                        activeColor={"#fe9b34"}
+                        onClick={() => window.open(url, "_blank")} 
+                        icon={<FontAwesomeIcon  icon={faExternalLinkAlt} />} 
+                    >
+                    <div className="inner-text">website</div>
+                    </CursorAwareButton>  }       
+                    
+                    {gitUrl.length > 0 && 
+                    <CursorAwareButton 
+                        activeColor={"white"} 
+                        defaultColor={"#fe9b34"} 
+                        onClick={() => window.open(gitUrl, "_blank")} 
+                        icon={<FontAwesomeIcon  icon={faCodeBranch} />} 
+                    >          
+                        <div className="inner-text">code</div>
+                    </CursorAwareButton>}         
 
-                    </div>
                 </div>
             </div>
         )

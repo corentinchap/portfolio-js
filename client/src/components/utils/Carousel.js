@@ -53,7 +53,6 @@ class Carousel extends Component {
     this.items = document.getElementById(this.props.id + "-slides");
     this.slidesLength = this.slides.length;
     this.slideWidth = document.querySelector("#" + this.props.id + " .wrapper").clientWidth + 1;
-
     this.calculateHeight(this.getCurrentSlide());
   }
 
@@ -186,7 +185,7 @@ class Carousel extends Component {
             onTransitionEnd={this.checkIndex}
             style={{left: Number.isInteger(this.slideWidth) ? -this.slideWidth : 0}}
             >
-            <div className="r-slide" style={{width: this.slideWidth}}>
+            <div className="r-slide"  style={{width: this.slideWidth}} >
             {this.state.cloneFirst}
             </div>
             {this.props.children.map((slide, index) =>

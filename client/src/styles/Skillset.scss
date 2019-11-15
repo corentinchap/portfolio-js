@@ -1,5 +1,8 @@
 @import './_variables.scss';
   .skillsets {
+     > h1 {
+      margin-bottom: 30px;
+    }
     padding-top: 100px;
     img {
       width: 65%;
