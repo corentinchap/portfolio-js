@@ -96,13 +96,17 @@ class Carousel extends Component {
     e = e || window.event;
     
     if (e.type === 'touchmove') {
+      
       this.posX2 = this.posX1 - e.touches[0].clientX;
       this.posX1 = e.touches[0].clientX;
     } else {
       this.posX2 = this.posX1 - e.clientX;
       this.posX1 = e.clientX;
     }
-    this.items.style.left = (this.items.offsetLeft - this.posX2) + "px";
+    console.log(this.posInitial);
+    console.log(this.items.offsetLeft - this.posX2);
+    if(Math.abs(this.posInitial - (this.items.offsetLeft - this.posX2)) > 5)
+      this.items.style.left = (this.items.offsetLeft - this.posX2) + "px";
   }
 
   dragEnd = (e) => {
