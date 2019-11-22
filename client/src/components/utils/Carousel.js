@@ -1,10 +1,17 @@
 import React, {Component} from 'react';
 import '../../styles/Carousel.scss';
 
+const w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
 const CarouselLeftArrow = (props) => {
 
   const onClick = (e) => {
-    document.getElementById(props.scrollInto).scrollIntoView({behavior:"smooth"});
+    if(w <= 640)
+      window.scroll({
+        left: 0,
+        top : document.getElementById(props.scrollInto).offsetTop-100,
+        behavior: 'smooth'
+      });
     props.onClick(e);
   }
     return (
@@ -15,7 +22,12 @@ const CarouselLeftArrow = (props) => {
 
 const CarouselRightArrow = (props) => {
   const onClick = (e) => {
-    document.getElementById(props.scrollInto).scrollIntoView({behavior:"smooth"});
+    if(w <= 640)
+      window.scroll({
+        left: 0,
+        top : document.getElementById(props.scrollInto).offsetTop-100,
+        behavior: 'smooth'
+      });
     props.onClick(e);
   }
   return (
