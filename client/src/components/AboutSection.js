@@ -7,7 +7,8 @@ import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 import github from '../img/github.svg';
 import linkedin from '../img/linkedin.svg';
-
+import freecodecamp from '../img/freecodecamp.svg';
+import codewars from '../img/codewars.png';
 class AboutSection extends Component {
 
     scrollToForm(){
@@ -38,12 +39,20 @@ class AboutSection extends Component {
                                 </div>
                                 <div className="social-contact">
                                     <div className="social" data-cursor="hover">
-                                        <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/corentin-chapatte-684234160/" alt="linkedIn">
+                                        <a title="boring but useful social media" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/corentin-chapatte-684234160/" alt="linkedIn">
                                             <img  alt="LinkedIn" src={linkedin} />
                                         </a>
-                                        <a target="_blank" rel="noopener noreferrer" href="https://github.com/corentinchap">
+                                        <a title="GitHub the code sharing platform" target="_blank" rel="noopener noreferrer" href="https://github.com/corentinchap">
                                             <img alt="Github" src={github}/>
                                         </a>
+                                        <a tile="codewars coding game" target="_blank" rel="noopener noreferrer" href="https://www.codewars.com/users/corentinchap">
+                                            <img alt="Codewars" style={{filter:'invert(1)'}} src={codewars}/>
+                                        </a>
+                                        <a title="freeCodeCamp training certifications" target="_blank" rel="noopener noreferrer" href="https://www.freecodecamp.org/fcc8a8b0848-a68e-4580-9f1d-4a680861d3f1">
+                                            <img alt="FreeCodeCamp" style={{filter:'invert(1)',height:'100%'}} src={freecodecamp}/>
+                                        </a>
+                                        
+
                                     </div>
                                     <div className="contact wrap">                
                                        <CursorAwareButton onClick={this.scrollToForm} defaultColor={"#fff"} activeColor={"#174ffc"} >
