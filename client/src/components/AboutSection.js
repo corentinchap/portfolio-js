@@ -45,7 +45,7 @@ class AboutSection extends Component {
                                         <a title="GitHub the code sharing platform" target="_blank" rel="noopener noreferrer" href="https://github.com/corentinchap">
                                             <img alt="Github" src={github}/>
                                         </a>
-                                        <a tile="codewars coding game" target="_blank" rel="noopener noreferrer" href="https://www.codewars.com/users/corentinchap">
+                                        <a title="codewars coding game" target="_blank" rel="noopener noreferrer" href="https://www.codewars.com/users/corentinchap">
                                             <img alt="Codewars" style={{filter:'invert(1)'}} src={codewars}/>
                                         </a>
                                         <a title="freeCodeCamp training certifications" target="_blank" rel="noopener noreferrer" href="https://www.freecodecamp.org/fcc8a8b0848-a68e-4580-9f1d-4a680861d3f1">
