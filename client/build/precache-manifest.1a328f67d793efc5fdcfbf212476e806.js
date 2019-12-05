@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "754a8eba60a167c6b29c",
+    "revision": "cd92d23b3691d05df956",
     "url": "/static/css/main.619df6f7.chunk.css"
   },
   {
-    "revision": "754a8eba60a167c6b29c",
-    "url": "/static/js/main.b659fb5d.chunk.js"
+    "revision": "cd92d23b3691d05df956",
+    "url": "/static/js/main.d6fd8186.chunk.js"
   },
   {
     "revision": "42ac5946195a7306e2a5",
@@ -28,11 +28,11 @@ self.__precacheManifest = [
     "url": "/static/media/linkedin.ac601e9e.svg"
   },
   {
-    "revision": "d458814c45a3257483abe58c5ef4f91d",
-    "url": "/static/media/freecodecamp.d458814c.svg"
+    "revision": "4327b837d512c3299c06bee6d8d17adf",
+    "url": "/static/media/freecodecamp.4327b837.svg"
   },
   {
-    "revision": "29f29d75526e806f5747bebde17c1956",
+    "revision": "46565111bbaadfd429b94d0685dde2f4",
     "url": "/index.html"
   }
 ];

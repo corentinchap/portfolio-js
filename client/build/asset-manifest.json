@@ -1,18 +1,18 @@
 {
   "main.css": "/static/css/main.619df6f7.chunk.css",
-  "main.js": "/static/js/main.b659fb5d.chunk.js",
-  "main.js.map": "/static/js/main.b659fb5d.chunk.js.map",
+  "main.js": "/static/js/main.d6fd8186.chunk.js",
+  "main.js.map": "/static/js/main.d6fd8186.chunk.js.map",
   "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
   "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
   "static/css/2.60fb3fb0.chunk.css": "/static/css/2.60fb3fb0.chunk.css",
   "static/js/2.bcfab780.chunk.js": "/static/js/2.bcfab780.chunk.js",
   "static/js/2.bcfab780.chunk.js.map": "/static/js/2.bcfab780.chunk.js.map",
   "index.html": "/index.html",
-  "precache-manifest.54c3146d5b7f7189183bbb82ab1ae3a0.js": "/precache-manifest.54c3146d5b7f7189183bbb82ab1ae3a0.js",
+  "precache-manifest.1a328f67d793efc5fdcfbf212476e806.js": "/precache-manifest.1a328f67d793efc5fdcfbf212476e806.js",
   "service-worker.js": "/service-worker.js",
   "static/css/2.60fb3fb0.chunk.css.map": "/static/css/2.60fb3fb0.chunk.css.map",
   "static/css/main.619df6f7.chunk.css.map": "/static/css/main.619df6f7.chunk.css.map",
-  "static/media/freecodecamp.svg": "/static/media/freecodecamp.d458814c.svg",
+  "static/media/freecodecamp.svg": "/static/media/freecodecamp.4327b837.svg",
   "static/media/github.svg": "/static/media/github.87e2efc0.svg",
   "static/media/linkedin.svg": "/static/media/linkedin.ac601e9e.svg"
 }
