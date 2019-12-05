@@ -32,7 +32,7 @@ class Cursor extends Component {
                     this.registerMouseEvent(item);
                 }
             });
-        }.bind(this), 3000)
+        }.bind(this), 2200)
 
       
     }
