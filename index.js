@@ -5,7 +5,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express');
 const mongoose = require('mongoose');
-const passport = require('passport');
 const cookieSession = require('cookie-session');
 const bodyParser = require('body-parser');
 const fs = require('fs');
@@ -17,7 +16,6 @@ fs.readdirSync(models_path).forEach(function (file) {
   require(models_path+'/'+file)
 })
 
-require('./services/passport');
 
 mongoose.connect(process.env.MONGO_URI, { useUnifiedTopology: true, useNewUrlParser: true});
 
@@ -50,16 +48,7 @@ app.use(function(req, res, next) {
 });
 
 
-//OAuth requirement
-app.use(passport.initialize());
-app.use(passport.session());
 
-
-//Mutler Image upload requirement
-app.use('/uploads', express.static('uploads'));
-app.use('/image', require('./routes/imageRoutes'));
-
-require('./routes/authRoutes')(app);
 require('./routes/projectRoutes')(app);
 require('./routes/testimonialRoutes')(app);
 require('./routes/skillsetRoutes')(app);
