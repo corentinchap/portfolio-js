@@ -1,22 +1,22 @@
 self.__precacheManifest = [
   {
-    "revision": "cd92d23b3691d05df956",
-    "url": "/static/css/main.619df6f7.chunk.css"
+    "revision": "dd136eb7de7e2e17d21e",
+    "url": "/static/css/main.6a8e8428.chunk.css"
   },
   {
-    "revision": "cd92d23b3691d05df956",
-    "url": "/static/js/main.d6fd8186.chunk.js"
+    "revision": "dd136eb7de7e2e17d21e",
+    "url": "/static/js/main.0a0e24c8.chunk.js"
   },
   {
     "revision": "42ac5946195a7306e2a5",
     "url": "/static/js/runtime~main.a8a9905a.js"
   },
   {
-    "revision": "1d06260a6d2a420fa749",
-    "url": "/static/css/2.60fb3fb0.chunk.css"
+    "revision": "0beb26d5a801dfe89ff8",
+    "url": "/static/css/2.a48853ce.chunk.css"
   },
   {
-    "revision": "1d06260a6d2a420fa749",
+    "revision": "0beb26d5a801dfe89ff8",
     "url": "/static/js/2.bcfab780.chunk.js"
   },
   {
@@ -28,11 +28,11 @@ self.__precacheManifest = [
     "url": "/static/media/linkedin.ac601e9e.svg"
   },
   {
-    "revision": "4327b837d512c3299c06bee6d8d17adf",
-    "url": "/static/media/freecodecamp.4327b837.svg"
+    "revision": "d458814c45a3257483abe58c5ef4f91d",
+    "url": "/static/media/freecodecamp.d458814c.svg"
   },
   {
-    "revision": "46565111bbaadfd429b94d0685dde2f4",
+    "revision": "4e5217273438a6ba2cd250cfd77d2556",
     "url": "/index.html"
   }
 ];
