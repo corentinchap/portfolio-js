@@ -9,8 +9,8 @@ function Skillsets (props){
         const {title, text, techs, imageUrl} = props.skill;
         let i = props.index;
         return (
-            <div {...props} >
-            <div className="row flex">       
+            <>
+            <div className="skillset row flex">       
                 <div className={'skillset-text s12 m6 l6 col ' + (i%2 === 0  ? 'push-l6' : '')}>
                     <h4>{title}</h4>
                     <div dangerouslySetInnerHTML={{__html: text}} />
@@ -19,17 +19,17 @@ function Skillsets (props){
                     </div>
                 </div>
                 <div className={'skillset-image valign-wrapper s12 m6 l6 col hide-on-small-only ' + (i%2 === 0 ? 'pull-l6' : '')}>
-                    <img className={i%2 === 0 ? 'left' : ''} src={imageUrl} alt={title}></img>
+                    <img className={i%2 === 0 ? 'left' : 'right'} src={imageUrl} alt={title}></img>
                 </div>                        
             </div>   
             <hr />  
-            </div>  
+            </>  
         )
     }
 
     return (
             <div className="skillsets container">
-                <h1>Skillset</h1>    
+                <h1 style={{marginBottom: 15}}>Skillset</h1>    
                 <Ressource isLoading={isLoading}>
                     {
                         skillsets.map((skill, i) => 
@@ -37,7 +37,6 @@ function Skillsets (props){
                         )       
                     }
                 </Ressource>
-                
             </div>
 
     )

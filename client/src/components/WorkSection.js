@@ -23,7 +23,7 @@ class WorkSection extends Component {
 
         return (
                 <div className="work-section container">
-                    <h1>Explore what I do</h1>
+                    <h1>What I do</h1>
                     <div className="project-details">
                         <Ressource isLoading={this.props.data.isLoading} >
                             <Carousel id="project-carousel" autoHeightRefSelector={".project-content"} autoHeightOffset="25" >

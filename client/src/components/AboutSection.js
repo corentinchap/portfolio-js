@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import CursorAwareButton from './utils/CursorAwareButton';
 import '../styles/AboutSection.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
-
 
 import github from '../img/github.svg';
 import linkedin from '../img/linkedin.svg';
@@ -22,9 +19,10 @@ class AboutSection extends Component {
     render() {
         return (
             <div className="about-section">
+                <div className="about-section--clip">
                 <div className="container">
                     <div className="row flex">
-                        <div className="title valign-wrapper col m6 hide-on-small-only">
+                        <div className="title valign-wrapper col m6">
                         <div className="profile-picture">
                             <img src="/images/programming_code_2.svg" alt="avatar"></img>
                         </div>
@@ -64,7 +62,10 @@ class AboutSection extends Component {
                         </div>
                     </div>
                 </div>
-                <span className="scroll-indicator" ><FontAwesomeIcon icon={faArrowDown} /></span>
+                <div className="about-pattern"></div>
+                </div>
+                
+              
             </div>
         )
     }

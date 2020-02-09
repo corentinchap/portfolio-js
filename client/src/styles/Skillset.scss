@@ -1,11 +1,21 @@
 @import './_variables.scss';
+.skillset {
+  padding-top: 30px;
+}
   .skillsets {
-     > h1 {
+    hr:last-child{
+      opacity: 0;
+    }
+    
+    > h1 {
       margin-bottom: 30px;
     }
     padding-top: 100px;
     img {
       width: 65%;
+      &.right {
+       margin-left: auto; 
+      }
     }
     .skillset-text {
       font-size: 1.2em;
@@ -18,13 +28,7 @@
         height: 2px;
         background-image: -webkit-linear-gradient(left, #f0f0f000, $orange, #f0f0f0);
       }
-      div[skill]:last-child hr{
-        visibility: hidden;
-        margin:40px auto;
-      }  
-      div[skill]:nth-child(odd) img{    
-          margin-left: auto;
-      }
+    
       
   }
   

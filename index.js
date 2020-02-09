@@ -5,7 +5,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express');
 const mongoose = require('mongoose');
-const cookieSession = require('cookie-session');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 
@@ -17,22 +16,13 @@ fs.readdirSync(models_path).forEach(function (file) {
 })
 
 
-mongoose.connect(process.env.MONGO_URI, { useUnifiedTopology: true, useNewUrlParser: true});
+mongoose.connect(process.env.MONGO_URL, { useUnifiedTopology: true, useNewUrlParser: true});
 
 const app = express();
 
 // for parsing application/json
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true })); 
-
-app.use(
-    cookieSession({
-        maxAge: 30 * 24 * 60 * 60 * 1000,
-        keys: [
-            process.env.COOKIE_KEY
-        ]
-    })
-);
 
 
 app.use(function(req, res, next) {

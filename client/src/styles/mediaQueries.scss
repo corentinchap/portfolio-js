@@ -37,6 +37,15 @@
       }
       padding: 4px 10px;
     }
+    .profile-picture{
+      display: none;
+    }
+    .summary-text{
+      font-size: 4em;
+    }
+    .summary-subtext{
+      font-size: 2em;
+    }
   }
   // Tablet Devices (m)
   @media screen and (min-width: 600px) and (max-width:992px) {
@@ -60,9 +69,7 @@
     .testimonial-quote{
       width:100%!important;
     }
-    .about-section {
-      padding: 50px 0;
-    }
+
     .projects .card {
       margin: 10px 0px;
     }
@@ -133,4 +140,36 @@
     }
   }
   
+}
+@media screen and (max-width: 430px){
+  .social-contact{
+   flex-direction: column;
+    > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  }   
+}
+
+@media screen and (min-width:600px) and (max-width:830px){
+  .about-section{
+    &--clip {
+    padding: 0 0 6rem 0!important;
+      > div > .flex{
+        flex-direction: row-reverse;
+      }
+    }
+    .summary-text{
+      font-size: 3em;
+    }
+    .summary-subtext{
+      font-size: 1.6em;
+    }
+    .social-contact{
+      position: absolute;
+      width: 100%;
+      margin-top: 30px;
+    }
+  }
 }
