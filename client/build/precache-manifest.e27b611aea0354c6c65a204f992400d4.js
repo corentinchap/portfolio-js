@@ -1,10 +1,10 @@
 self.__precacheManifest = [
   {
-    "revision": "ca2f7289160bf18d5988",
-    "url": "/static/css/main.a3ceedf5.chunk.css"
+    "revision": "1c903252956b6754ec29",
+    "url": "/static/css/main.05968ffc.chunk.css"
   },
   {
-    "revision": "ca2f7289160bf18d5988",
+    "revision": "1c903252956b6754ec29",
     "url": "/static/js/main.9cfb50a5.chunk.js"
   },
   {
@@ -32,7 +32,7 @@ self.__precacheManifest = [
     "url": "/static/media/freecodecamp.4327b837.svg"
   },
   {
-    "revision": "e56ffd1742bde131933604572cc1ec3a",
+    "revision": "1f9ec42098501ec6f734e1c07e647bd6",
     "url": "/index.html"
   }
 ];
