@@ -57,7 +57,7 @@ if(process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'preproduct
     })
 }
 else{
-    //mongoose.set('debug', true)
+    mongoose.set('debug', true)
 }
 
 const PORT = process.env.PORT || 5000;

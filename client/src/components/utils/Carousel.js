@@ -50,7 +50,7 @@ class Carousel extends Component {
     super(props);
 
     this.state = {
-      threshold: 100,
+      threshold: 10,
       index: 0,
       allowShift: true,
       cloneFirst: React.cloneElement(this.props.children[this.props.children.length - 1]),
