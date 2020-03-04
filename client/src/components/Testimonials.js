@@ -8,7 +8,7 @@ class Testimonials extends Component {
     render() {
         return (
             <div className="container testimonials">
-                <h1>What my clients says about me</h1>              
+                <h1>What my clients say about me</h1>              
                 <Ressouce isLoading={this.props.data.isLoading}>
                     <Carousel id="testimonials" autoHeightRefSelector=".testimonial-quote" autoHeightOffset="50" >
                         {this.props.data.testimonials.map((testimonial, index) => {
