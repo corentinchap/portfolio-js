@@ -7,7 +7,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const fs = require('fs');
-var secure = require('express-force-https');
 
 // Loop to require all models
 var models_path = __dirname + '/models'
@@ -20,7 +19,7 @@ mongoose.connect(process.env.MONGO_URL, { useUnifiedTopology: true, useNewUrlPar
 
 const app = express();
 
-app.use(secure);
+//app.use(secure);
 
 // for parsing application/json
 app.use(bodyParser.json()); 
