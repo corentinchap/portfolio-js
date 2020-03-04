@@ -19,7 +19,6 @@ mongoose.connect(process.env.MONGO_URL, { useUnifiedTopology: true, useNewUrlPar
 
 const app = express();
 
-//app.use(secure);
 
 // for parsing application/json
 app.use(bodyParser.json()); 
