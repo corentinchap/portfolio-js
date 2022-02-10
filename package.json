@@ -29,7 +29,7 @@
     "glamor": "^2.20.40",
     "http-proxy-middleware": "^0.19.1",
     "mongoose": "^5.7.7",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "nodemon": "^1.19.4",
     "npm": "^6.14.6",
     "passport-google-oauth20": "^1.0.0",
